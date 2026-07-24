@@ -15,6 +15,12 @@ This file governs how agents must behave when working on the `hanseo-skills` rep
 - Adding a domain term → update CONTEXT.md in the same commit
 - `AGENTS.md` mirrors `CLAUDE.md` exactly — edit one, edit the other in the same commit
 
+## Skill verification rules
+
+- Before committing a new skill, or a change to an existing skill's rules, prohibitions, or process steps → run the `superpowers:writing-skills` RED/GREEN cycle with subagents: baseline scenarios without the skill, then the same scenarios with it. Subagents are pre-authorised for this; no need to ask
+- Record the rationalizations the baseline produced — they are what the skill's wording has to defeat
+- Not required for README, install docs, or wording changes that do not alter behavior
+
 ## Install guide rules
 
 - Root README shows the general install pattern and links to each skill

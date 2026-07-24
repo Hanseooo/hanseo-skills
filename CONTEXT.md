@@ -5,3 +5,6 @@
 - **user-invoked** — a skill only reachable when a human types its slash command; never triggered automatically by the agent
 - **model-invoked** — a skill the agent may reach for automatically when the task fits, as well as by explicit user request
 - **operating contract** — the `CLAUDE.md` / `AGENTS.md` files that define how agents must behave when working on this repo
+- **docket** — a durable file listing the design sessions a large feature needs, their order, and the decisions already settled; lives in the user's project, not this repo
+- **session** — one narrowly-scoped design conversation covering a single cluster of the docket's open questions, ending in an approved spec
+- **binding constraint** — a short decision statement extracted from a finished session and confirmed by the user; later sessions treat it as given, not open
