@@ -45,18 +45,18 @@ Via the [skills.sh](https://www.skills.sh) CLI (works for Claude Code and other
 supported agents):
 
 ```
-npx skills add Hanseooo/charter
+npx skills add Hanseooo/hanseo-skills
 ```
 
-Or point your agent's skill/instruction-loading convention at this repo directly:
+Or clone the collection and reference this skill's folder directly:
 
 ```
-git clone https://github.com/Hanseooo/charter
+git clone https://github.com/Hanseooo/hanseo-skills
 ```
 
-- **Claude Code:** clone into `~/.claude/skills/charter`.
+- **Claude Code:** clone into `~/.claude/skills/charter` (use `skills/charter/` as the skill root).
 - **Codex, opencode, Antigravity CLI, or others:** clone anywhere and load
-  `SKILL.md` per that tool's own custom-instructions/skill mechanism, or just
+  `skills/charter/SKILL.md` per that tool's own custom-instructions/skill mechanism, or just
   paste `SKILL.md`'s contents into the session when you want to charter a
   project.
 
