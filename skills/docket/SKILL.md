@@ -118,6 +118,13 @@ final spec rather than a superseded draft.
 ## Rules
 - A session amends **downstream only**: split, merge, add, or kill any
   not-yet-started session, with a one-line reason under `## Amendments`.
+- A session will turn up things outside its cluster. Route each one by where it
+  belongs, and never by fixing it:
+  - belongs to a **later session** → add it to that session's open questions,
+    plus an `## Amendments` line saying where it came from;
+  - belongs to **no session in this docket** → one line under `## Found &
+    parked`, then let it go. Do not open a file for it, do not start a tracker,
+    do not fix it. Parking it in the docket is the whole of the job.
 - A session never rewrites a `DONE` session's decisions. Reopening a settled
   decision is a **new appended session**, never an edit. Every decision in the
   docket is one the user was present for.
