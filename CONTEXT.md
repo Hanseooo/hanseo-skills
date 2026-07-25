@@ -8,3 +8,5 @@
 - **docket** — a durable file listing the design sessions a large feature needs, their order, and the decisions already settled; lives in the user's project, not this repo
 - **session** — one narrowly-scoped design conversation covering a single cluster of the docket's open questions, ending in an approved spec
 - **binding constraint** — a short decision statement extracted from a finished session and confirmed by the user; later sessions treat it as given, not open
+- **engine** — the one skill in a session that writes the spec file; without it a session cannot reach `DONE`
+- **hardener** — a skill that sharpens a session but writes no spec, so it never substitutes for the engine
