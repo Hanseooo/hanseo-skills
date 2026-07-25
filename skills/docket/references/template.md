@@ -16,6 +16,9 @@ Every docket opens with this block, unchanged. Copy it verbatim.
 >   in-session.
 > - "Binding constraints" are decided. To challenge one, append a NEW session.
 >   Never edit a DONE session.
+> - Something real but outside this session's cluster: if it belongs to a later
+>   session, add it to that session's open questions; otherwise one line under
+>   `## Found & parked`. Never fix it. Never open a file or a tracker for it.
 > - Stop at an approved spec. Do NOT continue to writing-plans or implementation.
 > - To end the session, in this order: record the spec path, propose the
 >   constraints it establishes, wait for the user to confirm them, write them in.
@@ -28,8 +31,11 @@ Do not trim it. Each line defends against something specific:
 - Line 1 stops brainstorming's scope-assessment step from re-decomposing a
   session that was already scoped here, and producing specs the docket never
   learns about.
-- Line 3 overrides brainstorming's terminal handoff to writing-plans.
-- Line 4 is the write-back. It is the only thing keeping the docket accurate,
+- Line 3 gives out-of-cluster findings somewhere to go. Without it a session
+  meeting a real problem either chases it or invents its own place to file it —
+  a fresh notes file the next session will never look in.
+- Line 4 overrides brainstorming's terminal handoff to writing-plans.
+- Line 5 is the write-back. It is the only thing keeping the docket accurate,
   because control never returns to this skill after a handoff — the docket is in
   the session's context for its whole run, and docket-the-skill is not. Its
   ordering is load-bearing: agents perform these steps in the order they are
@@ -73,6 +79,13 @@ resumable) · READY · BLOCKED (needs Sn)
 **Stance:** interaction session — done means every state a user can observe has a chosen rendering
 **Open questions:** …
 
+## Found & parked
+Turned up mid-session, belongs to no session here. Recorded so it is not lost,
+and not this docket's work.
+- 2026-07-26 (from S2): `useUnreadBadge` increments on every message INSERT and
+  filters only on sender, so it counts conversations the user is not in.
+  Pre-existing, unrelated to messaging design. Raise separately.
+
 ## Amendments
 - 2026-07-26 (from S2): split S3; unread state turned out to be a sync decision,
   not a UI one. Now S3 (UI) + S4 (unread).
@@ -84,6 +97,13 @@ like.
 
 **`Explicitly out` carries as much weight as `Cluster`.** Naming what a session
 must refuse is what stops scope creeping back to full-feature size.
+
+**`Found & parked` is one line per finding, and the line is the entire response
+to it.** It exists because a session that finds a real problem with nowhere to
+put it will either chase it — which is the scope creep this skill exists to
+stop — or invent somewhere to put it, and every session inventing its own
+somewhere is the same as losing them. Keep the heading even when the list is
+empty; an absent section reads as no such rule.
 
 ## Statuses
 

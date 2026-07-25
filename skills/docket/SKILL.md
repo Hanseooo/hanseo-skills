@@ -95,20 +95,36 @@ Constraints carry decisions. `CONTEXT.md` carries vocabulary in parallel,
 wherever grill-with-docs is installed.
 
 ## Handoff
-Per session, in preference order. Check that a companion is installed before
-naming it:
-1. **grill-with-docs** (external) — if installed and the session introduces
-   domain nouns. Multi-session work is where terminology drifts.
-2. **brainstorming** — the default engine (superpowers). It is the one that
-   produces a spec.
-3. **grill-me** or other grilling skills (external) — optional hardening on a
-   session that already has a draft spec. Never the sole engine: produces no file.
-4. **`references/interrogation.md`** — fallback when none of the above is
-   installed.
+Every session runs exactly one **engine** — the skill that writes the spec file.
+Everything else is a **hardener**, which sharpens the session but writes no spec.
+This is not a ranking. A hardener cannot stand in for an engine however well it
+fits the session, because a session with no spec cannot reach `DONE`.
+
+**Engine — pick exactly one:**
+- **brainstorming** (superpowers) — whenever it is installed.
+- **`references/interrogation.md`** — only when brainstorming is not installed.
+
+**Hardeners — optional, any number, never instead of the engine:**
+- **grill-with-docs** (external) — *before* the engine, when the session
+  introduces domain nouns. Multi-session work is where terminology drifts, and
+  settling the words first makes the engine's spec say what it means.
+- **grill-me** or other grilling skills (external) — *after* the engine, on a
+  draft spec, to stress-test it.
+
+Check a skill is installed before naming it. Hardeners run inside the session,
+both of them before the write-back, so the constraints get extracted from the
+final spec rather than a superseded draft.
 
 ## Rules
 - A session amends **downstream only**: split, merge, add, or kill any
   not-yet-started session, with a one-line reason under `## Amendments`.
+- A session will turn up things outside its cluster. Route each one by where it
+  belongs, and never by fixing it:
+  - belongs to a **later session** → add it to that session's open questions,
+    plus an `## Amendments` line saying where it came from;
+  - belongs to **no session in this docket** → one line under `## Found &
+    parked`, then let it go. Do not open a file for it, do not start a tracker,
+    do not fix it. Parking it in the docket is the whole of the job.
 - A session never rewrites a `DONE` session's decisions. Reopening a settled
   decision is a **new appended session**, never an edit. Every decision in the
   docket is one the user was present for.

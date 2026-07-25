@@ -16,8 +16,10 @@ stay away from, and what order to run them in. Then each session is a normal
 brainstorming run — just a much smaller one.
 
 Optional: if you also have **grill-with-docs** or **grill-me** (from Matt
-Pocock's collection), docket can hand off to them for optional stress-testing
-after a session already has a draft spec.
+Pocock's collection), docket adds them around a session — grill-with-docs before
+it, to settle terminology first, and grill-me after, to stress-test the draft
+spec. Neither replaces brainstorming: they write no spec, and a session without
+one isn't finished.
 
 ## The problem
 

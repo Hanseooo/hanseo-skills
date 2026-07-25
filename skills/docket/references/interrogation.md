@@ -15,8 +15,10 @@ bewildering.
 If a *fact* can be found by exploring the codebase or environment, look it up
 rather than asking. The *decisions* are the user's — put each one to them.
 
-Stay inside the session's cluster. A question that belongs to another session is
-out of scope; note it and move on.
+Stay inside the session's cluster. A question that belongs to a later session
+goes on that session's open questions; one that belongs to no session goes under
+`## Found & parked`. Either way it is one line in the docket, and then you move
+on.
 
 Do not act until the user confirms you have reached shared understanding.
 
