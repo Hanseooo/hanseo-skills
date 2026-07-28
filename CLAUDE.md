@@ -25,6 +25,7 @@ This file governs how agents must behave when working on the `hanseo-skills` rep
 
 - Root README shows the general install pattern and links to each skill
 - Each skill's `README.md` must have an `## Install` section with its specific command
+- New skill README → start from `.agents/skill-readme-template.md`. Every section there is required except `## FAQ`, which is for skills that derive from or sit near something the reader already knows
 - Install command format: `npx skills add Hanseooo/hanseo-skills` (whole collection) — individual skill installs are documented in each skill's own README
 
 ## Invocation classification

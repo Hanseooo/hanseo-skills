@@ -1,6 +1,6 @@
 # hanseo-skills
 
-Agent skills that fill gaps in agentic workflow tools. If you use brainstorming + spec-writing with Claude Code or superpowers, these handle two problems that workflow leaves open: durability across sessions and coherence in multi-session designs.
+Agent skills that fill gaps in agentic workflow tools. If you use brainstorming + spec-writing with Claude Code or superpowers, these handle three problems that workflow leaves open: durability across sessions, coherence in multi-session designs, and scoping the run that finally builds the thing.
 
 ## Why these skills exist
 
@@ -16,8 +16,9 @@ But splitting introduces its own failure: **session 4 contradicts session 1.** Y
 
 - **charter** captures architectural decisions *before* the first brainstorming session, so later sessions inherit them instead of re-deriving them.
 - **docket** plans and tracks multi-session feature designs. Each session gets a narrow scope, an anti-scope, and a list of decisions locked in from prior sessions. Sessions can't contradict each other because contradictions happen in the docket file, while it's still cheap to fix.
+- **stint** builds once the designing is done, in sittings sized by how much codebase a run has actually read rather than by ticket count. It pins the point review measures against before writing any code, and stops reviewing after two passes instead of looping toward a "clean" that judgement-call findings never reach.
 
-Together, they make multi-session agent work sustainable: decisions are written down once, inherited durably, and contradictions surface early.
+Together, they make multi-session agent work sustainable: decisions are written down once, inherited durably, contradictions surface early, and the build runs stay small enough to review.
 
 ## Skills
 
@@ -25,6 +26,7 @@ Together, they make multi-session agent work sustainable: decisions are written 
 |------|-------------|------|
 | [charter](skills/charter/README.md) | Produce a project's decision layer (architecture.md, ADRs, CLAUDE.md) | user-invoked |
 | [docket](skills/docket/README.md) | Split one large feature into ordered, narrowly-scoped design sessions tracked in a durable file | user-invoked |
+| [stint](skills/stint/README.md) | Build one sitting's worth of tickets per run, with review's fixed point pinned up front and a hard stop after two review passes | user-invoked |
 
 ## Install
 
