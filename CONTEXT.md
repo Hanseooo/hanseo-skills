@@ -11,3 +11,7 @@
 - **engine** — the one skill in a session that writes the spec file; without it a session cannot reach `DONE`
 - **hardener** — a skill that sharpens a session but writes no spec, so it never substitutes for the engine
 - **parked finding** — something real a session turned up that belongs to no session in the docket; recorded in one line and deliberately not acted on
+- **stint** — one sitting of build work: a single `/stint` invocation, covering one or more tickets, measured against one fixed point and spending one review budget
+- **fixed point** — the `HEAD` SHA recorded before any code is written, and the commit `/code-review` measures the finished change against
+- **review pass** — one `/code-review` run over a stint; `/stint` allows exactly two, the second reading the fixes the first produced
+- **unread context** — codebase a run has not opened; the limit on how many tickets one stint may absorb, in place of a ticket count
