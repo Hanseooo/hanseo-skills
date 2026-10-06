@@ -53,7 +53,8 @@ Value types: pain relief, time, money, delight, identity or expression,
 confidence or control, status, emotional meaning, professional output quality.
 **At least two families sell something other than pain relief, time or money.**
 Products people simply want — a satisfying experience, a gift, an object of
-taste — sell as reliably as painkillers.
+taste — can earn real willingness to pay without relieving any pain. Never drop
+a direction because its value is desire rather than relief.
 
 Places families come from: one recurring irritation in a category people already
 use; the step just before or after an established product does its job, where no
@@ -61,8 +62,9 @@ participant owns the hand-off; a community that cares intensely about an
 experience; a workflow the builder knows that general products ignore; a wanted
 before → after transformation; a newly feasible capability.
 
-The user's reaction does the ranking. Ask which family they recognise or feel
-pull toward, then Frame that one.
+Do not rank directions before knowing what the user wants from this. Ask which
+family they recognise or feel pull toward, then Frame that one. Rank when they
+ask, or once evidence makes a comparison useful.
 
 ### Technology
 
@@ -76,9 +78,10 @@ When the start is a capability, write these three lines before any idea:
 - **Role:** CORE (cannot exist without it), ENABLING, ENHANCING or UNNECESSARY.
   MCP or agent interfaces: CORE, USEFUL EXTENSION or UNNECESSARY.
 
-Families are products an end user buys for an outcome. Routing, moderation,
-scoring and guardrails are features inside someone else's product; offer them
-only when the builder sells to developers.
+Families are products an end user buys for an outcome; classification, ranking
+or filtering can be the mechanism inside one. Generic routing, moderation,
+scoring and guardrails are features inside someone else's product: offer them
+as products only when the builder sells to developers.
 
 ## Frame
 
@@ -99,8 +102,9 @@ after; **craft leverage** (how far unusually good execution moves preference —
 motion, sound and output for creator and delight tools; reliability and
 correctness for plumbing); the product's **role** (conviction product, cash
 generator, timing experiment, audience builder, showcase, internal tool); and its
-expected **commercial half-life**. A builder with several products names each
-one's role; a product with none is a distraction.
+expected **commercial half-life**. A builder juggling several products names
+each one's role; a product without a clear one may be distraction rather than
+leverage.
 
 ## Challenge
 
@@ -131,9 +135,10 @@ searched.
 1. Thesis sentence written first.
 2. Search the exact workflow in the user's words, the trigger's words and the
    outcome's words — not only the category or the incumbents' names.
-3. Search where small products live: app stores, extension and plugin
-   marketplaces, GitHub, indie launch posts and Reddit threads from the last 12
-   months.
+3. Search where small products live — app stores, extension and plugin
+   marketplaces, GitHub — counting any product still active, whatever its age.
+   Add indie launch posts and Reddit threads from the last two years, where
+   recent entrants show up before search ranks them.
 4. Check the platform's native features.
 5. For a weeks-or-more decision, red-team: assume the whitespace is false and
    search again with different vocabulary.
@@ -195,8 +200,10 @@ attention → activation → retention → payment → economics → durability;
 can be strong on the first and weak on every other. Sort negative reviews by
 cause — reliability, expectation gap, pricing or paywall, missing core behaviour,
 onboarding, performance, trust — before adding features or spend. Split
-conversion by cohort and source: a viral audience converting worse than an
-earlier one is an audience problem, not a product one. A product worth keeping
+conversion by cohort and source: a viral cohort converting worse than an
+earlier one points first to audience mismatch; compare onboarding, pricing,
+reliability and expectations across the cohorts before blaming the product. A
+product worth keeping
 but not focusing on gets a role: maintained utility, audience asset, showcase,
 open-source, or retired.
 

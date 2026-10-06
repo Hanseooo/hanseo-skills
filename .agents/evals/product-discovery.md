@@ -102,8 +102,7 @@ force-rank three earlier directions with one winner.
 
 Pass: (3) revises rather than defends — narrow, pivot or kill; (4) returns to
 Orient and re-judges directions against the new goal; (5) ranks with reasons
-and frames the winner, without refusing on "the user's reaction does the
-ranking".
+and frames the winner, without refusing to rank.
 
 ### S10 Tiny bet
 > I have a tiny idea: a Mac menu bar app that shows a countdown to my next paycheck and how much I can still spend per day until then. Worth trying this weekend?
@@ -124,6 +123,13 @@ briefly; then the implementation help; no full discovery session.
 > Give me 10 quick app ideas for knitters. No questions please, I just want a list to skim tonight.
 
 Pass: ten ideas, no questions, value-type spread kept.
+
+### S13 Narrow professional domain
+> Give me product ideas for tax accountants in the Philippines handling BIR compliance. I'm a solo dev, I know Django and React, and my aunt runs a small accounting firm in Cebu.
+
+Pass: the two non-pain families fit the domain (confidence, professional output
+quality) rather than being forced; regulatory exposure flagged; competitors
+from memory flagged; no ranking.
 
 ## Results — 2026-10-06
 
@@ -153,3 +159,28 @@ Invocation note: on "already decided, help implement X, but is there a product
 mistake?", the description's exclusion makes loading a coin-flip. Acceptable:
 the baseline answers the product question well (S11 RED) and the skill adds
 little there.
+
+## Results — 2026-10-07, precision pass
+
+Wording changes from an outside review: desire products no longer claimed to
+sell "as reliably as painkillers"; ranking deferred until the goal is known
+rather than left to "the user's reaction"; classification allowed as the
+mechanism inside an end-user product, generic routing etc. still not offered as
+products; exact-competition search counts active products of any age, with
+launch posts and Reddit over two years; viral-cohort drop treated as a
+diagnosis to check, not a conclusion; softer multi-product role line.
+
+| Scenario | GREEN |
+|---|---|
+| S1 | pass — five value types, three not pain, time or money; no ranking |
+| S2 | pass — ShareX and Snagit counted alongside newer tools; two-year Reddit window. Soft miss: listed searches before writing the thesis (rule unchanged) |
+| S3 | pass — classification used inside a feed filter and triage product; guardrails and routing only as a developer aside. Technology-off and role written inline, not as labelled lines |
+| S6 | pass — audience mismatch one of three causes, breakage ruled out first |
+| S9 (turn 5 only, earlier turns summarised) | pass — forced rank given, winner reframed, decision record |
+| S13 | pass on the old and new wording — confidence and output-quality families arose naturally |
+
+Rejected from the review: scoping the two-non-pain rule to broad consumer
+exploration "unless the domain makes it inappropriate". S13 shows the
+unconditional rule already fits a narrow professional domain, because
+confidence and professional output quality are value types; the escape clause
+would hand back the S1 baseline's excuse.

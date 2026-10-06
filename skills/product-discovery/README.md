@@ -3,8 +3,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 For deciding what independent software product to make, or whether to keep
-going with one. It ends in a call — ship tiny, validate, narrow, pivot, build,
-wait, park, kill — with the amount of proof sized to what being wrong would
+going with one. It ends in a call such as ship tiny, validate, narrow, build or
+kill, with the amount of proof sized to what being wrong would
 cost.
 
 ## Where this sits
@@ -44,8 +44,8 @@ It failed in the generative and the rigorous parts:
   the outcome mattered without the API, or whether plain code would do.
 - **Competition was checked at category level.** For a "CleanShot for Windows"
   idea it planned to search the incumbents' names and Reddit, and counted
-  "local and one-time purchase" as a strength. Small, recent indie products
-  are what most often kill an indie wedge, and that search would miss them.
+  "local and one-time purchase" as a strength. That search misses small indie
+  products, old or recent, the competitors most likely to share the exact wedge.
   Its validation measured usage, not payment.
 - **A timing launch had no launch.** For a ship-tonight opportunity it
   correctly said ship, then planned no duplicate check, no demo or channel, no
@@ -68,8 +68,8 @@ agent fills, not advice it can weigh away.
 
 **Memory counts as assumption.** Competitors, prices and platform features
 recalled without searching are labelled ASSUMPTION, and a wedge cannot be
-called open until the search runs. The agent's usual failure is not ignorance
-but confident recall of a market that has moved.
+called open until the search runs. The failure seen in testing was not
+ignorance but confident recall of a market that may have moved.
 
 **A decision, not a report, sized to the bet.** A call on weeks or more closes
 with a six-line decision record: the call, confidence, strongest evidence, the

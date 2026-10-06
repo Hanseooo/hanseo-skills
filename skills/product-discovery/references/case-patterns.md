@@ -65,17 +65,18 @@ ignore?*
 
 **Timing launch** — Bendy. The builder already knew the MacBook lid-angle sensor
 was readable; a platform keynote supplied the trigger and the analogy; coding
-agents made a same-day build possible; strong launch video and existing audience
-carried it. Pattern: `preparedness + trigger + analogy + fast build + launch
+agents made a same-day build possible; strong launch content and the founder's
+existing audience were also present and likely amplified it. Pattern: `preparedness + trigger + analogy + fast build + launch
 content + distribution capital`. *Does the upside justify a tightly capped build
 over a short commercial half-life?* Remove the preparedness or the distribution
 capital and the outcome changes.
 
 **Cross-product leverage** — one founder's public updates across Clucky, Anim8
-and Bendy: product A creates a need, product B is built for it, B improves A,
-A becomes B's showcase; small fast products fund marketing for the conviction
-product. *Does each product have a defined role?* Without role clarity this is
-distraction with a theory.
+and Bendy: Anim8 made Clucky's demos and teasers, and small fast products were
+shipped to fund the conviction product. One product can be another's real use
+case and showcase; bounded products can bring cash or distribution to a
+conviction product. *Is the leverage real, and does each product have a defined
+role?* Without role clarity this is distraction with a theory.
 
 ## Counterexamples
 
