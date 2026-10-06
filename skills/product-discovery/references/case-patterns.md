@@ -51,7 +51,8 @@ that shows the product's value to the next potential user?*
 **Recipient loop** — Letter4U. *Does the output reach another person who then
 meets the product?*
 
-**Distribution as an operation** — Symmetry; Evelize for paid acquisition.
+**Distribution as an operation** — Symmetry; Evelize for paid acquisition;
+Bendy's founder for one launch-video format reused across products.
 *Can acquisition become a repeatable production system rather than a hoped-for
 viral moment?* Paid acquisition is a legitimate channel when value is legible
 fast and economics carry the CAC.
@@ -64,12 +65,15 @@ fragmented behaviour, language, paperwork or culture that general products
 ignore?*
 
 **Timing launch** — Bendy. The builder already knew the MacBook lid-angle sensor
-was readable; a platform keynote supplied the trigger and the analogy; coding
-agents made a same-day build possible; strong launch content and the founder's
-existing audience were also present and likely amplified it. Pattern: `preparedness + trigger + analogy + fast build + launch
-content + distribution capital`. *Does the upside justify a tightly capped build
-over a short commercial half-life?* Remove the preparedness or the distribution
-capital and the outcome changes.
+was readable and had seen another indie lid-angle app; an Apple launch event
+supplied the trigger and the analogy; coding agents made an eight-hour build
+possible. His X audience was small. What he brought was a launch-video format
+already used on several launches ("iPhone Duo but MacBook", "alarm clock but
+chicken"). He expected around 300K views and got over 2M. Pattern:
+`preparedness + trigger + analogy + fast build + a proven launch format`. *Does
+the upside justify a tightly capped build over a short commercial half-life?*
+Set the cap against the low estimate: even a proven format does not forecast
+reach. Remove the preparedness or the format and the outcome changes.
 
 **Cross-product leverage** — one founder's public updates across Clucky, Anim8
 and Bendy: Anim8 made Clucky's demos and teasers, and small fast products were

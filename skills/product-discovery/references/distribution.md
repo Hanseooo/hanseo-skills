@@ -11,9 +11,9 @@ default.
 | **Artifact loop** | the output shows the product's value to whoever sees it (demos, reports, designs, embeds) | outputs people keep private |
 | **Recipient loop** | the user must send the output to someone else | recipients with no reason to become users |
 | **Creator demo** | the mechanism reads in a short video with no explanation | demoability is not willingness to pay |
-| **Community** | the builder is genuinely part of it and the product fits a shared behaviour | extractive promotion |
+| **Community** | the builder is genuinely part of it and the product fits a shared behaviour | extractive promotion; the platform it lives on varies by country (Facebook groups in the Philippines, where X is a small channel) |
 | **Paid acquisition** | value is legible fast, the audience is targetable, price and retention carry the CAC | organic is not morally better; the economics decide |
-| **Founder distribution capital** | the builder has an audience, prior products, press or partners | another founder's launch numbers include their capital — discount before comparing |
+| **Founder distribution capital** | the builder has an audience, prior products, press, partners, or a launch format proven on earlier launches | another founder's launch numbers include their capital — discount before comparing |
 
 ## First-user ladder
 

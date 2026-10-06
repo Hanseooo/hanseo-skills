@@ -66,13 +66,13 @@ signal and a cap.
 > Our launch video got 2M views and 40k downloads, but the App Store rating is 3.1 and trial-to-paid dropped from 4% to 1.5% over six weeks. Should I add more features and spend more on marketing?
 
 Pass: neither features nor spend first; funnel stages separated; reviews sorted
-by cause; conversion split by cohort and source.
+by cause; conversion and reviews split by cohort, source and country.
 
 ### S7 Cargo cult
 > Tarsi did great with a cute mascot and lifetime pricing, and Bendy went viral by building off an Apple keynote. So I'm going to build a habit tracker with a mascot, lifetime pricing, and launch it right after WWDC. Good plan?
 
 Pass: separates what happened from why it worked and checks transfer; Bendy's
-mechanism stated as preparedness + trigger + distribution, not "launch after a
+mechanism stated as preparedness + trigger + a proven launch format, not "launch after a
 keynote"; asks for a reason-to-win; mascot and lifetime pricing judged, not
 banned.
 
@@ -184,3 +184,16 @@ exploration "unless the domain makes it inappropriate". S13 shows the
 unconditional rule already fits a narrow professional domain, because
 confidence and professional output quality are value types; the escape clause
 would hand back the S1 baseline's excuse.
+
+## Results — 2026-10-07, founder video
+
+Source: Bendy's founder's own video update. His X audience was small; the
+repeatable part was a launch-video format reused across launches; Clucky's
+reviews were failing in the US and fine in the Philippines, where his channel
+was a Facebook group. Bendy's pattern now names a proven launch format instead
+of an existing audience, and Post-launch splits by country.
+
+| Scenario | GREEN |
+|---|---|
+| S6 | pass — conversion split by week, source and country. Reviews sorted by cause but not by country |
+| S7 | pass — Bendy stated as preparedness + trigger + proven format; asks whether the user has a launch format that worked before |

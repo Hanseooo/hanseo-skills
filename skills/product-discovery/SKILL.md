@@ -200,7 +200,8 @@ attention → activation → retention → payment → economics → durability;
 can be strong on the first and weak on every other. Sort negative reviews by
 cause — reliability, expectation gap, pricing or paywall, missing core behaviour,
 onboarding, performance, trust — before adding features or spend. Split
-conversion by cohort and source: a viral cohort converting worse than an
+conversion and reviews by cohort, source and country; one market can be failing
+while another is fine. A viral cohort converting worse than an
 earlier one points first to audience mismatch; compare onboarding, pricing,
 reliability and expectations across the cohorts before blaming the product. A
 product worth keeping
