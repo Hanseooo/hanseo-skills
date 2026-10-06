@@ -14,4 +14,8 @@
 - **stint** — one sitting of build work: a single `/stint` invocation, covering one or more tickets, measured against one fixed point and spending one review budget
 - **fixed point** — the `HEAD` SHA recorded before any code is written, and the commit `/code-review` measures the finished change against
 - **review pass** — one `/code-review` run over a stint; `/stint` allows exactly two, the second reading the fixes the first produced
+- **reason-to-win** — why someone would choose this particular version of a product today; `/product-discovery` asks for it in place of an empty market
+- **hypothesis family** — one direction offered during product exploration, distinct from the others by the kind of value it sells, not just its topic
+- **exact-competition search** — the search for products serving the same user, trigger and workflow, run before any wedge is called open
+- **decision record** — the six-line close of a product-discovery call on a bet of weeks or more: decision, confidence, strongest evidence, dominant risk, next action with its cap, and what would change it
 - **unread context** — codebase a run has not opened; the limit on how many tickets one stint may absorb, in place of a ticket count

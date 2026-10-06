@@ -20,6 +20,8 @@ But splitting introduces its own failure: **session 4 contradicts session 1.** Y
 
 Together, they make multi-session agent work sustainable: decisions are written down once, inherited durably, contradictions surface early, and the build runs stay small enough to review.
 
+One skill sits upstream of all three: **product-discovery** decides whether a product is worth building at all, and how much proof that call needs, before any design session starts.
+
 ## Skills
 
 | Name | Description | Type |
@@ -27,6 +29,7 @@ Together, they make multi-session agent work sustainable: decisions are written 
 | [charter](skills/charter/README.md) | Produce a project's decision layer (architecture.md, ADRs, CLAUDE.md) | user-invoked |
 | [docket](skills/docket/README.md) | Split one large feature into ordered, narrowly-scoped design sessions tracked in a durable file | user-invoked |
 | [stint](skills/stint/README.md) | Build one sitting's worth of tickets per run, with review's fixed point pinned up front and a hard stop after two review passes | user-invoked |
+| [product-discovery](skills/product-discovery/README.md) | Decide what independent product to make, or whether to keep going with one, ending in a build / validate / narrow / kill call sized to the stakes | model-invoked |
 
 ## Install
 
