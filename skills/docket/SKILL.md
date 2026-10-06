@@ -1,6 +1,7 @@
 ---
 name: docket
 description: Use when a feature is too large to design in one sitting — messaging, billing, auth, a whole subsystem — so its decisions have to be worked through across several sessions without contradicting each other. Triggers include "this is too big to brainstorm in one go", "break this feature into sessions", and continuing an existing docket file. Not for features one design session can hold, implementation planning, or writing code.
+disable-model-invocation: true
 ---
 
 # docket
