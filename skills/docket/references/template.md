@@ -1,117 +1,80 @@
 # Docket template
 
-Loaded in plan mode only. Fill this in and write the result to
-`docs/dockets/<feature>-docket.md` in the user's project. If the project already
-has a spec convention, follow that instead and say so.
+Loaded when charting. Write the result to `docs/dockets/<feature>-docket.md` in
+the user's project.
 
 ## The carried instruction
 
-Every docket opens with this block, unchanged. Copy it verbatim.
+Every docket opens with this block, unchanged. It is what a session reads when
+the docket is opened without the skill loaded, so it carries the few rules that
+keep the file honest.
 
 ```markdown
-> **Agent: read this before anything else.**
-> This docket governs a multi-session design. You are working ONE session.
-> - Do not widen scope past the current session's cluster, and do not
->   re-decompose it. If it should split, append an amendment — don't split it
->   in-session.
-> - "Binding constraints" are decided. To challenge one, append a NEW session.
->   Never edit a DONE session.
-> - Something real but outside this session's cluster: if it belongs to a later
->   session, add it to that session's open questions; otherwise one line under
->   `## Found & parked`. Never fix it. Never open a file or a tracker for it.
-> - Stop at an approved spec. Do NOT continue to writing-plans or implementation.
-> - To end the session, in this order: record the spec path, propose the
->   constraints it establishes, wait for the user to confirm them, write them in.
->   Only then set the session to DONE, and flip every session blocked on it to
->   READY. A session is not DONE until its constraints are confirmed.
+> **Agent: read this first.** This docket is worked with `/docket`, one
+> question per sitting. Without it: take the lowest-numbered open question whose
+> blockers are all under Decisions. Look up facts yourself; put decisions to the
+> user one at a time, each with your recommendation. Append confirmed decisions
+> under Decisions and delete the question. Never edit a recorded decision —
+> reopening one is a new question. Stop at decisions: no spec until no
+> questions remain, and never plans or code.
 ```
-
-Do not trim it. Each line defends against something specific:
-
-- Line 1 stops brainstorming's scope-assessment step from re-decomposing a
-  session that was already scoped here, and producing specs the docket never
-  learns about.
-- Line 3 gives out-of-cluster findings somewhere to go. Without it a session
-  meeting a real problem either chases it or invents its own place to file it —
-  a fresh notes file the next session will never look in.
-- Line 4 overrides brainstorming's terminal handoff to writing-plans.
-- Line 5 is the write-back. It is the only thing keeping the docket accurate,
-  because control never returns to this skill after a handoff — the docket is in
-  the session's context for its whole run, and docket-the-skill is not. Its
-  ordering is load-bearing: agents perform these steps in the order they are
-  listed, so status must come last. Listed first, sessions get marked `DONE` on
-  spec approval alone and the constraint extract never happens.
 
 ## The body
 
+Keep the worked example's shape when adapting: these lines are the only
+illustration of what a usable question, decision and fog entry read like.
+
 ```markdown
-# Messaging — session docket
+# Messaging — docket
 
-**Goal:** direct + group messaging inside the app
-**Cut rationale:** ordering and identity constrain everything downstream, so they
-go first; presence turned out independent of delivery, so it splits off.
-**Spec path convention:** docs/specs/YYYY-MM-DD-<topic>-design.md
+**Destination:** one spec at `docs/specs/messaging.md` covering 1:1 messages,
+crew channels and a thread on every task, settled far enough to plan and build.
 
-## Binding constraints
-Decided in earlier sessions. Later sessions treat these as given, not open.
-- [S1] Messages are immutable once sent; an edit is a new row referencing the original.
-- [S1] Ordering is server-assigned. Client clocks are never authoritative.
+## Decisions
+Settled with the user. Later questions treat these as given. Never edited.
 
-## Sessions
-Statuses: DONE (spec linked **and** constraints confirmed) · PARTIAL (stopped early,
-resumable) · READY · BLOCKED (needs Sn)
+- **Q1 · What a conversation is.** One model with a kind: direct, channel or
+  task. A task's conversation is created on its first message. Messages are
+  immutable; an edit is a new row pointing at the original.
+  *Binds:* every later question works with one conversation model, not three.
+- **Q2 · Can the host hold a streaming connection? (look up)** Yes, up to the
+  plan's function time limit, so a long-lived stream must reconnect.
+  *Source:* the host's function docs, checked 2026-10-06.
 
-### S1 · Message identity & persistence — DONE
-**Cluster:** what a message is, how it is stored, how order is established
-**Explicitly out:** delivery, presence, anything visual
-**Stance:** persistence session — done means a schema plus the invariants it must never violate
-**Spec:** docs/specs/2026-07-24-messaging-persistence-design.md
+## Questions
+Open only, numbered in the order they will be worked.
 
-### S2 · Delivery & sync — READY (needs S1)
-**Cluster:** send path, retry, offline queue, what "sent" means to the sender
-**Explicitly out:** how any of it looks
-**Stance:** failure-semantics session — done means every failure mode has a named, chosen behaviour
-**Open questions:** does a send fail loudly or queue silently; is retry bounded; what does the sender see mid-flight
+### Q3 · Delivery on patchy signal — decide
+What "sent" means while offline, whether retries are bounded, what the sender
+sees mid-flight.
+**Blocked by:** Q1, Q2
 
-### S3 · Conversation UI — BLOCKED (needs S2)
-**Cluster:** what the sender sees while a message is in flight, how failures read, how history loads
-**Explicitly out:** the sync mechanism itself, which S2 settles
-**Stance:** interaction session — done means every state a user can observe has a chosen rendering
-**Open questions:** …
+### Q4 · Who can read and post where — decide
+Each role against each conversation kind, and what happens on leaving a crew.
+**Blocked by:** Q1
+
+## Not yet specified
+In scope, but not yet sharp enough to ask. Coarse on purpose.
+
+- Notifications: push or in-app, and quiet hours on site. Waits on what
+  "delivered" means (Q3).
+- The inbox and the thread on a task card. Waits on the states Q3 and Q4 settle.
+
+## Out of scope
+- Voice notes and calls: a later effort.
 
 ## Found & parked
-Turned up mid-session, belongs to no session here. Recorded so it is not lost,
-and not this docket's work.
-- 2026-07-26 (from S2): `useUnreadBadge` increments on every message INSERT and
-  filters only on sender, so it counts conversations the user is not in.
-  Pre-existing, unrelated to messaging design. Raise separately.
+Real, but belongs to no question here. One line each, not acted on.
 
-## Amendments
-- 2026-07-26 (from S2): split S3; unread state turned out to be a sync decision,
-  not a UI one. Now S3 (UI) + S4 (unread).
+- 2026-10-06 (from Q1): `tasks.updated_at` is never bumped on edit. Unrelated
+  to messaging; raise separately.
 ```
 
-Keep the worked example when adapting — a blank template invites template-filling,
-and these lines are the only illustration of what a usable cluster and stance read
-like.
+**A question names the decisions inside it.** "Delivery on patchy signal" alone
+is a topic; the line under it is what makes it answerable in one sitting.
 
-**`Explicitly out` carries as much weight as `Cluster`.** Naming what a session
-must refuse is what stops scope creeping back to full-feature size.
+**A decision says what it binds.** The conclusion alone loses the reason later
+questions must respect it.
 
-**`Found & parked` is one line per finding, and the line is the entire response
-to it.** It exists because a session that finds a real problem with nowhere to
-put it will either chase it — which is the scope creep this skill exists to
-stop — or invent somewhere to put it, and every session inventing its own
-somewhere is the same as losing them. Keep the heading even when the list is
-empty; an absent section reads as no such rule.
-
-## Statuses
-
-| Status | Meaning |
-|---|---|
-| `DONE` | Spec approved and linked; constraints extracted and confirmed. |
-| `PARTIAL` | Session started and stopped early. Decisions banked so far recorded inline; the session stays resumable. |
-| `READY` | Dependencies satisfied, not started. |
-| `BLOCKED` | Waiting on a named upstream session. |
-
-`PARTIAL` exists so an interrupted session does not evaporate.
+**Keep every heading even when its list is empty.** An absent section reads as
+no such rule.
