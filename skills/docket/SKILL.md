@@ -1,137 +1,97 @@
 ---
 name: docket
-description: Use when a feature is too large for one design session — messaging, billing, auth, a whole subsystem — and it has to be split across several separately-run design sessions that must not contradict each other. Triggers include "this is too big to brainstorm in one go", "break this feature into sessions", "plan the design sessions for X", and resuming an existing docket file. Not for small or medium features, implementation planning, or writing code.
+description: Use when a feature is too large to design in one sitting — messaging, billing, auth, a whole subsystem — so its decisions have to be worked through across several sessions without contradicting each other. Triggers include "this is too big to brainstorm in one go", "break this feature into sessions", and continuing an existing docket file. Not for features one design session can hold, implementation planning, or writing code.
+disable-model-invocation: true
 ---
 
 # docket
 
-Turn one large feature into an ordered set of narrowly-scoped design sessions,
-recorded in a durable file — the **docket** — that outlives any single
-conversation and carries decisions forward between sessions.
+Find the way through one large feature's design, one sitting at a time. The
+**docket** is a file in the user's project that outlives every conversation: it
+names the **destination** (the one spec this effort ends in), lists the
+questions still standing in the way, records each decision as it is made, and
+ends by writing that spec.
 
-Produce **no decisions of your own**. Decide only where the boundaries are and
-what each session must not touch.
+Produce decisions, never deliverables: no code, scaffolding or plans. Every
+decision is the user's. Facts are yours to find.
 
-## Not this skill
-- Small or medium feature → brainstorming, once
-- Implementation plan → writing-plans
-- Code, scaffolding, folders → nothing; never do this
-- Answering the feature's design questions → that is what the sessions are for
+## Mode
 
-## Mode check (always first)
-Glob `docs/dockets/*-docket.md` and any existing spec convention. A docket for
-this feature already exists → **resume mode**. Otherwise → **plan mode**. Never
-write a second docket for a feature that has one.
+Glob `docs/dockets/*-docket.md`. A docket for this feature exists → **Work**,
+or **Finish** when it has no open questions and nothing unspecified. Otherwise
+→ **Chart**. One docket per feature.
 
-## Plan mode
-1. **Explore.** If part of the feature already exists in code, read it before
-   surfacing questions.
-2. **Surface the open questions** the feature raises. Do not answer them.
-3. **Cluster them** (see below).
-4. **Floor guard.** Fewer than three sessions → say so, tell the user to run
-   grilling or brainstorming once instead, write **no docket**, and stop. A
-   docket for two sessions costs more ceremony than the split returns.
-5. **Propose 2–3 candidate cuts** with trade-offs and a recommendation. Discuss
-   one question at a time until the user approves one.
-6. **Write the docket** from `references/template.md`.
+## Chart (the first sitting)
 
-## Resume mode
-1. **Read the docket.**
-2. **Reconcile.** A session marked `READY` or `PARTIAL` whose spec file exists on
-   disk means the previous session ended without writing back. Fix the status and
-   prompt for the constraint extract before continuing.
-3. **Staleness check.** Spot-check the binding constraints against the current
-   code. A docket resumed months later can assert things the repo no longer does,
-   and loading a false constraint as given is worse than having no docket.
-   Surface any mismatch before proceeding.
-4. **Pick the next session** whose dependencies are satisfied. Several ready →
-   ask which.
-5. **Load** that session's cluster, out-of-scope list, stance, open questions, and
-   the accumulated binding constraints.
-6. **Hand off** (see below).
+1. **Read** whatever part of the feature already exists in code.
+2. **Name the destination** with the user: what the feature must do, and the
+   spec path (the project's spec convention, else `docs/specs/<feature>.md`).
+   What they rule out goes under Out of scope. A spec too large to review in one
+   read means two dockets.
+3. **Sweep breadth-first** across the whole feature for the open questions. Do
+   not answer them, and do not go deep on any one.
+4. **Floor guard.** Could one design session settle every question on the list?
+   Then there is no docket: say so, recommend that single session
+   (brainstorming, if installed), and stop. A docket earns its keep when the
+   questions outgrow one conversation, or some cannot even be asked until
+   others are answered.
+5. **Write the docket** from `references/template.md`. A question goes under
+   Questions only when it can be stated precisely now, even if it is blocked.
+   Anything you can tell is coming but cannot yet phrase that sharply goes under
+   **Not yet specified**, as coarse as the view allows. A **question** is the
+   smallest set of decisions that must be made together; decisions that do not
+   constrain each other are separate questions. Number them in the order they
+   will be worked, each with its `Blocked by`. Mark each **decide** (the user's
+   call) or **look up** (a fact you can find).
+6. **Show the user the list** and adjust it on their word. Then stop: charting
+   resolves nothing.
 
-## Clustering
-**A session is a set of open questions that constrain each other**, so they must
-be answered together. Questions that do not interact belong in different
-sessions.
+## Work (each later sitting)
 
-This beats cutting by layer, slice, or risk: it derives the ordering for free (a
-cluster needing another's answer is downstream of it), it minimises cross-session
-contradiction by construction (the coupling sits *inside* sessions), and it
-presumes nothing about the domain.
+1. **Read the docket**, not the code behind every decision: the Decisions
+   section is the context. Spot-check any decision that names code against the
+   current code, and surface a mismatch before going on.
+2. **Take the question** the user names, else the lowest-numbered open question
+   whose blockers are all in Decisions. Do not ask which.
+3. **Resolve it.**
+   - **Look up:** find the fact yourself — read the code, the docs, the
+     dependency's behaviour — and record what you found and where. Ask the user
+     only for what only they can do (an account, access), as a checklist.
+   - **Decide:** run `references/interrogation.md`.
+4. **Record it.** Propose the decision lines: each one the decision plus what it
+   binds for later questions. On the user's confirmation, append them under
+   Decisions with the question's number and title, and delete the question from
+   Questions. A sitting that stops early writes what was settled under the
+   question as `So far:`, and the next sitting resumes there.
+5. **Update the map.**
+   - New questions the answer surfaced → append, numbered after the last.
+   - Not-yet-specified items the answer made sharp → move to Questions, and
+     delete them from Not yet specified.
+   - Work the answer shows to sit past the destination → Out of scope, one line
+     with the reason.
+   - An open question the answer made moot → delete it, noted in the decision.
+6. **Stop.** Tell the user the next question. One decide question per sitting,
+   unless the user asks for the next; look ups may be cleared together.
 
-The cost: decomposition is a real interview. Questions must be surfaced before
-they can be clustered, so plan mode is never a template fill.
+## Finish
 
-## Stance, not checklists
-Give each session one line naming what kind of decision it is and what a finished
-answer looks like:
-
-> **Stance:** persistence session — done means a schema plus the invariants it
-> must never violate.
-
-> **Stance:** failure-semantics session — done means every failure mode has a
-> named, chosen behaviour, not a list of things that could go wrong.
-
-Derive the stance during decomposition, for this specific feature. **Never ship
-canned per-domain concern lists** ("for UI sessions consider: empty states,
-loading, error toasts…"). A coverage list reads as the complete set, so thinking
-stops at the last bullet; worse, the model writes one shallow sentence per bullet
-and the output now *looks* thorough, which hides gaps better than an empty page
-does. Teach how to pick the lens. Do not ship the lens.
-
-## Carry-forward
-**Binding constraints** are short extracted statements, not whole specs. Later
-sessions load these instead of re-reading every prior spec, so context cost stays
-flat as the docket grows. The full spec stays linked for anything that needs to
-dig.
-
-**Propose every extraction to the user and get it confirmed. Never write one
-silently.** This is the load-bearing step of the whole skill, and it is where
-models under-extract — recording the conclusion and dropping the reasoning that
-made it binding on anything else.
-
-Constraints carry decisions. `CONTEXT.md` carries vocabulary in parallel,
-wherever grill-with-docs is installed.
-
-## Handoff
-Every session runs exactly one **engine** — the skill that writes the spec file.
-Everything else is a **hardener**, which sharpens the session but writes no spec.
-This is not a ranking. A hardener cannot stand in for an engine however well it
-fits the session, because a session with no spec cannot reach `DONE`.
-
-**Engine — pick exactly one:**
-- **brainstorming** (superpowers) — whenever it is installed.
-- **`references/interrogation.md`** — only when brainstorming is not installed.
-
-**Hardeners — optional, any number, never instead of the engine:**
-- **grill-with-docs** (external) — *before* the engine, when the session
-  introduces domain nouns. Multi-session work is where terminology drifts, and
-  settling the words first makes the engine's spec say what it means.
-- **grill-me** or other grilling skills (external) — *after* the engine, on a
-  draft spec, to stress-test it.
-
-Check a skill is installed before naming it. Hardeners run inside the session,
-both of them before the write-back, so the constraints get extracted from the
-final spec rather than a superseded draft.
+1. **Write the spec** at the destination path from the Decisions, without
+   interviewing again. Organise it for someone about to build the feature: what
+   it does end to end, then each area's rules, states and failure cases, then
+   Out of scope. Every decision lands in it. Anything the spec needs that no
+   decision settles is a gap: add it as a question and go back to Work rather
+   than inventing an answer.
+2. **Ask the user to review it.** Edits they make to a decision go through a new
+   question, never a quiet change.
+3. **Close the docket**: one line at the top naming the approved spec. Planning
+   and building start from that one spec, in a fresh session.
 
 ## Rules
-- A session amends **downstream only**: split, merge, add, or kill any
-  not-yet-started session, with a one-line reason under `## Amendments`.
-- A session will turn up things outside its cluster. Route each one by where it
-  belongs, and never by fixing it:
-  - belongs to a **later session** → add it to that session's open questions,
-    plus an `## Amendments` line saying where it came from;
-  - belongs to **no session in this docket** → one line under `## Found &
-    parked`, then let it go. Do not open a file for it, do not start a tracker,
-    do not fix it. Parking it in the docket is the whole of the job.
-- A session never rewrites a `DONE` session's decisions. Reopening a settled
-  decision is a **new appended session**, never an edit. Every decision in the
-  docket is one the user was present for.
-- Every session stops at an approved spec. Nothing is built until the docket is
-  fully `DONE` — that is what keeps revising cheap, which is the point of
-  splitting at all.
-- A session is not `DONE` until its constraints are confirmed. Spec approval
-  alone is `PARTIAL`. Set the status last, after the extract lands, then flip
-  every session blocked on it to `READY`.
-- Defaults recommend, users decide. One pushback = record the choice and move on.
+
+- A recorded decision is never edited. Reopening one is a new question naming
+  the decision it challenges; once resolved, the old entry gains
+  `superseded by Qn` and nothing else.
+- A real problem that belongs to no question and sits outside the destination
+  gets one line under **Found & parked**, and that line is the whole response.
+- Defaults recommend, users decide. One pushback → record the user's choice and
+  move on.

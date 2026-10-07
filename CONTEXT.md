@@ -5,13 +5,18 @@
 - **user-invoked** — a skill only reachable when a human types its slash command; never triggered automatically by the agent
 - **model-invoked** — a skill the agent may reach for automatically when the task fits, as well as by explicit user request
 - **operating contract** — the `CLAUDE.md` / `AGENTS.md` files that define how agents must behave when working on this repo
-- **docket** — a durable file listing the design sessions a large feature needs, their order, and the decisions already settled; lives in the user's project, not this repo
-- **session** — one narrowly-scoped design conversation covering a single cluster of the docket's open questions, ending in an approved spec
-- **binding constraint** — a short decision statement extracted from a finished session and confirmed by the user; later sessions treat it as given, not open
-- **engine** — the one skill in a session that writes the spec file; without it a session cannot reach `DONE`
-- **hardener** — a skill that sharpens a session but writes no spec, so it never substitutes for the engine
-- **parked finding** — something real a session turned up that belongs to no session in the docket; recorded in one line and deliberately not acted on
+- **docket** — a durable file mapping one large feature's design: its destination, the open questions in order, and the decisions already recorded; lives in the user's project, not this repo, and ends by writing one spec
+- **destination** — the one spec a docket ends in, named with its path before any question is asked
+- **question** — the smallest set of decisions that must be made together; marked decide (the user's call) or look up (a fact the agent finds), numbered in working order with what blocks it
+- **not yet specified** — the docket's fog of war: in-scope work too coarse to state as a question yet, promoted to one when an answer makes it sharp
+- **session** — one sitting on a docket, resolving one decide question (or a batch of look ups) and recording the result
+- **recorded decision** — a confirmed answer in the docket, stated with what it binds for later questions; never edited, only superseded by a new question
+- **parked finding** — something real a session turned up that belongs to no question and sits outside the destination; recorded in one line and deliberately not acted on
 - **stint** — one sitting of build work: a single `/stint` invocation, covering one or more tickets, measured against one fixed point and spending one review budget
 - **fixed point** — the `HEAD` SHA recorded before any code is written, and the commit `/code-review` measures the finished change against
 - **review pass** — one `/code-review` run over a stint; `/stint` allows exactly two, the second reading the fixes the first produced
+- **reason-to-win** — why someone would choose this particular version of a product today; `/product-discovery` asks for it in place of an empty market
+- **hypothesis family** — one direction offered during product exploration, distinct from the others by the kind of value it sells, not just its topic
+- **exact-competition search** — the search for products serving the same user, trigger and workflow, run before any wedge is called open
+- **decision record** — the six-line close of a product-discovery call on a bet of weeks or more: decision, confidence, strongest evidence, dominant risk, next action with its cap, and what would change it
 - **unread context** — codebase a run has not opened; the limit on how many tickets one stint may absorb, in place of a ticket count

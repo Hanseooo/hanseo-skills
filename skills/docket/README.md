@@ -3,78 +3,71 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 For designing one **large** feature — messaging, billing, auth — across several
-short, focused sessions instead of one long one.
+short sittings instead of one long one, and ending with a single spec you can
+plan and build from.
 
 ## Where this sits
 
-If you use the `superpowers` collection, you have **brainstorming** — it asks
-you questions, then writes the design down as a spec file.
+After `/charter` has settled the project's architecture, and before any
+planning or building. docket ends at one approved spec; turn that into a plan
+or tickets with your usual tool (superpowers' writing-plans, Matt Pocock's
+`/to-tickets`), then build it with `/stint`.
 
-docket doesn't replace it. It **schedules** brainstorming sessions. It works out
-how many sessions your feature needs, what each one covers, what each one must
-stay away from, and what order to run them in. Then each session is a normal
-brainstorming run — just a much smaller one.
-
-Optional: if you also have **grill-with-docs** or **grill-me** (from Matt
-Pocock's collection), docket adds them around a session — grill-with-docs before
-it, to settle terminology first, and grill-me after, to stress-test the draft
-spec. Neither replaces brainstorming: they write no spec, and a session without
-one isn't finished.
+The shape is borrowed from Matt Pocock's **wayfinder**: a map of decision
+questions, a named destination, a fog of not-yet-askable questions that
+clears as you go, and one question per sitting. docket keeps all of it in one
+markdown file and needs no other skill installed. If brainstorming is
+installed, docket points to it for features too small to need a docket.
 
 ## The problem
 
-Ask an agent to design "messaging" in one go and you get something that reads
-like a finished design and isn't. Edge cases go unnamed. "Show an error" stands
-in for a real decision about what the user sees. Architecture choices get made by
-accident, by whatever got written first. The gaps are hard to spot because the
-writing is confident.
+The obvious way to design a big feature is to split it into design sessions,
+one per area, each producing its own spec. Run that way, it fails three ways:
 
-The fix is obvious: split it up. Do a session on how messages are stored, another
-on how they're delivered, another on what it all looks like. Each session is
-small enough to actually think about.
+- **Every session is a full design run.** A cluster of two decisions still gets
+  approaches, a design in sections, a spec file and a review gate.
+- **The specs never add up to one design.** Five dated files, written in the
+  order you happened to run them, each with its own implementation notes. When
+  a later decision exposes a gap between two earlier ones, no spec owns it.
+- **The plans overlap.** Sessions are cut by area — storage, delivery, UI — so a
+  plan per spec gives you several plans that edit the same code. In testing,
+  four of five specs each changed the same send endpoint.
 
-That fix has its own failure. Session 4 quietly contradicts session 1. You
-decided in the UI session that a message appears instantly and reconciles later —
-but the sync model you picked two sessions after that can't support it. Nothing
-catches it, because each session ended in its own file and nobody re-reads the
-old ones. You find out when you try to build it.
+Planning every session up front makes it worse: the cut is guessed before the
+first answer exists, then patched as the answers arrive.
 
 ## How docket solves it
 
-It writes a **docket**: one file that lists every session the feature needs, in
-order, and stays in your repo after the conversation ends.
+**Sessions settle decisions, not specs.** Each sitting takes one question —
+the smallest set of decisions that must be made together — interviews you one
+decision at a time with a recommendation, and appends what you chose, plus what
+it binds for later questions, to the docket. A fact the code or docs can answer
+is looked up, not asked.
 
-Three things make it work:
+**One destination, one spec.** The docket names the spec it ends in before any
+question is asked. When no questions remain, docket writes that spec from the
+recorded decisions, organised for someone about to build, without interviewing
+you again. One spec means one plan, so nothing overlaps.
 
-- **Each session gets a scope and an anti-scope.** Not just "S2 covers delivery"
-  but "S2 does not cover how any of it looks." Saying what a session must refuse
-  is what stops it drifting back to full-feature size.
-- **Decided things get written down as short statements** — "ordering is
-  server-assigned; client clocks are never authoritative." These are called
-  **binding constraints**. Every later session reads them and treats them as
-  settled. You confirm each one before it's written in, so nothing gets recorded
-  that you didn't agree to.
-- **A later session can't overturn an earlier one on its own.** It can split,
-  merge, or drop sessions that haven't run yet. To reopen something already
-  settled, it has to add a new session — which means you're in the room for it.
+**Fog of war.** Charting writes only the questions that can be stated precisely
+now. Everything else — "notifications, once we know what delivered means" —
+waits under *Not yet specified* and becomes a question when an answer makes it
+sharp. The order is the question numbers, so the next sitting is never a choice
+you have to make.
 
-Sessions are split by which questions **depend on each other**. Questions that
-have to be answered together go in one session; questions that don't interact go
-in different ones. That's also where the ordering comes from: a session needing
-another session's answer runs after it.
-
-Every session stops at a written design. Nothing gets built until the whole
-docket is done — so when session 4 changes your mind about session 1, you're
-editing a document, not migrating a database.
+**Decisions are append-only.** Changing your mind is a new question; the old
+decision is marked superseded, never rewritten. Every decision in the file is
+one you were present for.
 
 ## When not to use it
 
-Small and medium features. Run brainstorming once and get on with it. docket
-checks this itself: if the feature only splits into two sessions, it tells you to
-skip the docket and won't write one.
+**A feature one design session can settle.** docket checks this itself and
+recommends a single brainstorming session instead of writing a docket.
 
-It also doesn't design anything. It has no opinion about your messaging feature —
-only about where the seams between sessions go.
+**Implementation planning.** docket stops at the spec. Plans and tickets come
+from your planning tool; building from `/stint`.
+
+**Architecture for a new project.** That is `/charter`.
 
 ## Install
 
@@ -91,35 +84,61 @@ Or clone the collection and reference this skill's folder directly:
 git clone https://github.com/Hanseooo/hanseo-skills
 ```
 
-- **Claude Code:** clone into `~/.claude/skills/docket` (use `skills/docket/` as the skill root).
+- **Claude Code:** clone into `~/.claude/skills/docket` (use `skills/docket/` as
+  the skill root).
 - **Codex, opencode, Antigravity CLI, or others:** clone anywhere and load
   `skills/docket/SKILL.md` per that tool's own custom-instructions/skill
-  mechanism, or just paste `SKILL.md`'s contents into the session when you want
-  to plan a large feature.
+  mechanism, or paste `SKILL.md`'s contents into the session.
 
 Update later with `git pull` (or re-run `npx skills add`).
 
 ## Use
 
-**Once, at the start.** Ask your agent to "plan the design sessions for
-messaging" (or "this is too big to brainstorm in one go"). It reads your code,
-lays out the open questions, proposes two or three ways to cut them into
-sessions, and writes the docket to `docs/dockets/messaging-docket.md` once you
-pick one.
+**Once, to chart it.**
 
-**Then once per session.** Open a fresh conversation and point it at the docket.
-It picks the next session that's ready, loads that session's scope and the
-constraints settled so far, and hands off to brainstorming or grilling. At the
-end it marks the session done, links the spec that session produced, and asks you
-to confirm the constraints to carry forward.
+```
+/docket plan the design for messaging — 1:1, crew channels, a thread on every task
+```
 
-Repeat until every session is done. Then plan and build against a design that
-agrees with itself.
+It reads the code, agrees the destination and what is out of scope with you,
+and writes `docs/dockets/messaging-docket.md` with the questions in order.
+Nothing is decided in this sitting.
+
+**Then once per sitting**, ideally in a fresh conversation:
+
+```
+/docket continue the messaging docket
+```
+
+It takes the next question, settles it with you, records the decisions, and
+tells you what comes next. Say "next" to take another in the same sitting.
+
+**At the end**, the same command writes the one spec and asks you to review it.
+
+## FAQ
+
+### How is this different from wayfinder?
+
+| | docket | wayfinder |
+|---|---|---|
+| Lives in | one markdown file in your repo | your issue tracker (or local files via Matt's setup skill) |
+| Destination | always one spec | a spec, a decision, or a change made in place |
+| Unit of work | a question: decisions that must be made together | a ticket: one question |
+| Research | looked up in the sitting | parallel research subagents |
+| Needs | nothing else installed | Matt's setup, grilling, domain-modeling, research and prototype skills |
+| Ends | writes the spec | hands off to `/to-spec` |
+
+### When should I use wayfinder instead?
+
+When you already run Matt Pocock's skills and want the map on GitHub or Linear
+where a team can see the frontier, or when research is heavy enough to want
+parallel subagents. When the destination is not a spec at all — a migration, a
+decision to lock — wayfinder's open-ended destination fits better.
 
 ## What it deliberately is not
 
-Not a feature designer, not an implementation planner, not a scaffolder. It
-decides where the sessions are; the sessions decide everything else.
+Not a feature designer: every decision is yours. Not a planner, a ticket
+writer or a scaffolder. It ends at one approved spec.
 
 ## License
 

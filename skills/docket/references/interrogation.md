@@ -1,33 +1,22 @@
-# Fallback: running a session without a companion skill
+# Resolving a decide question
 
-Use only when neither brainstorming, grill-with-docs, nor grilling is installed.
+Interview the user about this one question until every decision inside it is
+settled. Walk the decision tree branch by branch, resolving the decisions the
+others depend on first.
 
-## The loop
+- **One question at a time**, then wait for the answer.
+- **Lead with your recommendation** and the reason for it. Where the choice has
+  real alternatives, give two or three, each with its trade-off in one line.
+- **Show, when the question is how something looks or behaves:** a rough
+  sketch, an ASCII screen, a state table or a type shape to react to. Rough is
+  the point.
+- **Facts are yours.** Anything the code, docs or environment can answer, look
+  up rather than ask.
+- **Stay inside the question.** Something that belongs to another open question
+  goes on that question; something new and in scope becomes a new question;
+  something outside the destination goes under Found & parked. One line, then
+  back to this question.
 
-Interview the user relentlessly about this one session's cluster until you reach
-a shared understanding. Walk down each branch of the decision tree, resolving
-dependencies between decisions one by one. For each question, give your
-recommended answer.
-
-Ask one question at a time and wait for the answer. Several at once is
-bewildering.
-
-If a *fact* can be found by exploring the codebase or environment, look it up
-rather than asking. The *decisions* are the user's — put each one to them.
-
-Stay inside the session's cluster. A question that belongs to a later session
-goes on that session's open questions; one that belongs to no session goes under
-`## Found & parked`. Either way it is one line in the docket, and then you move
-on.
-
-Do not act until the user confirms you have reached shared understanding.
-
-## Ending the session
-
-Write the agreed design to a spec file at the docket's stated spec path
-convention. Then, in the docket:
-
-1. Set the session's status.
-2. Record the spec path.
-3. Propose the binding constraints the session establishes.
-4. Get the user to confirm them before writing them in.
+Done when every decision the question names has an answer the user chose, and
+you can state each one with what it binds for later questions. Then return to
+the docket's Record step.
