@@ -5,12 +5,15 @@
 - **user-invoked** — a skill only reachable when a human types its slash command; never triggered automatically by the agent
 - **model-invoked** — a skill the agent may reach for automatically when the task fits, as well as by explicit user request
 - **operating contract** — the `CLAUDE.md` / `AGENTS.md` files that define how agents must behave when working on this repo
-- **docket** — a durable file mapping one large feature's design: its destination, the open questions in order, and the decisions already recorded; lives in the user's project, not this repo, and ends by writing one spec
-- **destination** — the one spec a docket ends in, named with its path before any question is asked
-- **question** — the smallest set of decisions that must be made together; marked decide (the user's call) or look up (a fact the agent finds), numbered in working order with what blocks it
+- **docket** — a durable file mapping one large feature: its destination, a roadmap of phases, the open questions in order, and the decisions already recorded; lives in the user's project, not this repo, and writes one spec per phase
+- **destination** — what the feature does once every phase of its docket is built, named before any question is asked
+- **roadmap** — a docket's phases in build order, cut before any question is placed
+- **phase** — a slice of a docketed feature that works end to end once built; it gets one spec and is built before the next phase is charted; marked `specified` when its spec is approved and `built` when the build matches it
+- **question** — the smallest set of decisions that must be made together; marked decide (the user's call) or look up (a fact the agent finds), tagged with the earliest phase that needs it and listed with what blocks it; worked by phase, then by number
+- **build gap** — a rule in a phase's spec that the build does not yet satisfy; listed under the phase's Roadmap line, and the phase is not `built` while one remains
 - **not yet specified** — the docket's fog of war: in-scope work too coarse to state as a question yet, promoted to one when an answer makes it sharp
 - **session** — one sitting on a docket, resolving one decide question (or a batch of look ups) and recording the result
-- **recorded decision** — a confirmed answer in the docket, stated with what it binds for later questions; never edited, only superseded by a new question
+- **recorded decision** — a confirmed answer in the docket, stated with what it binds for later questions and later phases; never edited, only superseded by a new question
 - **parked finding** — something real a session turned up that belongs to no question and sits outside the destination; recorded in one line and deliberately not acted on
 - **stint** — one sitting of build work: a single `/stint` invocation, covering one or more tickets, measured against one fixed point and spending one review budget
 - **fixed point** — the `HEAD` SHA recorded before any code is written, and the commit `/code-review` measures the finished change against

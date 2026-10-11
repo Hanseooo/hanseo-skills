@@ -7,6 +7,11 @@ others depend on first.
 - **One question at a time**, then wait for the answer.
 - **Lead with your recommendation** and the reason for it. Where the choice has
   real alternatives, give two or three, each with its trade-off in one line.
+- **Recommend for the whole roadmap, decide for this phase.** Where the options
+  differ in what later phases can do with them, recommend the shape those
+  phases extend over the one they would have to replace, and name the phase it
+  serves. The shape is a table, an id or a contract that admits them; their
+  behaviour stays with their own questions.
 - **Show, when the question is how something looks or behaves:** a rough
   sketch, an ASCII screen, a state table or a type shape to react to. Rough is
   the point.
