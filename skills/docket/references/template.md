@@ -5,20 +5,19 @@ the user's project.
 
 ## The carried instruction
 
-Every docket opens with this block, unchanged. It is what a session reads when
-the docket is opened without the skill loaded, so it carries the few rules that
-keep the file honest.
+Every docket opens with this block. It supplies phase context when the file is
+opened directly by a design, planning or build workflow.
 
 ```markdown
-> **Agent: read this first.** This docket is worked with `/docket`, one
-> question per sitting. Without it: the current phase is the first on the
-> Roadmap not marked built. Take its lowest-numbered open question whose
-> blockers are all under Decisions. Look up facts yourself; put decisions to
-> the user one at a time, each with your recommendation. Append confirmed
-> decisions under Decisions and delete the question. Never edit a recorded
-> decision — reopening one is a new question. When the current phase has no
-> questions left, write its spec from the Decisions and stop until it is
-> built. Later phases wait their turn. Never plans or code.
+> **Agent: read this first.** This docket carries scope and decisions between
+> phases. Use the phase the user names, otherwise the first Roadmap entry not
+> marked `built`. Follow the workflow the user invoked. During design, explore
+> the complete phase: Questions are starting points, not an exhaustive list
+> or a limit on discovery. Respect confirmed Decisions and bring conflicts
+> to the user for explicit revision. Record newly confirmed decisions and
+> unresolved concerns here. A phase is `specified` after the user approves
+> its written spec, not when its question list is empty. Plan, implement,
+> review and fix that phase before returning to `/docket` for the next.
 ```
 
 ## The body
@@ -33,18 +32,20 @@ illustration of what a usable phase, question, decision and fog entry read like.
 on every task, and it keeps working on patchy signal.
 
 ## Roadmap
-Phases in build order. Each works end to end once built, and is built before
-the next is charted.
+Phases in build order. Each works end to end once built. Design one phase,
+approve its spec, plan, implement, review and fix before designing the next.
 
 1. **Direct messages** — two members of a crew exchange text messages that
-   survive patchy signal. Spec: `docs/specs/messaging-1-direct.md`
+   survive patchy signal. Includes text and delivery feedback; crew channels
+   and task threads wait for later phases. Depends on existing crew membership.
+   Spec: `docs/specs/messaging-1-direct.md`
 2. **Crew channels** — a shared channel for a crew, everyone in it reads and
    posts. Spec: `docs/specs/messaging-2-channels.md`
 3. **Task threads** — a thread on every task card, with notifications for
    mentions and replies. Spec: `docs/specs/messaging-3-task-threads.md`
 
 ## Decisions
-Settled with the user. Later questions treat these as given. Never edited.
+Confirmed with the user. Carry these forward; record revisions explicitly.
 
 - **Q1 · What a conversation is (phase 1).** One model with a kind: direct,
   channel or task. Phase 1 creates only direct conversations, on the first
@@ -55,7 +56,8 @@ Settled with the user. Later questions treat these as given. Never edited.
   *Source:* the host's function docs, checked 2026-10-06.
 
 ## Questions
-Open only. Worked by phase, then by number.
+Known open questions, tagged by phase. Starting points for design, not a
+complete inventory. Numbers are stable references, not a required interview order.
 
 ### Q3 · Delivery on patchy signal — decide · phase 1
 What "sent" means while offline, whether retries are bounded, what the sender
@@ -76,7 +78,7 @@ In scope, but not yet sharp enough to ask. Coarse on purpose.
 - Voice notes and calls: a later effort.
 
 ## Found & parked
-Real, but belongs to no question here. One line each, not acted on.
+Outside the destination. One line each, not acted on.
 
 - 2026-10-06 (from Q1): `tasks.updated_at` is never bumped on edit. Unrelated
   to messaging; raise separately.
@@ -84,12 +86,13 @@ Real, but belongs to no question here. One line each, not acted on.
 
 **A phase says what a user can do once it is built.** "Direct messages" alone
 is a label; the line after it is what makes the phase checkable. Its line gains
-`· specified` when its spec is approved, which becomes `· built` when the build
-matches it. Between the two, a `Build gaps:` list under the line holds what the
-last check of the build found unfinished.
+`· specified` when its written spec is approved, which becomes `· built` when
+implementation and review are complete and its spec holds. Between the two,
+`Build gaps:` under the line holds unfinished behavior and blocking review
+findings.
 
-**A question names the decisions inside it.** "Delivery on patchy signal" alone
-is a topic; the line under it is what makes it answerable in one sitting.
+**A question explains a known uncertainty.** "Delivery on patchy signal" alone
+is a topic; the line under it gives the design process a useful starting point.
 
 **A decision says what it binds.** The conclusion alone loses the reason later
 questions and later phases must respect it.

@@ -5,16 +5,16 @@
 - **user-invoked** — a skill only reachable when a human types its slash command; never triggered automatically by the agent
 - **model-invoked** — a skill the agent may reach for automatically when the task fits, as well as by explicit user request
 - **operating contract** — the `CLAUDE.md` / `AGENTS.md` files that define how agents must behave when working on this repo
-- **docket** — a durable file mapping one large feature: its destination, a roadmap of phases, the open questions in order, and the decisions already recorded; lives in the user's project, not this repo, and writes one spec per phase
+- **docket** — a durable file mapping one large feature: its destination, roadmap of buildable phases, known questions and confirmed decisions; scopes each phase for a design process that produces its spec, then resumes after implementation and review
 - **destination** — what the feature does once every phase of its docket is built, named before any question is asked
-- **roadmap** — a docket's phases in build order, cut before any question is placed
-- **phase** — a slice of a docketed feature that works end to end once built; it gets one spec and is built before the next phase is charted; marked `specified` when its spec is approved and `built` when the build matches it
-- **question** — the smallest set of decisions that must be made together; marked decide (the user's call) or look up (a fact the agent finds), tagged with the earliest phase that needs it and listed with what blocks it; worked by phase, then by number
-- **build gap** — a rule in a phase's spec that the build does not yet satisfy; listed under the phase's Roadmap line, and the phase is not `built` while one remains
-- **not yet specified** — the docket's fog of war: in-scope work too coarse to state as a question yet, promoted to one when an answer makes it sharp
-- **session** — one sitting on a docket, resolving one decide question (or a batch of look ups) and recording the result
-- **recorded decision** — a confirmed answer in the docket, stated with what it binds for later questions and later phases; never edited, only superseded by a new question
-- **parked finding** — something real a session turned up that belongs to no question and sits outside the destination; recorded in one line and deliberately not acted on
+- **roadmap** — a docket's phases in build order, revisited with the user as design and builds reveal more
+- **phase** — a slice of a docketed feature that works end to end once built; gets one spec, then planning, implementation and review before the next phase is designed; marked `specified` when its written spec is approved and `built` when its spec holds and blocking review findings are resolved
+- **question** — a known uncertainty tagged with its phase and blockers when known; a starting point for discovery, not an exhaustive checklist or required interview order; existing numbers remain stable references
+- **build gap** — unfinished or unverified phase behavior, or a blocking review finding; listed under the phase's Roadmap line, preventing advancement until resolved
+- **not yet specified** — in-scope work still too coarse to phrase as a question; explored during its phase's design
+- **session** — one sitting of scoping, design or reconciliation on a docket, carrying confirmed decisions and unresolved concerns forward
+- **recorded decision** — a confirmed choice in the docket, stated with what it binds for later phases; revisions are explicit, preserve the old entry as superseded, and update affected specs
+- **parked finding** — something real a session turned up outside the destination; recorded in one line and deliberately not acted on
 - **stint** — one sitting of build work: a single `/stint` invocation, covering one or more tickets, measured against one fixed point and spending one review budget
 - **fixed point** — the `HEAD` SHA recorded before any code is written, and the commit `/code-review` measures the finished change against
 - **review pass** — one `/code-review` run over a stint; `/stint` allows exactly two, the second reading the fixes the first produced
