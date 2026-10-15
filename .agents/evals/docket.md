@@ -5,7 +5,103 @@ the skill's modes, rules or template (see the operating contract's skill
 verification rules). Add a scenario whenever a real session exposes a new
 failure.
 
-## Harness
+## Current workflow checks — 2026-10-16
+
+These replace the question-driven expectations below. The feature is scoped
+by phase, then designed with brainstorming or the user's chosen process,
+specified, planned, implemented and reviewed before advancing.
+
+### Repeated handoff and discovery sample
+
+Use a fresh subagent with only the following task, reading the skill and both
+references from the version under test. For checkpoint B, simulate the session
+with only the template's carried instruction, not the full skill body. No files
+are written. Treat brainstorming as installed and simulate its invocation as
+`[INVOKE: brainstorming]`, rather than loading it. Its normal process explores
+a phase and produces a user-approved spec. Limit each response to 450 words
+plus 1–2 lines quoting the wording behind the behavior.
+
+Independent checkpoints:
+
+- **A — Handoff:** User: `/docket continue the authoring docket`. P1 draws and
+  styles rectangles and ellipses, deletes, animates using existing keys, and
+  exports. P2 is grouping. Q1 geometry and Q2 placement are confirmed; Q3 style
+  controls is open. Report the next response/actions.
+- **B — Direct brainstorming:** User: `$brainstorming let's brainstorm phase 1
+  of docs/dockets/authoring-docket.md`. All listed P1 questions are settled;
+  P1 is not specified. Decisions cover geometry, creation, deletion, style,
+  settings, export and shortcuts, but omit selecting, transforming and deleting
+  locked shapes. P2 questions remain open. Report the next response/actions.
+- **C — Approved spec:** P1's approved spec exists, its decisions are settled,
+  but the roadmap has not been marked specified. User: `/docket continue; the
+  P1 spec is approved`. Report the next response/actions.
+- **D — Review defect:** P1 is specified. User: `/docket phase 1 is implemented
+  and reviewed; continue`. Supplied code evidence shows deletion works but the
+  spec's locked-node refusal is missing; review still lists that defect.
+  Report the next response/actions.
+
+Expected: A hands phase design to brainstorming with confirmed decisions and
+open questions as context, allowing discovery beyond Q3. B follows the invoked
+process and investigates the missing behavior before spec approval. C marks
+`specified` and points to planning, implementation and review. D writes a
+`Build gaps:` entry, leaves P1 `specified`, and stops before P2.
+
+Ran five fresh samples against the pre-change skill, then five fresh samples
+against the updated skill and template. Every sample used `gpt-6-luna` with
+medium reasoning. The pre-change version is the baseline for this rule change.
+
+| Checkpoint | RED: pre-change | GREEN: updated |
+|---|---|---|
+| A Handoff | 5/5 stayed in docket's numbered-question interview | 5/5 used brainstorming for phase discovery |
+| B Direct brainstorming | 2/5 wrote the spec directly because the question list was empty; 3/5 respected brainstorming | 5/5 followed brainstorming and explored missing locked-shape behavior |
+| C Approved spec | 5/5 preserved the approval/status boundary | 5/5 marked `specified` and stopped for the build cycle |
+| D Review defect | 5/5 retained the unfinished phase | 5/5 recorded gaps and stopped before P2 |
+
+Baseline reasoning captured verbatim:
+
+- “Continue Q3, the open style-controls question.”
+- “Use the carried instruction: write the P1 spec from the settled decisions,
+  then stop until P1 is built.”
+- “The session only sees the generated instruction, so it does not run the
+  skill’s gap check for the unresolved locked-shape behavior.”
+
+One GREEN sample's A response omitted an explicit invocation marker and said
+“continue with Q3.” A follow-up asked which process owned design and whether
+Q3 had to finish first. It clarified that brainstorming runs design and Q3
+does not determine the agenda. Counted as a pass with that clarification;
+no fresh rerun or wording change was made for it.
+
+### Cycle and fallback checks
+
+One additional fresh `gpt-6-luna` medium sample applies the updated skill to
+these independent cases:
+
+1. Chart authoring: shapes, grouping, paths, animated appearance, graph, helpers.
+   Existing code imports/previews ellipse/path but has no creation UI. Expect
+   one user-confirmed roadmap of end-to-end phases and a phase-design handoff.
+2. No design skill installed; P1 draws/styles/deletes/exports rectangles. Geometry
+   and rendering confirmed, no open Questions, export failures undecided.
+   Expect the standalone fallback to discover the missing behavior before
+   writing and seeking approval of a complete spec.
+3. P1 implemented but not reviewed. Expect review before advancement.
+4. P1 implementation and review satisfy its spec. P2 grouping assumed siblings,
+   but built code has imported shapes under different parents. Expect P1
+   `built`, then a user-confirmed P2 scope revisited against the new facts.
+5. During design a user choice and code evidence contradict Q2's coordinates.
+   Expect an explicit superseding decision and affected spec update.
+
+Result: all five cases matched those expectations. No product files were
+written and no actual spec, implementation or review was executed.
+After making implemented-but-unreviewed routing explicit in Mode, the same
+sample re-read the final skill and repeated all five checks with the same
+outcomes. Such a phase enters Advance, which stops at the missing review.
+
+These are transcript simulations, grounded in the reported authoring workflow,
+not execution of the original Crewboard fixtures or actual product builds.
+Historical fixture results below are retained as evidence for their versions;
+they are not a claim that the old suite passed against this workflow.
+
+## Historical harness — through 2026-10-11
 
 One fresh subagent per scenario, each working in its own copy of a fixture
 project: Crewboard, a Next.js 15 + Drizzle crew task app on Vercel, installable
@@ -46,7 +142,7 @@ prompt pointed at a copy of the skill from before the change.
 Ask every run to end with where the skill's wording was unclear. Most of the
 fixes below came from those lines, not from failures.
 
-## Scenarios
+## Historical scenarios
 
 ### S1 Chart a large feature
 Plain fixture.
@@ -151,7 +247,7 @@ Plain fixture.
 Pass: as S1. The template's worked example is messaging, so this is the run
 that shows the roadmap is cut from the feature and not copied.
 
-## Results
+## Historical results
 
 ### RED (the one-spec docket), 2026-10-11
 

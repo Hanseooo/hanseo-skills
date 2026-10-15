@@ -1,27 +1,25 @@
-# Resolving a decide question
+# Phase design without a companion skill
 
-Interview the user about this one question until every decision inside it is
-settled. Walk the decision tree branch by branch, resolving the decisions the
-others depend on first.
+Use this only when no design skill is available. Follow the current phase's
+scope and the confirmed decisions supplied by Prepare.
 
-- **One question at a time**, then wait for the answer.
-- **Lead with your recommendation** and the reason for it. Where the choice has
-  real alternatives, give two or three, each with its trade-off in one line.
-- **Recommend for the whole roadmap, decide for this phase.** Where the options
-  differ in what later phases can do with them, recommend the shape those
-  phases extend over the one they would have to replace, and name the phase it
-  serves. The shape is a table, an id or a contract that admits them; their
-  behaviour stays with their own questions.
-- **Show, when the question is how something looks or behaves:** a rough
-  sketch, an ASCII screen, a state table or a type shape to react to. Rough is
-  the point.
-- **Facts are yours.** Anything the code, docs or environment can answer, look
-  up rather than ask.
-- **Stay inside the question.** Something that belongs to another open question
-  goes on that question; something new and in scope becomes a new question;
-  something outside the destination goes under Found & parked. One line, then
-  back to this question.
+1. **Understand the outcome.** Reflect the user flow, boundaries and success
+   criteria for the user to correct. Read the relevant code and look up facts.
+2. **Explore the phase.** Known questions are leads. Walk the flow end to end
+   and investigate its consequences, including concerns absent from the docket.
+   Ask the user one question at a time with a recommendation and meaningful
+   alternatives. Preserve settled decisions; surface conflicts for revision.
+   Recommend choices later phases can extend, while designing only this phase.
+3. **Present the design.** Explain the chosen behavior, structure, interactions
+   and failure handling at the depth needed to assess them. Use sketches or
+   examples when they make a choice clearer. If this exceeds one buildable spec,
+   revisit the phase boundary with the user before proceeding.
+4. **Write and review the spec.** Once the user agrees the design, write it at
+   the phase's spec path. Cover the complete flow, observable acceptance
+   criteria, rules, states, failures, exclusions and carried-forward constraints.
+   Check it against the agreed outcome and code. Resolve behavior gaps with
+   the user, including ones that never appeared in Questions. Ask the user to
+   review the written spec; approval, rather than an exhausted question list,
+   completes phase design.
 
-Done when every decision the question names has an answer the user chose, and
-you can state each one with what it binds for later questions. Then return to
-the docket's Record step.
+Return confirmed decisions and the approved spec to Prepare's final step.
