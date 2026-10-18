@@ -10,8 +10,8 @@ cost.
 ## Where this sits
 
 Upstream of everything else in this collection. Once the call is `build`, the
-product is decided and design takes over: brainstorming for a single session,
-`/docket` when the feature needs several, `/charter` for a new project's
+product is decided and design takes over: brainstorming for a design session,
+`/docket` for a feature plan and phased roadmap, `/charter` for a new project's
 decision layer.
 
 It is model-invoked: the agent reaches for it on questions like "should I build

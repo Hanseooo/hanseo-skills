@@ -5,16 +5,13 @@
 - **user-invoked** — a skill only reachable when a human types its slash command; never triggered automatically by the agent
 - **model-invoked** — a skill the agent may reach for automatically when the task fits, as well as by explicit user request
 - **operating contract** — the `CLAUDE.md` / `AGENTS.md` files that define how agents must behave when working on this repo
-- **docket** — a durable file mapping one large feature: its destination, roadmap of buildable phases, known questions and confirmed decisions; scopes each phase for a design process that produces its spec, then resumes after implementation and review
-- **destination** — what the feature does once every phase of its docket is built, named before any question is asked
-- **roadmap** — a docket's phases in build order, revisited with the user as design and builds reveal more
-- **phase** — a slice of a docketed feature that works end to end once built; gets one spec, then planning, implementation and review before the next phase is designed; marked `specified` when its written spec is approved and `built` when its spec holds and blocking review findings are resolved
-- **question** — a known uncertainty tagged with its phase and blockers when known; a starting point for discovery, not an exhaustive checklist or required interview order; existing numbers remain stable references
-- **build gap** — unfinished or unverified phase behavior, or a blocking review finding; listed under the phase's Roadmap line, preventing advancement until resolved
-- **not yet specified** — in-scope work still too coarse to phrase as a question; explored during its phase's design
-- **session** — one sitting of scoping, design or reconciliation on a docket, carrying confirmed decisions and unresolved concerns forward
-- **recorded decision** — a confirmed choice in the docket, stated with what it binds for later phases; revisions are explicit, preserve the old entry as superseded, and update affected specs
-- **parked finding** — something real a session turned up outside the destination; recorded in one line and deliberately not acted on
+- **docket** — a feature's single Markdown planning document, produced through discovery and containing its scope, decisions, implementation approach and phased roadmap; also the user-invoked skill that writes or resumes it
+- **destination** — the legacy docket name for the feature's intended outcome; current plans distinguish the minimum outcome from optional extensions
+- **roadmap** — outcome-based phases in dependency order, with prerequisites, planned work and acceptance checks; later detail can remain provisional
+- **phase** — a coherent, verifiable outcome in a roadmap; required or optional, with readiness stated separately from implementation history
+- **question** — a missing choice or piece of evidence identified by a stable Q number; a discovery lead rather than an exhaustive checklist, numbered separately from new decisions
+- **session** — one sitting of feature discovery, planning or resumption, preserving settled decisions and unresolved concerns
+- **recorded decision** — a choice with a stable D identifier (or retained legacy ID), rationale, constraints on later work and User-confirmed, Delegated or Assumption basis; detail lives in one authoritative section or linked approved source
 - **stint** — one sitting of build work: a single `/stint` invocation, covering one or more tickets, measured against one fixed point and spending one review budget
 - **fixed point** — the `HEAD` SHA recorded before any code is written, and the commit `/code-review` measures the finished change against
 - **review pass** — one `/code-review` run over a stint; `/stint` allows exactly two, the second reading the fixes the first produced

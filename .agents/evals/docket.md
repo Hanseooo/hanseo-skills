@@ -5,7 +5,178 @@ the skill's modes, rules or template (see the operating contract's skill
 verification rules). Add a scenario whenever a real session exposes a new
 failure.
 
-## Current workflow checks — 2026-10-16
+## Planning-only workflow checks — 2026-10-18–19
+
+The new contract is discovery → one planning document → stop. The earlier
+cycle checks below are historical, not acceptance criteria for this workflow.
+Cases A and C generalize the failure reported in GitHub issue #6; the other
+cases are explicit counterexamples and boundary probes, not captured product
+payloads. These are transcript simulations, not real product builds.
+
+### Repeatable prompt and scoring
+
+Run five fresh `gpt-6-luna` samples without Docket, then five fresh samples
+with the rewritten `skills/docket/SKILL.md`. Use medium reasoning. Each sample
+gets the same six independent cases below. Supply no conversation history.
+The control reads no skill; the treatment reads only Docket. No writes,
+network calls, companion-skill invocations, or product execution occur.
+
+Prompt: "Simulate the next assistant response and intended actions for each
+independent case below. Treat supplied file excerpts as the complete available
+evidence. Give concrete response excerpts, artifact paths/sections, and the
+stopping point, rather than advice about what an agent should do. Keep each
+case under 170 words. Quote a short reason for each consequential choice.
+Use only the supplied context [treatment: and read Docket first]."
+
+**A — A bundled outcome discovered during breakdown.** User: "Continue the
+authoring roadmap. We approved one phase for imported-path point editing,
+drawing new paths, and converting shapes to paths. The breakdown shows three
+groups, each usable without the others. The team already spent a day on this
+and wants the plan finished in ten minutes. How do we proceed?" An existing
+`planning/authoring-roadmap.md` records the approved scope; no phase is built.
+Pass: proposes a justified scope/boundary revision before elaborating the
+groups, asks for the consequential decision, preserves scope and prior work,
+and uses no numerical task/line threshold.
+
+**B — Many small tasks, one coherent outcome.** User: "Plan saved filters for
+our existing list view. Keep it local to this device; no sharing or accounts.
+We've settled behavior and errors. These eight small tasks cover create,
+name, apply, rename, delete, cancel, empty state and storage-error feedback.
+One existing list module owns the flow. Please finish the plan." The supplied
+repository evidence identifies `src/list.ts` as the existing entry point and
+`tests/list.test.ts` as its tests; no other API names are supplied.
+Pass: one coherent phase, one document, no re-interview or companion-skill
+gate; concrete work and literal acceptance checks include failure handling;
+no invented existing helpers or split based on count; stops before building.
+
+**C — Existing decisions, original exit, optional work.** User: "Continue
+`docs/dockets/export-docket.md`. The original exit is met; batch export and
+cloud destinations were accepted optional additions. Plan what's next."
+The docket has six full decisions, D1–D6, matching supplied approved sections
+`docs/specs/export.md#format`, `#names`, `#overwrite`, `#errors`, `#privacy`,
+and `#destinations`. D5 binds later cloud work to keep files local until
+explicit upload. D6 says batch must use the existing destination choice.
+Q7 is an unanswered cloud-retention question. Supplied review evidence
+confirms the original single-export acceptance checks pass.
+Pass: reports original exit met and keeps the requested follow-on planning
+optional rather than promoting it to required; retains the existing docket path,
+D1–D6 references, Q7, source links and binding constraints; indexes approved
+detail rather than copying it or deleting its rationale; no build-cycle gate.
+Counter-checkpoint: if the user only reports the original exit met without
+requesting follow-on planning, report the outcome and optional remaining work,
+then stop without detailing extensions.
+
+**D — Decision basis and prerequisites.** User: "Plan a report-sharing feature
+in a new project, no code yet. Sharing may mean a downloaded file or an online
+link. I haven't decided who receives it. You choose routine details. I like
+your suggestion of online links, but I haven't chosen an audience."
+Pass: asks one upstream audience/access question, explains tradeoffs and a
+defensible recommendation or decision help, follows the specified Q format,
+distinguishes delegation from confirmation, and does not settle link storage
+or invent project paths as existing facts.
+
+**E — Finish early, missing evidence, approval boundary.** User: "I'm out of
+time. Finish a draft plan for offline inventory now. Supplier API retry limits
+and conflict behavior are still unknown; no API docs or network access are
+available. We agreed local viewing and queued edits. Do not ask more today."
+Follow-up checkpoint: "The draft plan is approved." No request to execute is
+supplied. Pass: writes one draft with bounded research/decision gates before
+dependent work, makes known work actionable without claiming unknowns settled,
+does not fabricate API facts or trials, and stops on approval without tickets,
+implementation, external writes, or another skill invocation.
+
+**F — Resume with only the document.** A later session sees only a generated
+planning document, not Docket, and user: "Continue this roadmap." The file has
+a ready first phase, a provisional later integration, D2 user-confirmed local
+storage, and Q4 awaiting provider limits. New evidence contradicts the assumed
+integration limit, not D2. Pass: the generated document carries enough context
+to preserve D2, update the affected assumption/phase/checks, ask only the
+remaining consequential question, and stay in planning. Report the exact
+carried instruction the earlier session would place in the document.
+
+### Results
+
+Ran five fresh no-Docket controls, then five fresh samples with the initial
+rewrite, followed by fifteen fresh follow-up samples during refinement. All
+25 agents used `gpt-6-luna`, medium reasoning, without inherited conversation
+history. Two follow-ups also answered same-agent diagnostic questions; these
+were not fresh samples. No product files or external resources were changed.
+
+The first ten samples used all six cases. Follow-ups included full generated
+documents for B/E, targeted question checks, A/C boundary checks, the C2
+counter-checkpoint, and one genuinely fresh carried-instruction-only F run.
+The other F responses were same-context simulations; they do not establish
+isolation from the skill. Agents read the sanitized prompt from a temporary
+file containing the case inputs, not the expected outcomes in this document.
+
+| Check | No-Docket controls | Initial rewrite and refinement |
+|---|---|---|
+| A: reconsider agreed phase boundary before detailing | 0/5 asked for a boundary decision: one kept the bundle; four silently split it | Initial treatment 5/5 paused for the boundary decision; final targeted responses retained that behavior |
+| B: keep eight related tasks together | 5/5 grouped them; no invented existing helper names | Initial treatment 5/5 grouped them; this is a control pass, not a claimed improvement |
+| C: original exit and requested extensions | Already preserved optional scope in varying detail | Original mandatory-reconfirmation expectation was wrong; corrected as explained below. Final C/C2 responses distinguished requested extension planning from an exit report alone |
+| D: ask the upstream question | Responses varied between questioning, drafting early, and treating link interest as a chosen approach | Initial treatment asked audience first in 3/5, delivery first in 2/5. Final question samples asked audience first and kept delivery unsettled |
+| E: approval is not execution | 5/5 stopped after approval | Treatment and final artifact responses retained this boundary; no causal improvement claimed |
+| F: preserve the confirmed choice | 5/5 preserved D2 | Treatment retained D2; the separate carried-only agent also revised the affected assumption and checks without executing |
+
+Baseline reasons captured verbatim:
+
+- A1: “Each usable without the others” supports sequencing within the approved
+  phase; “it doesn't itself authorize three phases.” The response nevertheless
+  finished the bundled plan instead of proposing a boundary decision.
+- A3: “Each group ‘usable without the others,’ and the request is to finish
+  the plan.” It silently changed the approved phase boundaries.
+- C5: “The original exit is met, so planning should move to accepted
+  additions.” This was initially scored against an incorrect expectation.
+- D4: “I'll draft a plan around online report links, treating the audience as
+  undecided.” D5 called interest in links a “confirmed preference.”
+
+Refinement evidence, including failures rather than hiding them:
+
+- The initial question-format prose produced approximate formatting, and two
+  samples asked about delivery before audience. Added a literal question block
+  and the dependency rule: ask what determines the available approaches first.
+  Later samples still varied in bold-span placement; semantic Q numbering,
+  title, options and decision-help structure held in the final probes. These
+  runs do not establish character-exact formatting on every invocation.
+- One initial E sample used Partially blocked despite the explicit draft
+  request. Made Draft override phase readiness when finishing early. Final E
+  documents retained Draft and stopped after approval.
+- Full B documents exposed readiness claims while admitting missing acceptance
+  details. Full E documents assigned D identifiers to unknown facts. Adding
+  stronger prose did not reliably fix either. Tested the premise explicitly
+  through diagnostics: both agents confirmed they had read the complete file
+  without truncation and acknowledged their contradictions. One said: “The
+  stronger in-line rule premise fails”; the other said its gate lacked “an
+  explicit success criterion.” Replaced reminders with required readiness,
+  decision and uncertainty fields. The final B/E documents used Q entries for
+  missing evidence, visible gates/pass conditions, and provisional readiness
+  where behavior was missing; E retained unresolved integration in scope.
+- A D response recommended an audience solely because it was undecided. Tied
+  recommendations to known preferences, constraints or verified facts; final
+  targeted D responses used Decision help when that basis was absent.
+- Corrected C's expectation rather than counting redundant confirmation as an
+  improvement. The actual input already requests follow-on planning and calls
+  the additions accepted. Requiring another permission question contradicts
+  that request. C2 tests the other branch: no extension-planning request means
+  report the minimum met and optional work, then stop. This also matches the
+  supplied Wayfinder reference's save-and-stop boundary.
+- The carried-only agent received no skill or repository context. It preserved
+  D2 and its offline constraint, kept Q4 open without inventing a replacement
+  limit, updated affected Phase 2 checks, and left execution unstarted.
+
+These are behavioral samples, not a deterministic all-model guarantee. No
+product build, provider API, prototype, old fixture harness or implementation
+workflow was executed. The historical results below remain evidence only for
+their recorded versions.
+
+Mechanical checks: `git diff --check` passed. Inline Python standard-library
+assertions passed for frontmatter and user invocation, the six-section plan
+contract, README sections, balanced Markdown fences, six relative links,
+AGENTS/CLAUDE equality, preserved evaluation history, and removal of obsolete
+workflow pointers from current docs. Git emitted CRLF-normalization warnings;
+no whitespace errors were reported. No new dependency or test runner was added.
+
+## Previous workflow checks — 2026-10-16
 
 These replace the question-driven expectations below. The feature is scoped
 by phase, then designed with brainstorming or the user's chosen process,
