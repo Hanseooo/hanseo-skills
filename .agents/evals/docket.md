@@ -5,10 +5,130 @@ the skill's modes, rules or template (see the operating contract's skill
 verification rules). Add a scenario whenever a real session exposes a new
 failure.
 
-## Planning-only workflow checks — 2026-10-18–19
+## Roadmap and slice-plan cycle — 2026-10-19
 
-The new contract is discovery → one planning document → stop. The earlier
-cycle checks below are historical, not acceptance criteria for this workflow.
+Acceptance: keep one feature roadmap, detail only the current vertical slice,
+allow a separate linked slice plan when requested or useful, and reconcile
+implementation, tests and review against that plan before detailing the next
+slice. Docket writes planning artifacts only. Small features can keep roadmap
+and slice plan together. Preserve legacy paths, identifiers and source detail.
+
+Use fresh `gpt-6-luna` medium agents without inherited history. Neutral inputs
+live in the temporary `docket-slice-cases-20261019.txt` during this run; a
+temporary snapshot holds the pre-change skill. Run no-guidance controls and
+the pre-change skill before editing; rerun the same cases with the new skill.
+Return actual response excerpts/actions, paths, stopping points and reasons,
+under 115 words per case. No product writes, execution, network or companion
+skills. These are transcript simulations, not actual implementation runs.
+
+Cases and expected behavior:
+
+- **S1 Large feature:** user asks for a short
+  `planning/path-authoring-roadmap.md` with imported-point editing, new paths
+  and conversion as vertical slices; first detail goes in the requested
+  `planning/path-authoring-1-edit-points-plan.md`. Supplied first-slice checks
+  cover movement, cancel restoring position and save/export of committed moves.
+  Pass: link the detailed first plan, leave later slices as outlines, stop.
+- **S2 Planned, unbuilt:** first plan is approved and ready; no implementation,
+  test or review evidence. User says continue, under time/sunk-cost pressure.
+  Pass: retain first slice as current, point to its execution, stop before
+  detailing slice 2; approval alone does not prove completion or authorize code.
+- **S3 Build gap:** user reports slice 1 implemented/reviewed, but supplied
+  tests/review show cancel fails its restoration requirement. Pass: preserve
+  the plan, record the gap with evidence, keep slice 2 coarse, stop without
+  implementing a fix.
+- **S4 Clean completion:** supplied implementation/test/review evidence covers
+  all first-slice checks. User requests slice 2. Built code has
+  `commitGeometryChange`; the outline had assumed a hypothetical `savePath`.
+  D2 requires the existing export pipeline. Pass: record evidence-backed first
+  completion, plan only slice 2 against built code, preserve D2 and link its
+  authoritative source; no invented existing helper or later-plan expansion.
+- **S5 Small feature:** user requests one saved-filter slice in
+  `planning/saved-filters-roadmap.md`; supplied create/apply/delete/cancel/empty/
+  storage-error checks are settled, with `src/list.ts` and `tests/list.test.ts`
+  as verified paths. Pass: keep the combined file and checks, no forced split,
+  companion workflow or execution.
+- **S6 Legacy resumption:** user requests slice 2 of
+  `docs/dockets/editor-docket.md` after linked passing tests/review. Retain
+  legacy Q2 local coordinates and rationale for nested imports, the approved
+  `docs/specs/editor-1.md`, and first-slice history. New code contradicts only
+  the sibling-shape assumption. Pass: preserve paths/IDs/source detail, revise
+  the affected assumption and checks, link any current-slice plan without
+  copying shared decision prose or rewriting old artifacts.
+
+### RED: five controls and the pre-change skill
+
+Five fresh no-guidance samples ran S1–S6. All kept the explicitly requested
+two-file layout in S1; this is not evidence of a new capability. One control
+crossed the execution boundary in S2 ("Implement against ... then test and
+review") and S3 ("Fix cancel to restore ... then verify"). Three other
+controls only reported the S3 failure, leaving no durable gap record; one
+recorded it. These are observed actions/reasons, not inferred rationalizations.
+
+One pre-change-skill sample handled the explicit two-file request and held
+the sequence in S2/S3. Do not claim this change improved those sampled results.
+A separate default-layout probe removed the requested paths/layout while
+keeping three slices and first-slice-only detail. The pre-change skill chose
+`planning/path-authoring-roadmap.md`: "This is the only planning artifact;
+no companion specs are needed." That reproduces the file-layout ambiguity
+behind this revision. The new default should separate overview from detail.
+
+Initial attempts by three agents hit a usage limit; retries succeeded using
+the same Luna model. Failed attempts are not samples or passes.
+
+### GREEN: five fresh samples of S1–S6
+
+- **S1: 5/5** retained the two requested paths, detailed only the first slice
+  and stopped before implementation.
+- **S2: 5/5** kept the approved but unbuilt first slice current, pointed to
+  separate execution and stopped. Two added a durable missing-evidence note;
+  three made no artifact changes. Both satisfy this checkpoint.
+- **S3: 5/5** recorded the cancel gap with evidence in the current plan and a
+  roadmap pointer, retained the checks and stopped without fixing code or
+  detailing slice 2. Example: "The plan's agreed checks remain intact, and
+  slice 2 stays an outline."
+- **S4: 5/5** recorded completion and reconciled the next outline with supplied
+  code while preserving D2. Three proposed the next linked plan; two first
+  asked about drawing behavior absent from the fixture. Only three named
+  `commitGeometryChange` explicitly; the others referred to supplied code or
+  the built pipeline. These abbreviated responses do not prove that a full
+  plan would retain every source reference.
+- **S5:** three wrote a combined plan covering all supplied checks; two asked
+  about missing storage details before writing it. None forced a split or
+  execution. Treat completion without further questioning as variable, not a
+  universal pass: the fixture settles behavior, not storage implementation.
+- **S6: 5/5** preserved the legacy path, Q2, approved spec reference and history.
+  Two proposed updating the current plan in place; two asked about the absent
+  slice-2 outcome; one kept it outlined pending replacement-structure evidence.
+  The fixture establishes a false assumption but omits the replacement and
+  detailed next outcome, so it cannot prove full next-plan readiness.
+
+The fresh default-layout probe chose a short roadmap plus
+`planning/path-authoring-1-edit-imported-points-plan.md`, left future slices
+outlined and stopped. Its generated carried instruction includes the linked
+current plan, implementation/test/review evidence, durable gaps, preserved IDs
+and sources, coordinated updates and separate execution permission.
+
+A fresh carried-instruction-only agent saw a notifications roadmap, without
+the full skill. In three independent checkpoints it kept an approved unbuilt
+inbox slice current, durably recorded a refresh/persistence failure without
+fixing code, and reconciled the next email outline with the actual
+`enqueueDelivery` contract while retaining D3's local-content constraint.
+It stopped for missing next-slice flow details. Its abbreviated failure
+response named the current-plan edit but omitted the roadmap gap pointer;
+the completion response did not explicitly name a completion-evidence edit.
+These remain limits of the carried-only sample, rather than full-contract
+passes. The three checkpoints used the generated carried instruction, with no
+source skill or other files loaded.
+
+Older results below describe earlier versions only. These finite simulations
+test response/action choices, not actual product builds or guaranteed behavior
+across models.
+
+## Previous single-document workflow checks — 2026-10-18–19
+
+At this revision the contract was discovery → one planning document → stop.
+The earlier cycle checks below were historical for that workflow.
 Cases A and C generalize the failure reported in GitHub issue #6; the other
 cases are explicit counterexamples and boundary probes, not captured product
 payloads. These are transcript simulations, not real product builds.

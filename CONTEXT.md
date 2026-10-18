@@ -5,10 +5,11 @@
 - **user-invoked** — a skill only reachable when a human types its slash command; never triggered automatically by the agent
 - **model-invoked** — a skill the agent may reach for automatically when the task fits, as well as by explicit user request
 - **operating contract** — the `CLAUDE.md` / `AGENTS.md` files that define how agents must behave when working on this repo
-- **docket** — a feature's single Markdown planning document, produced through discovery and containing its scope, decisions, implementation approach and phased roadmap; also the user-invoked skill that writes or resumes it
+- **docket** — a feature's planning context: one roadmap with linked slice plans as needed, or a combined file for small features; also the user-invoked skill that writes or resumes it
 - **destination** — the legacy docket name for the feature's intended outcome; current plans distinguish the minimum outcome from optional extensions
-- **roadmap** — outcome-based phases in dependency order, with prerequisites, planned work and acceptance checks; later detail can remain provisional
-- **phase** — a coherent, verifiable outcome in a roadmap; required or optional, with readiness stated separately from implementation history
+- **roadmap** — the feature overview: outcome-based slices in dependency order, shared decisions, acceptance summaries, status and links to detailed plans and completion evidence
+- **slice plan** — the current slice's concrete behavior, implementation work and acceptance checks; later slice plans follow evidence from earlier implementation, tests and review
+- **phase / vertical slice** — a coherent, usable and verifiable outcome with the interface, logic, state and validation it needs; required or optional, with planning readiness separate from completion
 - **question** — a missing choice or piece of evidence identified by a stable Q number; a discovery lead rather than an exhaustive checklist, numbered separately from new decisions
 - **session** — one sitting of feature discovery, planning or resumption, preserving settled decisions and unresolved concerns
 - **recorded decision** — a choice with a stable D identifier (or retained legacy ID), rationale, constraints on later work and User-confirmed, Delegated or Assumption basis; detail lives in one authoritative section or linked approved source

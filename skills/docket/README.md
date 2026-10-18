@@ -2,9 +2,9 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Explore a feature with an agent, compare consequential choices, and leave with
-one Markdown implementation plan and phased roadmap. Resume the same document
-when requirements or evidence change.
+Explore a feature with an agent, map its vertical slices, and detail the current
+slice. After that slice is implemented, tested and reviewed, return to plan the
+next one against what was actually built.
 
 ## Where this sits
 
@@ -14,8 +14,9 @@ project's architecture decisions; `/docket` turns a feature idea into a plan;
 Docket handles its own discovery. No companion skill is required.
 
 The map, decisions and uncertainty model are inspired by Matt Pocock's
-**wayfinder**. This version follows the planning-only Wayfinder reference:
-discovery, an implementation approach and a phased roadmap in one document.
+**wayfinder**. The planning-only reference supplied for this revision was a
+modified Wayfinder, rather than its canonical version. Docket keeps that
+planning boundary while supporting a roadmap with separate slice plans.
 
 ## The problem
 
@@ -40,6 +41,12 @@ line or plan count decides the boundary.
 **Keep decisions in one place.** The plan records each decision once, or points
 to its approved source, while carrying the constraints later work needs.
 Optional extensions remain separate from the original minimum outcome.
+
+**Plan one slice at a time.** The roadmap gives the overall sequence. The
+current slice plan gives the concrete behavior, implementation work and
+acceptance checks. Later slices stay outlines until implementation, tests and
+review of the current slice supply evidence for the next plan. A failed check
+stays recorded as a gap in the current slice.
 
 ## When not to use it
 
@@ -85,11 +92,25 @@ user-invoked and has no companion-skill dependency.
 /docket plan saved filters for our list view, local to this device
 ```
 
-The agent reads relevant project context, resolves consequential choices,
-and writes one document with an implementation approach, phased work and
-acceptance checks. A clear request can go straight to the plan. Unless you
-choose a path or the project has a planning convention, the file goes to
-`planning/saved-filters-roadmap.md`. Docket returns the location and stops.
+The agent reads project context, resolves consequential choices and writes the
+roadmap and current slice plan. A clear request can go straight to planning.
+Unless you choose paths or the project has a convention, a small saved-filters
+feature can stay in `planning/saved-filters-roadmap.md`. Docket returns the
+locations and stops before implementation.
+
+For a larger feature, the default layout separates the overview from detail:
+
+```text
+planning/
+  path-authoring-roadmap.md              # all slices, shared decisions
+  path-authoring-1-edit-points-plan.md    # current slice's detailed work/checks
+```
+
+The roadmap might list edit points, draw paths and convert shapes. Only edit
+points gets a detailed plan initially. Request its implementation separately
+using your build workflow. After its checks pass and review is complete,
+return to Docket; it reconciles the evidence and creates the second slice's
+plan. Future plan files are created when their planning begins.
 
 **Resume a roadmap:**
 
@@ -97,11 +118,20 @@ choose a path or the project has a planning convention, the file goes to
 /docket continue planning/saved-filters-roadmap.md
 ```
 
-It reads the same document and new evidence, preserves settled decisions,
-and updates affected phases and checks together. You can also ask it to
+It reads the roadmap, current plan and new evidence, preserves settled
+decisions, and updates affected plans and checks together. If the current
+slice has only been planned, it points to implementation and stops. If checks
+are unmet, it records the gap before further planning. You can also ask it to
 finish early; the result is a Draft with unresolved choices visible.
 
 ## FAQ
+
+### Are the roadmap and plan the same thing?
+
+The roadmap says which usable outcomes come next and why. A slice plan says
+exactly how to build and check the current outcome. Small features can combine
+both in one file. Larger features normally use one roadmap and linked slice
+plans, detailing one slice at a time.
 
 ### Do I still need brainstorming?
 
@@ -112,14 +142,16 @@ if you want its design process; Docket no longer requires a handoff to it.
 
 They keep their paths, decisions, question IDs and source links. Approved spec
 detail can stay where it is, with a short index in the planning document.
-Recorded implementation history is retained, while resumption follows the
-planning-only workflow instead of requiring another spec/build/review cycle.
+Recorded implementation history is retained. Resume planning in place, using
+the current slice's implementation, tests and review to decide what comes
+next. A new spec format or companion skill is not required.
 
 ### How is this different from the supplied Wayfinder reference?
 
 It keeps the `docket` name and explicit invocation, and adds compatibility with
 existing dockets, outcome-based scope checkpoints and decision references.
-It shares the reference's planning-only stopping point.
+It supports separate slice plans and planning the next slice from completed
+implementation evidence. It shares the reference's planning-only stopping point.
 
 ## What it deliberately is not
 

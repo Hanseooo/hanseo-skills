@@ -1,18 +1,21 @@
 ---
 name: docket
-description: Explore a feature's requirements and approaches, then write one implementation plan and phased Markdown roadmap.
+description: Explore a feature, map its vertical slices and plan the current slice before implementation.
 disable-model-invocation: true
 ---
 
 # docket
 
-Clarify a feature through guided discovery, then keep its decisions,
-implementation approach and phased roadmap in one planning document.
+Clarify a feature through guided discovery. A roadmap orders the feature's
+outcomes; a slice plan details the current outcome's behavior, work and checks.
+Plan one vertical slice, hand off for implementation, then use what was built,
+tested and reviewed to plan the next slice.
 
 ## Boundaries
 
 - Inspect relevant code, tests and documentation; write planning artifacts only.
-  Produce one Markdown document. Tickets, GitHub issues, implementation,
+  Keep one roadmap per feature, with linked slice plans as needed.
+  Tickets, GitHub issues, implementation,
   dependency installation, commits and external changes need separate requests.
   Plan approval is not execution permission.
 - Verify project and technical claims from available evidence. Distinguish
@@ -20,6 +23,28 @@ implementation approach and phased roadmap in one planning document.
 - Use the requested document or the project's planning convention; otherwise
   use `planning/<feature-slug>-roadmap.md`. Read before editing and preserve
   unrelated work. Without writable access, return the Markdown.
+
+## Choose the current slice
+
+- For a new feature, sketch the outcome-based roadmap and detail its first
+  actionable slice. Later slices stay outlines, even when the whole feature
+  is well understood. For several slices, default to a short roadmap with a
+  linked current plan at `planning/<feature-slug>-<n>-<slice-slug>-plan.md`.
+  Honor requested paths and project conventions. A small, single-slice feature
+  can keep its roadmap and detailed plan in the same file. Create future
+  slice-plan files when their planning begins.
+- On resumption, read the roadmap, current plan and relevant implementation,
+  test and review evidence. An approved plan without completion evidence stays
+  current: point to its separate implementation step and stop. A request to
+  continue planning alone does not authorize implementation or fixes.
+- If evidence is missing, contradictory or shows an unmet acceptance check,
+  record the gap and its evidence in the current plan, with a short roadmap
+  pointer. Preserve the agreed checks, keep later slices coarse and stop before
+  detailing the next slice. Identify the missing check or correction needed.
+- When implementation, tests and review establish the current slice's checks
+  are met, record completion with evidence references. Reconcile the next
+  outline with the built code, then discover and plan that slice only.
+  Sufficient supplied evidence need not be recreated through a fresh audit.
 
 ## Discover
 
@@ -75,11 +100,11 @@ retain emojis unless the user opts out.
 
 ## Plan
 
-Write the document automatically when the goal, scope, next phase's behavior
+Write the current plan automatically when the goal, scope, current slice's behavior
 and major implementation choices are clear. No companion skill or additional
 approval is required to write it. If asked to finish early, deliver a Draft
 with unresolved choices visible and stop questioning. Retain Draft status
-even when a known phase is actionable; state phase readiness separately.
+even when a known slice is actionable; state slice readiness separately.
 
 **Check phase boundaries** after discovery and whenever a breakdown reveals
 more scope. Group work around a coherent, verifiable outcome. Independently
@@ -88,6 +113,8 @@ can stay together. Keep coupled work together when separation creates an
 unusable intermediate state or duplicates work. Task counts, file lengths and
 plan counts do not establish scope. Explain a proposed change to agreed phase
 boundaries and obtain the user's decision before elaborating dependent work.
+A phase is a vertical slice: a usable outcome with the interface, logic,
+state and validation it needs, rather than a technical layer.
 
 **Keep one source per decision.** Put its detail and rationale in one
 authoritative section. Elsewhere retain its identifier, gist, precise reference
@@ -95,12 +122,13 @@ and any constraint needed by the current work. When approved existing material
 already holds the detail, index it after checking the reference preserves the
 decision and rationale. Preserve IDs, source links and revision history.
 
-Include these sections in the one document:
+Keep these responsibilities across the roadmap and current slice plan. When
+combined, use sections; when separate, link detail instead of repeating it:
 
 1. **Status, goal and success criteria.** Use Draft, Ready for implementation,
-   or Partially blocked. State readiness for the next actionable phase and
+   or Partially blocked. State readiness for the current slice and
    identify provisional or blocked later phases separately. Ready means no
-   unresolved prerequisite blocks that next phase, not that it is implemented.
+   unresolved prerequisite blocks that slice, not that it is implemented.
    Include **Readiness evidence:** concrete expected behavior/checks here or
    verified linked sources, and **Unresolved prerequisites:** Q references or
    None. Missing behavior/checks require a provisional or blocked phase even
@@ -115,16 +143,19 @@ Include these sections in the one document:
    Source: ...`. Keep legacy IDs on existing records; number new decisions
    separately from questions. Missing facts or unresolved choices use the
    uncertainty entries in section 6.
-4. **Implementation plan.** User flow, relevant edge cases, technical approach,
-   verified existing code to reuse/change, proposed additions and validation.
-5. **Phase-by-phase roadmap.** Each phase's outcome, required or optional role,
-   prerequisites, concrete work as checkboxes, observable acceptance checks and
-   necessary decision gates. Account for every agreed behavior in both the
-   work and acceptance checks, with an explicit mapping for shared checks.
-   Each check states the triggering condition and expected observable result.
-   Choose phases by outcomes, with validation inside each, rather than by a
-   fixed count or technical layers. Make the earliest actionable phase concrete;
-   keep later detail provisional when evidence is missing.
+4. **Current slice plan.** Scoped behavior and exclusions, user flow, relevant
+   edge cases, technical approach, verified existing code to reuse/change,
+   proposed additions and concrete work as checkboxes. Account for every agreed
+   behavior in the work and acceptance checks, with an explicit mapping for
+   shared checks. Each check states its trigger and observable result. Include
+   readiness evidence and prerequisite gates here when this is a separate file.
+   Shared decisions stay in their authoritative home; reference their IDs and
+   binding constraints. Slice-specific decisions can live in this plan.
+5. **Phase-by-phase roadmap.** Keep each slice's outcome, required or optional
+   role, prerequisites, acceptance summary and status short. Identify the
+   current slice, link its detailed plan and retain completion evidence for
+   finished slices. Later slices contain outcomes and known dependencies;
+   their detailed work and checks wait for earlier implementation evidence.
 6. **Dependencies, uncertainties and next step.** Ordering, unresolved choices
    and evidence, and the first actionable step. Each uncertainty uses
    `Q<number> — Missing choice/evidence: ...; Blocks: ...; Next check: ...;
@@ -133,14 +164,16 @@ Include these sections in the one document:
 
 ## Save, stop and resume
 
-- Open the document with a short carried instruction: this is planning context;
-  preserve decision IDs and sources, resume unresolved choices, update affected
-  decisions, phases and acceptance checks together, and require a separate
-  request for execution. It must work when the full skill is absent.
+- Open the roadmap with a short carried instruction: read the current slice's
+  linked plan; keep later slices as outlines until implementation, tests and
+  review establish current acceptance; record gaps and evidence before moving
+  on; preserve decision IDs and sources; update affected decisions, plans and
+  checks together; execution needs a separate request. It must work when the
+  full skill is absent.
 - Check alignment with answers, explicit assumptions, dependencies and
   acceptance checks before saving. Invent no dates, estimates, existing APIs
   or completed verification. Return the location and a brief summary, then
-  stop. Do not create tickets or start Phase 1.
+  stop. Do not create tickets or implement the planned slice.
 - On resumption, read the same document and new evidence. Continue unanswered
   decisions without repeating settled questions. Update the affected plan and
   checks together. If evidence establishes the minimum outcome is met, report
@@ -148,6 +181,7 @@ Include these sections in the one document:
   planning, proceed within that request; otherwise report the remaining
   options and stop. Ask which to pursue when the user requests a next choice.
 - For older dockets, retain their path, decisions, question IDs and linked
-  evidence. Replace the carried build-cycle instruction with planning context;
-  preserve recorded implementation history as history. Resume planning without
-  requiring new per-phase specs or implementation/review gates.
+  evidence, approved specs and implementation history. Resume the current
+  slice's cycle in place. Keep a useful combined document; link a separate
+  current plan when needed without moving history or duplicating shared
+  decisions. No compulsory companion skill or new spec format is required.

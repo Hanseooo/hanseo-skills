@@ -15,7 +15,7 @@ But splitting introduces its own failure: **session 4 contradicts session 1.** Y
 **What hanseo-skills does:**
 
 - **charter** captures architectural decisions *before* the first brainstorming session, so later sessions inherit them instead of re-deriving them.
-- **docket** explores a feature's requirements and implementation choices, then writes one Markdown plan and phased roadmap. It preserves decisions, revisits phase boundaries when scope becomes clearer, and stops before tickets or implementation.
+- **docket** explores a feature, maps its vertical slices and details the current slice. A short roadmap links slice plans; implementation, tests and review inform the next slice's planning. It preserves decisions and stops before implementation.
 - **stint** builds once the designing is done, in sittings sized by how much codebase a run has actually read rather than by ticket count. It pins the point review measures against before writing any code, and stops reviewing after two passes instead of looping toward a "clean" that judgement-call findings never reach.
 
 Together, they make multi-session agent work sustainable: decisions are written down once, inherited durably, contradictions surface early, and the build runs stay small enough to review.
@@ -27,7 +27,7 @@ One skill sits upstream of all three: **product-discovery** decides whether a pr
 | Name | Description | Type |
 |------|-------------|------|
 | [charter](skills/charter/README.md) | Produce a project's decision layer (architecture.md, ADRs, CLAUDE.md) | user-invoked |
-| [docket](skills/docket/README.md) | Explore a feature and write one implementation plan and phased Markdown roadmap | user-invoked |
+| [docket](skills/docket/README.md) | Map a feature's vertical slices and plan the current slice | user-invoked |
 | [stint](skills/stint/README.md) | Build one sitting's worth of tickets per run, with review's fixed point pinned up front and a hard stop after two review passes | user-invoked |
 | [product-discovery](skills/product-discovery/README.md) | Decide what independent product to make, or whether to keep going with one, ending in a build / validate / narrow / kill call sized to the stakes | model-invoked |
 
