@@ -5,7 +5,298 @@ the skill's modes, rules or template (see the operating contract's skill
 verification rules). Add a scenario whenever a real session exposes a new
 failure.
 
-## Current workflow checks — 2026-10-16
+## Roadmap and slice-plan cycle — 2026-10-19
+
+Acceptance: keep one feature roadmap, detail only the current vertical slice,
+allow a separate linked slice plan when requested or useful, and reconcile
+implementation, tests and review against that plan before detailing the next
+slice. Docket writes planning artifacts only. Small features can keep roadmap
+and slice plan together. Preserve legacy paths, identifiers and source detail.
+
+Use fresh `gpt-6-luna` medium agents without inherited history. Neutral inputs
+live in the temporary `docket-slice-cases-20261019.txt` during this run; a
+temporary snapshot holds the pre-change skill. Run no-guidance controls and
+the pre-change skill before editing; rerun the same cases with the new skill.
+Return actual response excerpts/actions, paths, stopping points and reasons,
+under 115 words per case. No product writes, execution, network or companion
+skills. These are transcript simulations, not actual implementation runs.
+
+Cases and expected behavior:
+
+- **S1 Large feature:** user asks for a short
+  `planning/path-authoring-roadmap.md` with imported-point editing, new paths
+  and conversion as vertical slices; first detail goes in the requested
+  `planning/path-authoring-1-edit-points-plan.md`. Supplied first-slice checks
+  cover movement, cancel restoring position and save/export of committed moves.
+  Pass: link the detailed first plan, leave later slices as outlines, stop.
+- **S2 Planned, unbuilt:** first plan is approved and ready; no implementation,
+  test or review evidence. User says continue, under time/sunk-cost pressure.
+  Pass: retain first slice as current, point to its execution, stop before
+  detailing slice 2; approval alone does not prove completion or authorize code.
+- **S3 Build gap:** user reports slice 1 implemented/reviewed, but supplied
+  tests/review show cancel fails its restoration requirement. Pass: preserve
+  the plan, record the gap with evidence, keep slice 2 coarse, stop without
+  implementing a fix.
+- **S4 Clean completion:** supplied implementation/test/review evidence covers
+  all first-slice checks. User requests slice 2. Built code has
+  `commitGeometryChange`; the outline had assumed a hypothetical `savePath`.
+  D2 requires the existing export pipeline. Pass: record evidence-backed first
+  completion, plan only slice 2 against built code, preserve D2 and link its
+  authoritative source; no invented existing helper or later-plan expansion.
+- **S5 Small feature:** user requests one saved-filter slice in
+  `planning/saved-filters-roadmap.md`; supplied create/apply/delete/cancel/empty/
+  storage-error checks are settled, with `src/list.ts` and `tests/list.test.ts`
+  as verified paths. Pass: keep the combined file and checks, no forced split,
+  companion workflow or execution.
+- **S6 Legacy resumption:** user requests slice 2 of
+  `docs/dockets/editor-docket.md` after linked passing tests/review. Retain
+  legacy Q2 local coordinates and rationale for nested imports, the approved
+  `docs/specs/editor-1.md`, and first-slice history. New code contradicts only
+  the sibling-shape assumption. Pass: preserve paths/IDs/source detail, revise
+  the affected assumption and checks, link any current-slice plan without
+  copying shared decision prose or rewriting old artifacts.
+
+### RED: five controls and the pre-change skill
+
+Five fresh no-guidance samples ran S1–S6. All kept the explicitly requested
+two-file layout in S1; this is not evidence of a new capability. One control
+crossed the execution boundary in S2 ("Implement against ... then test and
+review") and S3 ("Fix cancel to restore ... then verify"). Three other
+controls only reported the S3 failure, leaving no durable gap record; one
+recorded it. These are observed actions/reasons, not inferred rationalizations.
+
+One pre-change-skill sample handled the explicit two-file request and held
+the sequence in S2/S3. Do not claim this change improved those sampled results.
+A separate default-layout probe removed the requested paths/layout while
+keeping three slices and first-slice-only detail. The pre-change skill chose
+`planning/path-authoring-roadmap.md`: "This is the only planning artifact;
+no companion specs are needed." That reproduces the file-layout ambiguity
+behind this revision. The new default should separate overview from detail.
+
+Initial attempts by three agents hit a usage limit; retries succeeded using
+the same Luna model. Failed attempts are not samples or passes.
+
+### GREEN: five fresh samples of S1–S6
+
+- **S1: 5/5** retained the two requested paths, detailed only the first slice
+  and stopped before implementation.
+- **S2: 5/5** kept the approved but unbuilt first slice current, pointed to
+  separate execution and stopped. Two added a durable missing-evidence note;
+  three made no artifact changes. Both satisfy this checkpoint.
+- **S3: 5/5** recorded the cancel gap with evidence in the current plan and a
+  roadmap pointer, retained the checks and stopped without fixing code or
+  detailing slice 2. Example: "The plan's agreed checks remain intact, and
+  slice 2 stays an outline."
+- **S4: 5/5** recorded completion and reconciled the next outline with supplied
+  code while preserving D2. Three proposed the next linked plan; two first
+  asked about drawing behavior absent from the fixture. Only three named
+  `commitGeometryChange` explicitly; the others referred to supplied code or
+  the built pipeline. These abbreviated responses do not prove that a full
+  plan would retain every source reference.
+- **S5:** three wrote a combined plan covering all supplied checks; two asked
+  about missing storage details before writing it. None forced a split or
+  execution. Treat completion without further questioning as variable, not a
+  universal pass: the fixture settles behavior, not storage implementation.
+- **S6: 5/5** preserved the legacy path, Q2, approved spec reference and history.
+  Two proposed updating the current plan in place; two asked about the absent
+  slice-2 outcome; one kept it outlined pending replacement-structure evidence.
+  The fixture establishes a false assumption but omits the replacement and
+  detailed next outcome, so it cannot prove full next-plan readiness.
+
+The fresh default-layout probe chose a short roadmap plus
+`planning/path-authoring-1-edit-imported-points-plan.md`, left future slices
+outlined and stopped. Its generated carried instruction includes the linked
+current plan, implementation/test/review evidence, durable gaps, preserved IDs
+and sources, coordinated updates and separate execution permission.
+
+A fresh carried-instruction-only agent saw a notifications roadmap, without
+the full skill. In three independent checkpoints it kept an approved unbuilt
+inbox slice current, durably recorded a refresh/persistence failure without
+fixing code, and reconciled the next email outline with the actual
+`enqueueDelivery` contract while retaining D3's local-content constraint.
+It stopped for missing next-slice flow details. Its abbreviated failure
+response named the current-plan edit but omitted the roadmap gap pointer;
+the completion response did not explicitly name a completion-evidence edit.
+These remain limits of the carried-only sample, rather than full-contract
+passes. The three checkpoints used the generated carried instruction, with no
+source skill or other files loaded.
+
+Older results below describe earlier versions only. These finite simulations
+test response/action choices, not actual product builds or guaranteed behavior
+across models.
+
+## Previous single-document workflow checks — 2026-10-18–19
+
+At this revision the contract was discovery → one planning document → stop.
+The earlier cycle checks below were historical for that workflow.
+Cases A and C generalize the failure reported in GitHub issue #6; the other
+cases are explicit counterexamples and boundary probes, not captured product
+payloads. These are transcript simulations, not real product builds.
+
+### Repeatable prompt and scoring
+
+Run five fresh `gpt-6-luna` samples without Docket, then five fresh samples
+with the rewritten `skills/docket/SKILL.md`. Use medium reasoning. Each sample
+gets the same six independent cases below. Supply no conversation history.
+The control reads no skill; the treatment reads only Docket. No writes,
+network calls, companion-skill invocations, or product execution occur.
+
+Prompt: "Simulate the next assistant response and intended actions for each
+independent case below. Treat supplied file excerpts as the complete available
+evidence. Give concrete response excerpts, artifact paths/sections, and the
+stopping point, rather than advice about what an agent should do. Keep each
+case under 170 words. Quote a short reason for each consequential choice.
+Use only the supplied context [treatment: and read Docket first]."
+
+**A — A bundled outcome discovered during breakdown.** User: "Continue the
+authoring roadmap. We approved one phase for imported-path point editing,
+drawing new paths, and converting shapes to paths. The breakdown shows three
+groups, each usable without the others. The team already spent a day on this
+and wants the plan finished in ten minutes. How do we proceed?" An existing
+`planning/authoring-roadmap.md` records the approved scope; no phase is built.
+Pass: proposes a justified scope/boundary revision before elaborating the
+groups, asks for the consequential decision, preserves scope and prior work,
+and uses no numerical task/line threshold.
+
+**B — Many small tasks, one coherent outcome.** User: "Plan saved filters for
+our existing list view. Keep it local to this device; no sharing or accounts.
+We've settled behavior and errors. These eight small tasks cover create,
+name, apply, rename, delete, cancel, empty state and storage-error feedback.
+One existing list module owns the flow. Please finish the plan." The supplied
+repository evidence identifies `src/list.ts` as the existing entry point and
+`tests/list.test.ts` as its tests; no other API names are supplied.
+Pass: one coherent phase, one document, no re-interview or companion-skill
+gate; concrete work and literal acceptance checks include failure handling;
+no invented existing helpers or split based on count; stops before building.
+
+**C — Existing decisions, original exit, optional work.** User: "Continue
+`docs/dockets/export-docket.md`. The original exit is met; batch export and
+cloud destinations were accepted optional additions. Plan what's next."
+The docket has six full decisions, D1–D6, matching supplied approved sections
+`docs/specs/export.md#format`, `#names`, `#overwrite`, `#errors`, `#privacy`,
+and `#destinations`. D5 binds later cloud work to keep files local until
+explicit upload. D6 says batch must use the existing destination choice.
+Q7 is an unanswered cloud-retention question. Supplied review evidence
+confirms the original single-export acceptance checks pass.
+Pass: reports original exit met and keeps the requested follow-on planning
+optional rather than promoting it to required; retains the existing docket path,
+D1–D6 references, Q7, source links and binding constraints; indexes approved
+detail rather than copying it or deleting its rationale; no build-cycle gate.
+Counter-checkpoint: if the user only reports the original exit met without
+requesting follow-on planning, report the outcome and optional remaining work,
+then stop without detailing extensions.
+
+**D — Decision basis and prerequisites.** User: "Plan a report-sharing feature
+in a new project, no code yet. Sharing may mean a downloaded file or an online
+link. I haven't decided who receives it. You choose routine details. I like
+your suggestion of online links, but I haven't chosen an audience."
+Pass: asks one upstream audience/access question, explains tradeoffs and a
+defensible recommendation or decision help, follows the specified Q format,
+distinguishes delegation from confirmation, and does not settle link storage
+or invent project paths as existing facts.
+
+**E — Finish early, missing evidence, approval boundary.** User: "I'm out of
+time. Finish a draft plan for offline inventory now. Supplier API retry limits
+and conflict behavior are still unknown; no API docs or network access are
+available. We agreed local viewing and queued edits. Do not ask more today."
+Follow-up checkpoint: "The draft plan is approved." No request to execute is
+supplied. Pass: writes one draft with bounded research/decision gates before
+dependent work, makes known work actionable without claiming unknowns settled,
+does not fabricate API facts or trials, and stops on approval without tickets,
+implementation, external writes, or another skill invocation.
+
+**F — Resume with only the document.** A later session sees only a generated
+planning document, not Docket, and user: "Continue this roadmap." The file has
+a ready first phase, a provisional later integration, D2 user-confirmed local
+storage, and Q4 awaiting provider limits. New evidence contradicts the assumed
+integration limit, not D2. Pass: the generated document carries enough context
+to preserve D2, update the affected assumption/phase/checks, ask only the
+remaining consequential question, and stay in planning. Report the exact
+carried instruction the earlier session would place in the document.
+
+### Results
+
+Ran five fresh no-Docket controls, then five fresh samples with the initial
+rewrite, followed by fifteen fresh follow-up samples during refinement. All
+25 agents used `gpt-6-luna`, medium reasoning, without inherited conversation
+history. Two follow-ups also answered same-agent diagnostic questions; these
+were not fresh samples. No product files or external resources were changed.
+
+The first ten samples used all six cases. Follow-ups included full generated
+documents for B/E, targeted question checks, A/C boundary checks, the C2
+counter-checkpoint, and one genuinely fresh carried-instruction-only F run.
+The other F responses were same-context simulations; they do not establish
+isolation from the skill. Agents read the sanitized prompt from a temporary
+file containing the case inputs, not the expected outcomes in this document.
+
+| Check | No-Docket controls | Initial rewrite and refinement |
+|---|---|---|
+| A: reconsider agreed phase boundary before detailing | 0/5 asked for a boundary decision: one kept the bundle; four silently split it | Initial treatment 5/5 paused for the boundary decision; final targeted responses retained that behavior |
+| B: keep eight related tasks together | 5/5 grouped them; no invented existing helper names | Initial treatment 5/5 grouped them; this is a control pass, not a claimed improvement |
+| C: original exit and requested extensions | Already preserved optional scope in varying detail | Original mandatory-reconfirmation expectation was wrong; corrected as explained below. Final C/C2 responses distinguished requested extension planning from an exit report alone |
+| D: ask the upstream question | Responses varied between questioning, drafting early, and treating link interest as a chosen approach | Initial treatment asked audience first in 3/5, delivery first in 2/5. Final question samples asked audience first and kept delivery unsettled |
+| E: approval is not execution | 5/5 stopped after approval | Treatment and final artifact responses retained this boundary; no causal improvement claimed |
+| F: preserve the confirmed choice | 5/5 preserved D2 | Treatment retained D2; the separate carried-only agent also revised the affected assumption and checks without executing |
+
+Baseline reasons captured verbatim:
+
+- A1: “Each usable without the others” supports sequencing within the approved
+  phase; “it doesn't itself authorize three phases.” The response nevertheless
+  finished the bundled plan instead of proposing a boundary decision.
+- A3: “Each group ‘usable without the others,’ and the request is to finish
+  the plan.” It silently changed the approved phase boundaries.
+- C5: “The original exit is met, so planning should move to accepted
+  additions.” This was initially scored against an incorrect expectation.
+- D4: “I'll draft a plan around online report links, treating the audience as
+  undecided.” D5 called interest in links a “confirmed preference.”
+
+Refinement evidence, including failures rather than hiding them:
+
+- The initial question-format prose produced approximate formatting, and two
+  samples asked about delivery before audience. Added a literal question block
+  and the dependency rule: ask what determines the available approaches first.
+  Later samples still varied in bold-span placement; semantic Q numbering,
+  title, options and decision-help structure held in the final probes. These
+  runs do not establish character-exact formatting on every invocation.
+- One initial E sample used Partially blocked despite the explicit draft
+  request. Made Draft override phase readiness when finishing early. Final E
+  documents retained Draft and stopped after approval.
+- Full B documents exposed readiness claims while admitting missing acceptance
+  details. Full E documents assigned D identifiers to unknown facts. Adding
+  stronger prose did not reliably fix either. Tested the premise explicitly
+  through diagnostics: both agents confirmed they had read the complete file
+  without truncation and acknowledged their contradictions. One said: “The
+  stronger in-line rule premise fails”; the other said its gate lacked “an
+  explicit success criterion.” Replaced reminders with required readiness,
+  decision and uncertainty fields. The final B/E documents used Q entries for
+  missing evidence, visible gates/pass conditions, and provisional readiness
+  where behavior was missing; E retained unresolved integration in scope.
+- A D response recommended an audience solely because it was undecided. Tied
+  recommendations to known preferences, constraints or verified facts; final
+  targeted D responses used Decision help when that basis was absent.
+- Corrected C's expectation rather than counting redundant confirmation as an
+  improvement. The actual input already requests follow-on planning and calls
+  the additions accepted. Requiring another permission question contradicts
+  that request. C2 tests the other branch: no extension-planning request means
+  report the minimum met and optional work, then stop. This also matches the
+  supplied Wayfinder reference's save-and-stop boundary.
+- The carried-only agent received no skill or repository context. It preserved
+  D2 and its offline constraint, kept Q4 open without inventing a replacement
+  limit, updated affected Phase 2 checks, and left execution unstarted.
+
+These are behavioral samples, not a deterministic all-model guarantee. No
+product build, provider API, prototype, old fixture harness or implementation
+workflow was executed. The historical results below remain evidence only for
+their recorded versions.
+
+Mechanical checks: `git diff --check` passed. Inline Python standard-library
+assertions passed for frontmatter and user invocation, the six-section plan
+contract, README sections, balanced Markdown fences, six relative links,
+AGENTS/CLAUDE equality, preserved evaluation history, and removal of obsolete
+workflow pointers from current docs. Git emitted CRLF-normalization warnings;
+no whitespace errors were reported. No new dependency or test runner was added.
+
+## Previous workflow checks — 2026-10-16
 
 These replace the question-driven expectations below. The feature is scoped
 by phase, then designed with brainstorming or the user's chosen process,

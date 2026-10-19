@@ -1,113 +1,187 @@
 ---
 name: docket
-description: Scope one large feature into buildable phases and carry its decisions between design, spec, plan, implementation and review.
+description: Explore a feature, map its vertical slices and plan the current slice before implementation.
 disable-model-invocation: true
 ---
 
 # docket
 
-Map one large feature in a durable file in the user's project. Name the
-**destination**, cut a **roadmap** of phases, and carry confirmed decisions
-forward as each phase is designed and built.
+Clarify a feature through guided discovery. A roadmap orders the feature's
+outcomes; a slice plan details the current outcome's behavior, work and checks.
+Plan one vertical slice, hand off for implementation, then use what was built,
+tested and reviewed to plan the next slice.
 
-**The phase scope bounds the work. Questions are starting points for discovery,
-not a complete checklist.** The design process explores the phase and produces
-its spec. An empty question list says nothing about whether that spec is ready.
+## Boundaries
 
-The cycle is: scope a phase → design and approve its spec → plan → implement →
-review and fix → return to docket for the next phase. Docket owns the roadmap
-and continuity; the chosen design skill owns discovery and spec-writing.
-Planning, implementation and code review use their own workflows.
+- Inspect relevant code, tests and documentation; write planning artifacts only.
+  Keep one roadmap per feature, with linked slice plans as needed.
+  Tickets, GitHub issues, implementation,
+  dependency installation, commits and external changes need separate requests.
+  Plan approval is not execution permission.
+- Verify project and technical claims from available evidence. Distinguish
+  existing code from proposed changes; label assumptions and access limits.
+- Use the requested document or the project's planning convention; otherwise
+  use `planning/<feature-slug>-roadmap.md`. Read before editing and preserve
+  unrelated work. Without writable access, return the Markdown.
 
-## Mode
+## Choose the current slice
 
-Find the feature's docket at the user's path, else `docs/dockets/*-docket.md`.
-No docket → **Chart**. Otherwise the **current phase** is the first Roadmap
-entry not marked `built`:
+- For a new feature, sketch the outcome-based roadmap and detail its first
+  actionable slice. Later slices stay outlines, even when the whole feature
+  is well understood. For several slices, default to a short roadmap with a
+  linked current plan at `planning/<feature-slug>-<n>-<slice-slug>-plan.md`.
+  Honor requested paths and project conventions. A small, single-slice feature
+  can keep its roadmap and detailed plan in the same file. Create future
+  slice-plan files when their planning begins.
+- On resumption, read the roadmap, current plan and relevant implementation,
+  test and review evidence. An approved plan without completion evidence stays
+  current: point to its separate implementation step and stop. A request to
+  continue planning alone does not authorize implementation or fixes.
+- If evidence is missing, contradictory or shows an unmet acceptance check,
+  record the gap and its evidence in the current plan, with a short roadmap
+  pointer. Preserve the agreed checks, keep later slices coarse and stop before
+  detailing the next slice. Identify the missing check or correction needed.
+- When implementation, tests and review establish the current slice's checks
+  are met, record completion with evidence references. Reconcile the next
+  outline with the built code, then discover and plan that slice only.
+  Sufficient supplied evidence need not be recreated through a fresh audit.
 
-- Implementation reported complete → **Advance**, including checking review.
-- Otherwise → **Prepare**.
+## Discover
 
-Keep one docket per feature.
+1. **Establish the outcome.** Read the idea, prior answers, existing plan and
+   relevant project evidence. Establish users, goal, observable success
+   criteria, constraints and exclusions. Investigate discoverable facts
+   yourself; ask about missing decisions. A new project needs no invented code
+   structure. A clear request needs no preliminary interview.
+2. **Track uncertainty.** Keep **Settled** facts and decisions distinguished,
+   **Questions** for specific unresolved choices, **Still unclear** for areas
+   needing earlier answers, and **Excluded** work. Use the conversation or the
+   same document. Questions are discovery leads, not an exhaustive checklist.
+   After each answer, revise the map and follow newly relevant branches.
+3. **Resolve prerequisites first.** Follow consequential choices through user
+   flows, state, permissions, integrations, failures and scale where relevant.
+   Ask what determines the available approaches before asking the user to
+   choose among those approaches.
+   Resolve choices that change the outcome before detailing dependent work.
+   If evidence requires a trial, propose the smallest investigation and its
+   success criterion; execution needs a separate request.
+4. **Preserve decision ownership.** Record choices using Plan's decision entry
+   format as they settle; keep unknown facts in the uncertainty map.
+   Suggestions, expressions of interest and silence are not confirmation.
+   Honor explicit delegation. Reopen confirmed choices only for material new
+   evidence or changed requirements, obtaining an explicit revision.
 
-## Chart
+### Questions
 
-1. **Read the context.** Read the relevant code and product requirements.
-   Agree the destination and exclusions with the user. If one design session
-   and one buildable spec cover the feature, recommend that session and stop.
-2. **Cut the roadmap with the user.** Each phase adds something a user can do
-   end to end, usable without later phases. Phase 1 is the thinnest useful slice
-   through the shared foundations. Size each phase for one reviewable spec and
-   one implementation plan. Storage, logic and UI belong inside a slice.
-   Give each phase a spec path using the project's convention, else
-   `docs/specs/<feature>-<n>-<phase>.md`.
-3. **Write the docket** from `references/template.md`. State each phase's
-   outcome, dependencies and boundaries. List known questions under Questions,
-   tagged with their phase; name blockers when known. Keep uncertain in-scope
-   areas under Not yet specified. Later phases stay coarse until earlier
-   builds give them a firmer basis. Charting settles scope, not feature design.
-4. **Show the map for confirmation.** Adjust it with the user, then point to
-   Prepare for phase 1. A confirmed roadmap is enough to start phase design;
-   its question list can grow throughout that design.
+Ask one focused question, then wait. Batch independent questions only when
+requested. Ask as many as consequential uncertainty requires; skip routine
+details that cannot change the agreed outcome.
 
-## Prepare
+Write each user-facing question in this form, including on resumption:
 
-1. **Reconcile context.** Read the current phase, relevant decisions, any
-   existing spec, and the code they name. Surface stale assumptions. On older
-   dockets, refresh the opening instruction from `references/template.md`,
-   preserving recorded decisions and question IDs.
-2. **Check the spec's status.** A written spec still awaiting approval resumes
-   its design review. A user-approved spec gains `specified` on the Roadmap;
-   point to planning, implementation, then review, and stop. Open questions
-   affecting its behavior must be resolved in the design before approval.
-3. **Hand off the phase.** Give the design process the phase's intended
-   outcome, included and excluded work, dependencies, relevant confirmed
-   decisions and their sources, existing code, known questions, remaining
-   uncertain areas, and spec path. Use the user's chosen design skill;
-   otherwise use `/brainstorming` if installed. If none is available, follow
-   `references/interrogation.md` for phase design.
-4. **Carry discoveries forward.** During design, record confirmed decisions
-   with what they bind for later phases, and retain unresolved questions for
-   resumption. Look up facts yourself. Discover new questions by following the
-   phase's complete user flow through the code and its consequences, including
-   behavior the list never mentioned. Work inside the agreed phase scope;
-   discoveries that require changing it are discussed with the user and
-   reflected on the roadmap. Later-phase details remain with those phases.
-5. **Finish at an approved spec.** The spec must describe the phase end to end
-   with observable acceptance criteria, rules, states, failure cases and the
-   constraints later phases rely on. Surface unresolved behavior to the user
-   before approval. Record relevant confirmed decisions back in the docket,
-   link the spec and mark the phase `specified` when approved. Then hand off
-   to planning. The next phase waits for implementation and review.
+```markdown
+❓ **Q<number>** - **<short title>**: <one question and why it matters>
 
-When the user invokes a design skill directly on a docket phase, the docket
-supplies context and constraints; that skill controls the session's process.
-Resume confirmed decisions rather than repeating their interview. New evidence
-that conflicts with one is brought to the user for an explicit revision.
+A. <realistic choice, benefit and drawback>
+B. <realistic choice, benefit and drawback>
 
-## Advance
+➡️ **Recommendation:** <choice and project-specific reason>
+```
 
-1. **Check the outcome.** Read the approved spec, implementation and review
-   results. Check the phase's behavior against the spec using review evidence
-   and relevant code. Missing, different or unverified behavior is surfaced;
-   the user's report alone does not establish that a spec rule holds. If review
-   has not happened, point to it and stop.
-2. **Resolve differences with the user.** A build gap means the spec stands
-   and work remains. A changed decision is recorded explicitly and its spec
-   updated. Write outstanding gaps or review findings under the phase's
-   Roadmap line as `Build gaps:` and stop with the phase still `specified`.
-3. **Advance on a completed, reviewed phase.** Mark it `built` when its spec
-   holds and blocking review findings are resolved. Carry forward any changed
-   facts or confirmed decisions. Revisit the next phase's scope with the user
-   against the code now built, then Prepare it. If this was the last phase,
-   close the docket with a line saying the destination is reached.
+Offer only meaningful alternatives, usually two or three; invite choosing,
+modifying or delegating. Recommend an offered choice only when a known user
+preference, constraint or verified fact favors it over the alternatives.
+When no recommendation is defensible, replace its
+line with `➡️ **Decision help:** <what would help the user choose>`. Explain
+unfamiliar choices with examples. Bold the Q identifier and title separately,
+with ` - ` between them. Keep question numbers sequential, retaining
+the number when clarifying a question. Separate batched blocks with `---`;
+retain emojis unless the user opts out.
 
-## Continuity
+## Plan
 
-- Re-cut a phase with the user when it outgrows one spec. Retag its questions
-  and uncertain areas; retain the decisions already made.
-- Preserve confirmed decisions. An explicit revision records the new choice
-  and its consequences, marks the old entry `superseded by` the new entry, and
-  updates affected specs. Use existing question IDs as references, not an agenda.
-- A finding outside the destination gets one line under Found & parked, then
-  return to the phase. Scope expands only through agreement with the user.
+Write the current plan automatically when the goal, scope, current slice's behavior
+and major implementation choices are clear. No companion skill or additional
+approval is required to write it. If asked to finish early, deliver a Draft
+with unresolved choices visible and stop questioning. Retain Draft status
+even when a known slice is actionable; state slice readiness separately.
+
+**Check phase boundaries** after discovery and whenever a breakdown reveals
+more scope. Group work around a coherent, verifiable outcome. Independently
+deliverable outcomes are candidates for separate phases; small related flows
+can stay together. Keep coupled work together when separation creates an
+unusable intermediate state or duplicates work. Task counts, file lengths and
+plan counts do not establish scope. Explain a proposed change to agreed phase
+boundaries and obtain the user's decision before elaborating dependent work.
+A phase is a vertical slice: a usable outcome with the interface, logic,
+state and validation it needs, rather than a technical layer.
+
+**Keep one source per decision.** Put its detail and rationale in one
+authoritative section. Elsewhere retain its identifier, gist, precise reference
+and any constraint needed by the current work. When approved existing material
+already holds the detail, index it after checking the reference preserves the
+decision and rationale. Preserve IDs, source links and revision history.
+
+Keep these responsibilities across the roadmap and current slice plan. When
+combined, use sections; when separate, link detail instead of repeating it:
+
+1. **Status, goal and success criteria.** Use Draft, Ready for implementation,
+   or Partially blocked. State readiness for the current slice and
+   identify provisional or blocked later phases separately. Ready means no
+   unresolved prerequisite blocks that slice, not that it is implemented.
+   Include **Readiness evidence:** concrete expected behavior/checks here or
+   verified linked sources, and **Unresolved prerequisites:** Q references or
+   None. Missing behavior/checks require a provisional or blocked phase even
+   when the user reports them settled.
+2. **Scope.** Included work, exclusions and optional extensions. Preserve the
+   original minimum outcome and distinguish explicitly agreed scope changes.
+   Unresolved in-scope work stays included and provisional; exclusions are
+   agreed omissions.
+3. **Decisions and rationale.** The authoritative decisions or index. Each entry
+   describes an actual choice and uses `D<number> — Choice: ...;
+   Basis: User-confirmed / Delegated / Assumption; Reason: ...; Binds: ...;
+   Source: ...`. Keep legacy IDs on existing records; number new decisions
+   separately from questions. Missing facts or unresolved choices use the
+   uncertainty entries in section 6.
+4. **Current slice plan.** Scoped behavior and exclusions, user flow, relevant
+   edge cases, technical approach, verified existing code to reuse/change,
+   proposed additions and concrete work as checkboxes. Account for every agreed
+   behavior in the work and acceptance checks, with an explicit mapping for
+   shared checks. Each check states its trigger and observable result. Include
+   readiness evidence and prerequisite gates here when this is a separate file.
+   Shared decisions stay in their authoritative home; reference their IDs and
+   binding constraints. Slice-specific decisions can live in this plan.
+5. **Phase-by-phase roadmap.** Keep each slice's outcome, required or optional
+   role, prerequisites, acceptance summary and status short. Identify the
+   current slice, link its detailed plan and retain completion evidence for
+   finished slices. Later slices contain outcomes and known dependencies;
+   their detailed work and checks wait for earlier implementation evidence.
+6. **Dependencies, uncertainties and next step.** Ordering, unresolved choices
+   and evidence, and the first actionable step. Each uncertainty uses
+   `Q<number> — Missing choice/evidence: ...; Blocks: ...; Next check: ...;
+   Pass condition: ...`. Put that bounded gate before dependent work. Identify
+   shared files/contracts before proposing genuinely independent parallel work.
+
+## Save, stop and resume
+
+- Open the roadmap with a short carried instruction: read the current slice's
+  linked plan; keep later slices as outlines until implementation, tests and
+  review establish current acceptance; record gaps and evidence before moving
+  on; preserve decision IDs and sources; update affected decisions, plans and
+  checks together; execution needs a separate request. It must work when the
+  full skill is absent.
+- Check alignment with answers, explicit assumptions, dependencies and
+  acceptance checks before saving. Invent no dates, estimates, existing APIs
+  or completed verification. Return the location and a brief summary, then
+  stop. Do not create tickets or implement the planned slice.
+- On resumption, read the same document and new evidence. Continue unanswered
+  decisions without repeating settled questions. Update the affected plan and
+  checks together. If evidence establishes the minimum outcome is met, report
+  that and keep extensions optional. When the user has requested extension
+  planning, proceed within that request; otherwise report the remaining
+  options and stop. Ask which to pursue when the user requests a next choice.
+- For older dockets, retain their path, decisions, question IDs and linked
+  evidence, approved specs and implementation history. Resume the current
+  slice's cycle in place. Keep a useful combined document; link a separate
+  current plan when needed without moving history or duplicating shared
+  decisions. No compulsory companion skill or new spec format is required.
