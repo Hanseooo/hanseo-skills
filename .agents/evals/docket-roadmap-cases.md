@@ -26,4 +26,3 @@ User: We are brainstorming with planning/report-exports-roadmap.md before I invo
 ## E: User-invoked tracker spec and handoff
 
 User: /to-spec Publish the agreed S1 CSV request/download spec to our configured issue tracker. Source roadmap planning/report-exports-roadmap.md. D1 existing permissions, source meeting/7. Agreed S1 behavior: request CSV from own report, download when ready; failed requests show a retryable error, and cancellation leaves no generated file. Acceptance checks are given request succeeds -> CSV downloads; given request fails -> retry available; given cancellation -> no file remains. These choices are confirmed; no further blockers. S2 progress/cancel has an outline only. No issue has been published yet. Preserve the source context needed by the later build/review session. Simulation: show the tracker publication content/actions and any linked roadmap update, but make no tool calls or real external changes.
-
