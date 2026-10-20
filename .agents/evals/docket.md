@@ -5,7 +5,90 @@ the skill's modes, rules or template (see the operating contract's skill
 verification rules). Add a scenario whenever a real session exposes a new
 failure.
 
-## Roadmap and slice-plan cycle — 2026-10-19
+## Roadmap only, user-invoked specs and carried updates — 2026-10-20
+
+Current acceptance supersedes the historical slice-plan cycle below. Docket
+writes one short evolving roadmap, not per-slice plans or specs. The user
+invokes spec creation to the configured tracker. Later sessions update the
+roadmap through instructions carried in it and its spec/ticket handoffs.
+Uncertainty can change the route within the agreed outcome. Completion needs
+passing acceptance checks, completed review and explicit acceptance of residual
+findings. Next-slice discussion is allowed before dependencies are complete.
+
+Neutral inputs: [docket-roadmap-cases.md](docket-roadmap-cases.md), cases A–E.
+Five fresh `gpt-6-luna` medium agents per arm, without inherited history;
+transcript simulations only, with no project implementation or tracker writes.
+Inspect actual responses manually rather than trusting agents' pass claims.
+
+### RED: five no-guidance samples
+
+- A: 5/5 already produced roadmap-shaped outlines. None included maintenance
+  instructions for future discussion, spec and review sessions. Do not claim
+  one-roadmap layout itself improved over this control.
+- B: 3/5 blocked next-slice discussion. Exact reasons included “I'd hold S2
+  discussion until AC2 is fixed and verified”, “I wouldn’t move on to S2 yet”,
+  and “Before we plan S2, what is the evidence that S1’s cancellation behavior
+  is fixed?” The other two allowed discussion while keeping S1 incomplete.
+- C: 5/5 correctly accepted supplied completion evidence and explicitly accepted
+  residual findings. This behavior is a regression check, not a new improvement.
+- D: 5/5 used the benchmark to require background processing within CSV scope,
+  keeping PDF/email outside. This behavior also already held in the controls.
+- E: 5/5 preserved roadmap references and proposed linking the published spec.
+  None put an explicit after-build/review roadmap-update instruction in the
+  handoff. Representative text: “Preserve these references in the issue for
+  build and review.” Source context alone did not carry the update obligation.
+
+### Pre-change skill control
+
+One fresh Luna run read the old skill for A and B before editing. A created
+`planning/report-exports-roadmap.md` plus a linked
+`planning/report-exports-1-request-download-plan.md`. B stopped discussion:
+“I would not start S2 discussion or mark S1 done.” These reproduce the two
+old behaviors intentionally replaced by the approved design. Historical tests
+requiring that cycle below are superseded, not current failures to ignore.
+
+### Initial treatment and correction
+
+Three fresh Luna samples exercised A–E. B now allowed discussion while retaining
+AC2's failure; E carried the roadmap update obligation. One D response introduced
+“provisional S0, ‘Background export processing,’ as a prerequisite”. That was a
+technical layer rather than a separately usable outcome. The carried instruction
+now puts technical prerequisites inside the outcome they enable, with a new
+slice requiring a separately usable outcome.
+
+### GREEN: five fresh final-skill samples
+
+| Case | Result in all five samples |
+|---|---|
+| A: initial roadmap | One roadmap; first and later slices are outlines; explicitly includes carried instructions; separate user-invoked spec step; no worker choice invented from unmeasured duration |
+| B: unfinished earlier slice | Retains failed AC2 and accepted cosmetic finding separately; permits S2 discussion while gating dependent implementation; no repeat audit |
+| C: completed slice | Records Complete with supplied CI/review/accepted-finding evidence; preserves D1; no repeat audit or scheduled-email scope expansion |
+| D: adaptive route | Uses the benchmark to add background processing within the export outcome, not as a technical-layer slice; preserves confirmed scope and evidence |
+| E: spec handoff | Publishes only under the explicit spec request in the simulation; includes roadmap pointer and after-implementation/review update instruction; preserves IDs and links the returned issue only when available |
+
+A used short excerpts, so a separate full-artifact Luna probe returned the
+complete proposed Markdown. It included the full carried block, one roadmap,
+S1/S2 outlines and uncertainty, without a separate plan or spec. No generated
+product file was written by these transcript probes.
+
+A separate fresh Luna portability probe received only the carried block
+extracted from the final skill, plus neutral B–E inputs; it never read Docket.
+All four cases retained the evidence gates, allowed early discussion, respected
+scope and carried the update instruction into the tracker-spec handoff. This
+checks the handoff wording without requiring another Docket invocation.
+
+These are five paired no-guidance/final-guidance samples per case, an old-skill
+control, three initial-treatment samples and two focused final probes, all using
+`gpt-6-luna` medium. No actual tracker publication, implementation, browser flow,
+background hook or installed-skill update was exercised. A session that never
+receives the roadmap or its pointer still cannot be assumed to maintain it.
+
+Local checks: `git diff --check` passed. A targeted `rg` search found no old
+current-slice-plan or linked-slice-plan workflow claims in the root README,
+CONTEXT, active Docket docs or product-discovery's README. Legacy terminology
+and the dated historical evaluations remain intentionally preserved.
+
+## Historical: roadmap and slice-plan cycle — 2026-10-19
 
 Acceptance: keep one feature roadmap, detail only the current vertical slice,
 allow a separate linked slice plan when requested or useful, and reconcile
@@ -556,6 +639,56 @@ Run before phases were added, on P1–P4.
 - P4: recommended a pair-keyed conversation row over the general model: "ready
   for phases 2 and 3, but it designs them before phase 1 is built, which the
   roadmap rules out."
+
+### GREEN (phases), 2026-10-11
+
+| Scenario | Result |
+|---|---|
+| S1 Chart | pass: four phases cut before any question, 16 questions tagged by phase, stopped |
+| S2 Work | pass: took Q3 unasked, left the phase 3 look up alone |
+| S3 Specify, planted gap | pass on the second run: edit/delete became a phase 1 question, no spec on disk, no plan or code |
+| S4 Floor guard | pass |
+| S5 Reopen | pass, run on a one-phase version of S2's docket |
+| P1 Chart, too big to build | pass: one docket, four phases of slices, cut agreed before Q1–Q15 were placed |
+| P2 Phase decided | pass on the second run: one gap found and settled, then a 205-line spec with Carried forward; phase 1 `specified`; Q7 and Q8 untouched |
+| P3 Built, with gaps | pass twice; the second run wrote 11 build gaps under the Roadmap line and corrected the spec where it had dropped parts of two decisions |
+| P4 First decision | pass: one `conversations` table with a `kind`, phase 1 writing only direct |
+| P5 Built clean | **fixture fail**, then pass: phase 1 `built`, phase 2's line confirmed, three phase 2 questions charted from the code, none answered |
+| P6 Outgrown phase | pass: no spec, Roadmap split into three with the user, Q1–Q8 untouched |
+| P7 Chart billing | pass: five phases of its own (subscribe, seats, trial, invoices, failed payments), 14 questions |
+
+What the first round of runs changed:
+
+- **S2 and S3 ran on a one-phase docket holding all of messaging.** Both agents
+  stopped to say the phase was too big and improvised a numbered "one phase or
+  several" question. Added the rule that a phase which has outgrown one spec is
+  split on the Roadmap, pointed to from Specify, and kept that docket as P6.
+- **P2 and S3 wrote no spec.** "Anything the spec needs that no decision
+  settles" gave no bar, so one agent raised two gaps and another seven. A gap
+  is now a rule, state or permission where two sensible readings give the user
+  different behaviour. Specify looks for gaps before it writes, so no half
+  spec is left on disk.
+- **P5 refused the clean build, correctly.** The overlay had an outbox that
+  never flushed on load, a stream that broke on first connect and a service
+  worker nothing registered. The same run showed "found in the code" could
+  mean the code exists or the rule holds. Advance now follows each rule from
+  where a user reaches it, and code nothing reaches is missing.
+- **P3's build gaps existed only in the reply.** They are now written under the
+  phase's Roadmap line, where the session finishing the build reads them.
+- **"Numbered in the order they will be worked" went untrue** as soon as a
+  question was appended. The header is now "worked by phase, then by number",
+  and an open question that must wait for a new one gains it under
+  `Blocked by`.
+
+Seen and left alone:
+
+- Phase 1 carries most of the questions (10 of 16 for messaging, 8 of 14 for
+  billing), because the first slice settles what the later ones share. The
+  split rule is the way out when that is too many.
+- With no web access, every agent left an uncheckable look up open under
+  `So far:` and marked it unverified. No rule asks for this; none was added.
+- The gap bar is still a judgment. Runs on the same docket raised between one
+  and three gaps.
 
 ### RED (old docket and no skill), 2026-10-06
 

@@ -15,7 +15,7 @@ But splitting introduces its own failure: **session 4 contradicts session 1.** Y
 **What hanseo-skills does:**
 
 - **charter** captures architectural decisions *before* the first brainstorming session, so later sessions inherit them instead of re-deriving them.
-- **docket** explores a feature, maps its vertical slices and details the current slice. A short roadmap links slice plans; implementation, tests and review inform the next slice's planning. It preserves decisions and stops before implementation.
+- **docket** explores a feature and creates one evolving roadmap. Reference it during slice discussions, then invoke your spec skill separately. Carried instructions let later sessions update decisions, slices and completion evidence without invoking Docket again.
 - **stint** builds once the designing is done, in sittings sized by how much codebase a run has actually read rather than by ticket count. It pins the point review measures against before writing any code, and stops reviewing after two passes instead of looping toward a "clean" that judgement-call findings never reach.
 
 Together, they make multi-session agent work sustainable: decisions are written down once, inherited durably, contradictions surface early, and the build runs stay small enough to review.
@@ -27,9 +27,21 @@ One skill sits upstream of all three: **product-discovery** decides whether a pr
 | Name | Description | Type |
 |------|-------------|------|
 | [charter](skills/charter/README.md) | Produce a project's decision layer (architecture.md, ADRs, CLAUDE.md) | user-invoked |
-| [docket](skills/docket/README.md) | Map a feature's vertical slices and plan the current slice | user-invoked |
+| [docket](skills/docket/README.md) | Create an evolving feature roadmap for user-invoked slice specs | user-invoked |
 | [stint](skills/stint/README.md) | Build one sitting's worth of tickets per run, with review's fixed point pinned up front and a hard stop after two review passes | user-invoked |
 | [product-discovery](skills/product-discovery/README.md) | Decide what independent product to make, or whether to keep going with one, ending in a build / validate / narrow / kill call sized to the stakes | model-invoked |
+
+### Adapted skills
+
+Independent adaptations of Matt Pocock's workflows, with selected design
+practices from Superpowers brainstorming. Install any of them separately;
+none requires Docket or the other adaptations.
+
+| Name | Description | Type |
+|------|-------------|------|
+| [han-grill](skills/han-grill/README.md) | Stress-test decisions with meaningful options, explicit tradeoffs and grounded recommendations | user-invoked |
+| [han-to-spec](skills/han-to-spec/README.md) | Write a spec to the configured tracker or usual spec folder, with outcome stories, detailed UX criteria and source coverage | user-invoked |
+| [han-to-tickets](skills/han-to-tickets/README.md) | Publish approved vertical tickets to the configured tracker with scope, complexity and blast radius in their bodies | user-invoked |
 
 ## Install
 
