@@ -11,7 +11,7 @@ cost.
 
 Upstream of everything else in this collection. Once the call is `build`, the
 product is decided and design takes over: brainstorming for a design session,
-`/docket` for a feature roadmap and current slice plan, `/charter` for a new project's
+`/docket` for an evolving feature roadmap, `/charter` for a new project's
 decision layer.
 
 It is model-invoked: the agent reaches for it on questions like "should I build

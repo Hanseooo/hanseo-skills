@@ -5,10 +5,11 @@
 - **user-invoked** — a skill only reachable when a human types its slash command; never triggered automatically by the agent
 - **model-invoked** — a skill the agent may reach for automatically when the task fits, as well as by explicit user request
 - **operating contract** — the `CLAUDE.md` / `AGENTS.md` files that define how agents must behave when working on this repo
-- **docket** — a feature's planning context: one roadmap with linked slice plans as needed, or a combined file for small features; also the user-invoked skill that writes or resumes it
-- **destination** — the legacy docket name for the feature's intended outcome; current plans distinguish the minimum outcome from optional extensions
-- **roadmap** — the feature overview: outcome-based slices in dependency order, shared decisions, acceptance summaries, status and links to detailed plans and completion evidence
-- **slice plan** — the current slice's concrete behavior, implementation work and acceptance checks; later slice plans follow evidence from earlier implementation, tests and review
+- **docket** — a feature's evolving roadmap, carrying instructions for later sessions to maintain it; also the user-invoked skill that writes or resumes it
+- **destination** — the feature's agreed minimum outcome and success criteria; provisional slices can change the route, while optional extensions remain separate
+- **roadmap** — the feature overview: outcome-based slices, dependencies, shared decisions, uncertainty, status and links to user-invoked slice specs and completion evidence
+- **slice plan** — a legacy Docket artifact containing detailed behavior, work and checks; retained as an existing source, with no new slice plans created by Docket
+- **slice spec** — a slice's authoritative behavior and acceptance checks, published to the configured tracker through a separately user-invoked spec workflow and linked from the roadmap
 - **phase / vertical slice** — a coherent, usable and verifiable outcome with the interface, logic, state and validation it needs; required or optional, with planning readiness separate from completion
 - **question** — a missing choice or piece of evidence identified by a stable Q number; a discovery lead rather than an exhaustive checklist, numbered separately from new decisions
 - **session** — one sitting of feature discovery, planning or resumption, preserving settled decisions and unresolved concerns
@@ -21,3 +22,10 @@
 - **exact-competition search** — the search for products serving the same user, trigger and workflow, run before any wedge is called open
 - **decision record** — the six-line close of a product-discovery call on a bet of weeks or more: decision, confidence, strongest evidence, dominant risk, next action with its cap, and what would change it
 - **unread context** — codebase a run has not opened; the limit on how many tickets one stint may absorb, in place of a ticket count
+- **han-grill** — an independent, user-invoked adaptation of grilling that compares meaningful options, their tradeoffs and evidence for recommendations
+- **han-to-spec** — an independent, user-invoked adaptation of to-spec that writes to the configured issue tracker or usual spec folder, with outcome stories, traceable acceptance criteria and shared UX rules
+- **han-to-tickets** — an independent, user-invoked adaptation of to-tickets that preserves tracker publication and adds scope, complexity and blast radius to ticket bodies
+- **outcome story** — a usable user outcome with a stable story ID and individually addressable acceptance criteria; one story can span several tickets
+- **shared behavior** — a requirement stated once with a stable SH identifier and referenced by affected stories or tickets
+- **complexity** — the difficulty of implementation reasoning, classified as low, medium or high with an evidence-based reason
+- **blast radius** — the reach of a change through features, consumers or contracts, classified as local, shared or system-wide; distinct from the severity of a failure
