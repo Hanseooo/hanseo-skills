@@ -16,7 +16,8 @@ Read the source in full, including referenced issue bodies/comments and shared
 requirements. If retrieval is truncated or a required source is inaccessible,
 identify the missing material before ticketing dependent work. Inspect relevant
 code/tests when existing context is insufficient to establish boundaries and
-consumers. Use project vocabulary and respect ADRs.
+consumers. Read enough to name each ticket's entry points and the existing
+tests that assert behavior it changes. Use project vocabulary and respect ADRs.
 List all in-scope source criteria before slicing; use that inventory for the
 final coverage check, including every story in the supplied source.
 
@@ -60,20 +61,45 @@ Use these fields in the body, including during breakdown review:
 **Parent:** <source issue, if any>
 **What to build:** <observable outcome>
 **Source criteria:** <precise source story/AC/SH IDs or section references>
-**Scope:** <affected areas, included behavior and relevant exclusions>
+**Scope:** <affected areas and included behavior>
+**Out of scope:** <adjacent work a reader might assume, and the ticket that owns it>
 **Complexity:** <Low / Medium / High> — <evidence-based reason>
 **Blast radius:** <Local / Shared / System-wide> — <affected consumers and reason>
+**Unblocks:** <tickets this gates, or None; omit when native links show it>
+
+## Context
+<why this ticket exists now; links to spec sections and decision IDs, not copies>
+
+## Read first
+- `<file>` — `<symbol>`: <what to learn there>
+
+## Behavior this changes
+<existing behavior or test expectations overturned on purpose, each with its
+source criterion and the tests that assert it; otherwise None>
 
 ## Acceptance criteria
 - [ ] <trigger and observable result; cite source criteria where useful>
 - [ ] <applicable shared behavior, including persistence/export before this slice closes>
 
+## Guidance
+<suggested shape, labelled as a suggestion; traps found while reading the code;
+otherwise None>
+
 ## Verification
 <existing public seam/precedent, main journey and critical failure check>
+**Targeted:** <command for the new and affected tests>
+**Full suite:** <required now (Shared/System-wide reach), or at the batch gate>
 
 ## Blocked by
 <genuine ticket dependencies or specific unresolved decision, otherwise None>
 ```
+
+The body is a briefing for a fresh implementer: it should spare them the
+exploration, never the judgment. Read first holds the three to eight entry
+points that matter, as file plus symbol; line numbers go stale once an earlier
+ticket lands. Guidance names traps you actually found in the code; a suggested
+shape stays non-binding. Keep a body readable in one pass, roughly 120 lines at
+most. Longer usually means copied source text or two tickets.
 
 Scope describes the deliverable; avoid invented size scores or estimates.
 An ordinary slice closes only when its applicable shared criteria pass. If

@@ -34,6 +34,14 @@ Scope, complexity and blast radius are separate body fields with reasons.
 They describe the work without adding tracker labels or a planning field.
 Breakdown review precedes publication to the existing tracker.
 
+Each body is also a briefing for the agent that implements it: context links,
+three to eight entry points as file plus symbol, the existing behavior and
+tests the ticket overturns on purpose, traps found in the code, and the
+targeted check command. The implementer starts from those pointers instead of
+re-exploring, and finds conflicting tests before the full suite does. Upstream
+avoids file paths because they go stale; symbol names without line numbers
+stay valid through earlier tickets' edits.
+
 ## When not to use it
 
 - **Product behavior is undecided:** discuss it or use `/han-grill` first.

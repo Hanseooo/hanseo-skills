@@ -29,3 +29,8 @@
 - **shared behavior** — a requirement stated once with a stable SH identifier and referenced by affected stories or tickets
 - **complexity** — the difficulty of implementation reasoning, classified as low, medium or high with an evidence-based reason
 - **blast radius** — the reach of a change through features, consumers or contracts, classified as local, shared or system-wide; distinct from the severity of a failure
+- **han-grill-with-docs** — an independent, user-invoked wrapper that runs han-grill and domain-modeling, writing settled terms and decisions to the project's existing glossary and decision record
+- **han-implement-spec** — an independent, user-invoked adaptation of implement-spec that builds a ticket graph on one integration branch, choosing sequential or parallel mode per frontier
+- **model tier** — economy, standard or strong: a role-based model choice that skills name instead of specific models; the harness maps it to whatever models it offers
+- **impact sweep** — the search, before writing code, for existing tests that assert behavior a ticket changes on purpose
+- **implementer briefing** — the han-to-tickets body sections that spare a fresh implementer exploration: Context, Read first, Behavior this changes, Guidance and targeted checks
