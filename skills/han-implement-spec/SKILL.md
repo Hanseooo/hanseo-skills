@@ -39,9 +39,11 @@ Every step below spends under these rules.
   timeout longer than the expected run. A status message carries new evidence;
   with nothing new, send nothing. Where the harness demands periodic updates,
   keep them to one line without re-inspecting anything.
-- **Agents earn their spawn.** A subagent pays to read the codebase cold. Spawn
-  one for concurrency, for the fresh context a review needs, or to offload a
-  heavy main context. The main session runs routine git operations itself.
+- **A fresh agent per ticket.** Each ticket gets its own implementer agent,
+  briefed with pointers only, so no ticket inherits another's context. The main
+  session orchestrates: it reads the graph, dispatches, merges and gates, and
+  builds no tickets. It runs routine git operations itself. A harness without
+  subagents builds each ticket in the main session, in graph order.
 
 ## Steps
 
@@ -57,21 +59,22 @@ Every step below spends under these rules.
 
 3. **Pick the mode for the current frontier**, and state it in one line with
    the reason:
-   - **Sequential**: one ready ticket, built directly on the integration
-     branch: no worktree, no merge. The main session builds it when its own
-     model meets the ticket's tier; otherwise one implementer agent on that
-     tier does, on the same branch. Once the main context is
-     heavy (several tickets absorbed, or the next ticket needs areas not yet
-     read), hand the rest of the chain to one implementer agent working on the
-     integration branch.
+   - **Sequential**: one ready ticket, or ready tickets that overlap. One
+     implementer agent at a time commits directly on the integration branch: no
+     worktree, no merge. The next ticket's agent starts after the previous one
+     reports.
    - **Parallel**: two or more independent ready tickets. One implementer agent
      per ticket, in the background, each in its own worktree branched from the
-     integration tip. The main session merges each result as it reports, using
-     `/resolving-merge-conflicts` if installed. Tickets that edit the same
-     symbols run sequentially instead: the conflict costs more than the
-     concurrency saves.
+     integration tip. As each reports, the main session merges it and removes
+     its worktree. A clean merge stays in the main session; a conflicted one
+     goes to an economy-tier merger agent, using `/resolving-merge-conflicts`
+     if installed.
 
-4. **Build each ticket.** The implementer, main session or agent:
+   Tickets **overlap** when they change the same existing behavior. Additive
+   edits to a shared file, such as new entries in one registry, are
+   independent: the merge resolves them.
+
+4. **Build each ticket.** The implementer agent:
    1. Confirms its branch contains the integration tip.
    2. **Impact sweep.** Before writing code, lists the existing tests that
       assert behavior this ticket changes: start from Behavior this changes,
@@ -108,7 +111,7 @@ Every step below spends under these rules.
    result gets a fix and a rerun; the review passes are not repeated.
 
 9. **Close.** A draft PR → mark it ready. Otherwise resolve each ticket the way
-   the tracker closes work. Remove any worktrees this run created.
+   the tracker closes work. Remove any worktree this run left behind.
 
 10. **Report.** The integration branch, tickets done and remaining, the mode
     used per frontier, checks and their results, open findings, and every
