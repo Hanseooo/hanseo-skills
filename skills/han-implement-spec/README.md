@@ -11,7 +11,8 @@ only where concurrency, difficulty or reach call for them.
 Use after `/han-to-tickets` or any tracker of spec plus tickets with blocking
 edges. It uses `/tdd` and `/code-review` when installed and falls back to a
 short built-in version of each. It hands off a branch, or a PR when your
-tracker closes work that way.
+tracker closes work that way. When the spec links a `/docket` roadmap, the
+report's evidence is also recorded under that slice.
 
 Adapted from Matt Pocock's
 [`implement-spec`](https://github.com/mattpocock/skills/blob/main/skills/engineering/implement-spec/SKILL.md),

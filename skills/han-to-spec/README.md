@@ -34,6 +34,11 @@ Outcome stories keep related behavior together. Stable criterion identifiers
 keep small requirements visible and referenceable. Shared rules have one home,
 and a source coverage index makes omissions reviewable.
 
+An edge-case sweep checks each story and journey for limits, interruption,
+failure, persistence and locked or hidden targets. Each case lands in a table
+with its expected behavior and its home: an AC, an SH rule or an open decision.
+Ticket sessions inherit the cases instead of guessing them.
+
 Design rationale, existing behavior and unresolved decisions stay visible.
 The spec distinguishes required verification from evidence that it passed.
 

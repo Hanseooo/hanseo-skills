@@ -40,7 +40,7 @@ none requires Docket or the other adaptations.
 | Name | Description | Type |
 |------|-------------|------|
 | [han-grill](skills/han-grill/README.md) | Stress-test decisions with meaningful options, explicit tradeoffs and grounded recommendations | user-invoked |
-| [han-to-spec](skills/han-to-spec/README.md) | Write a spec to the configured tracker or usual spec folder, with outcome stories, detailed UX criteria and source coverage | user-invoked |
+| [han-to-spec](skills/han-to-spec/README.md) | Write a spec to the configured tracker or usual spec folder, with outcome stories, detailed UX criteria, an edge-case table and source coverage | user-invoked |
 | [han-grill-with-docs](skills/han-grill-with-docs/README.md) | Run han-grill while recording settled terms and decisions in the project's existing glossary and decision record | user-invoked |
 | [han-to-tickets](skills/han-to-tickets/README.md) | Publish approved vertical tickets to the configured tracker with scope, complexity, blast radius and an implementer briefing in their bodies | user-invoked |
 | [han-implement-spec](skills/han-implement-spec/README.md) | Implement a spec's ticket graph on one integration branch, with agents, worktrees, strong models and full test runs only where the work needs them | user-invoked |

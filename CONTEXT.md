@@ -7,9 +7,12 @@
 - **operating contract** — the `CLAUDE.md` / `AGENTS.md` files that define how agents must behave when working on this repo
 - **docket** — a feature's evolving roadmap, carrying instructions for later sessions to maintain it; also the user-invoked skill that writes or resumes it
 - **destination** — the feature's agreed minimum outcome and success criteria; provisional slices can change the route, while optional extensions remain separate
-- **roadmap** — the feature overview: outcome-based slices, dependencies, shared decisions, uncertainty, status and links to user-invoked slice specs and completion evidence
+- **roadmap** — the feature overview: outcome-based slices, dependencies, shared decisions, roadmap rules and journeys, uncertainty, status, a current-slice pointer and links to user-invoked slice specs and completion evidence
+- **roadmap rule** — a testable requirement binding several slices, stated once in the roadmap with a stable RS identifier; slice specs cite it and number their own shared behavior SH
+- **journey** — an end-to-end acceptance flow with a stable J identifier; a roadmap journey crossing slices names the slice that completes it, whose spec runs it at closeout
 - **slice plan** — a legacy Docket artifact containing detailed behavior, work and checks; retained as an existing source, with no new slice plans created by Docket
-- **slice spec** — a slice's authoritative behavior and acceptance checks, published to the configured tracker through a separately user-invoked spec workflow and linked from the roadmap
+- **edge-case sweep** — han-to-spec's pass over every story and journey for limits, interruption, failure, persistence and restricted targets, recorded as a table giving each case's expected behavior and its AC, SH or open-decision home
+- **slice spec** — a slice's authoritative behavior and acceptance checks, exactly one per slice, published to the configured tracker through a separately user-invoked spec workflow and linked from the roadmap
 - **phase / vertical slice** — a coherent, usable and verifiable outcome with the interface, logic, state and validation it needs; required or optional, with planning readiness separate from completion
 - **question** — a missing choice or piece of evidence identified by a stable Q number; a discovery lead rather than an exhaustive checklist, numbered separately from new decisions
 - **session** — one sitting of feature discovery, planning or resumption, preserving settled decisions and unresolved concerns

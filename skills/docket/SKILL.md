@@ -31,7 +31,8 @@ can update it without invoking Docket again.
    success, shared constraints and exclusions. Investigate discoverable facts
    yourself. A clear request needs no preliminary interview.
 2. **Find usable slices.** Each slice is a coherent, verifiable user outcome,
-   with the interface, logic, state and validation it needs. Map dependencies
+   with the interface, logic, state and validation it needs, and gets exactly
+   one spec. A slice that needs several specs is several slices. Map dependencies
    and the first useful discussion. Discover enough to choose boundaries and
    shared constraints; leave detailed behavior, edge cases, technical choices
    and acceptance checks to that slice's discussion and spec.
@@ -83,10 +84,16 @@ Keep the roadmap concise:
 - **Shared decisions:** stable D identifiers, choice, basis, rationale, binding
   constraints and source. Preserve existing IDs. Keep each decision's detail
   once; index approved sources instead of duplicating them.
+- **Roadmap rules and journeys:** testable rules that bind several slices, with
+  stable `RS-01` identifiers, and acceptance journeys that cross slices, with
+  stable `J1` identifiers, each naming the slice that completes it. A rule lives
+  here only; slice specs cite its RS ID and number their own rules `SH-01`.
 - **Slices:** stable identifiers, outcome, dependencies, short acceptance
   summary, status, blockers, spec link when published and completion evidence
   when available. New slices start as outlines, including the first. A spec
-  link establishes specification, not implementation or completion.
+  link establishes specification, not implementation or completion. One line
+  names the current slice and where its tickets live; ticket status stays in
+  the tracker.
 - **Uncertainty and next step:** questions and broader unclear areas, what each
   blocks and the next evidence or discussion needed. Keep unconfirmed choices
   explicit. Name the next slice to discuss and the user's separate spec step.
@@ -115,26 +122,32 @@ roadmap during that session; no Docket invocation is needed.
   newly visible work. Revise provisional slices within the agreed outcome as
   evidence warrants; record why. Keep technical prerequisites inside the user
   outcome they enable; a new slice must deliver a separately usable outcome.
-  Ask before changing product scope or confirmed decisions. An uncertainty
-  becomes a question first, not automatically a slice.
+  A slice that needs more than one spec splits into slices on this roadmap
+  before any spec is written. Ask before changing product scope or confirmed
+  decisions. An uncertainty becomes a question first, not automatically a slice.
 - When the user invokes their spec skill, publish that slice's spec to the
   configured tracker, link the returned issue from its roadmap entry, and retain
-  stable decision IDs and source links. In the spec handoff include this
-  roadmap's path and an instruction to read and update it after implementation
-  and review; preserve that pointer in derived work items. Spec and ticket
-  creation remain separately user-invoked.
+  stable decision IDs and source links. The spec cites this roadmap's rules by
+  RS ID, numbers its own rules SH, and lists in its verification the J
+  journeys this slice completes, so its ticket breakdown ends with a closeout
+  that runs them. In the spec handoff include this roadmap's path and an
+  instruction to read and update it after implementation and review; preserve
+  that pointer in derived work items. Spec and ticket creation remain
+  separately user-invoked.
 - After implementation or review, reconcile the slice against its spec using
   supplied implementation, test and review references. Mark Complete only when
   every acceptance check passes, review is complete, and the user has explicitly
   accepted any remaining findings. Record those references and accepted findings.
   Missing evidence or failed checks leave the slice incomplete with a visible gap.
-  Adequate supplied evidence needs no repeat audit.
+  Adequate supplied evidence needs no repeat audit. Move the current-slice line
+  when the next slice starts.
 - At the next slice discussion, reconcile any stale status first. Discussion may
   proceed while earlier slices are incomplete; keep their gaps visible and gate
   dependent implementation on unmet prerequisites.
-- Keep detailed behavior and acceptance checks in the linked spec. Keep this
-  roadmap to outcomes, dependencies, decisions or source links, uncertainty,
-  status and evidence. Preserve IDs, rationale, exclusions and history.
+- Keep a slice's detailed behavior and acceptance checks in its linked spec.
+  Keep this roadmap to outcomes, roadmap rules and journeys, dependencies,
+  decisions or source links, uncertainty, status and evidence. Preserve IDs,
+  rationale, exclusions and history.
   Approval or discussion alone authorizes no implementation or external changes.
 ```
 
@@ -146,9 +159,11 @@ location and the next slice discussion, then stop. The user chooses and invokes
 grilling, brainstorming and the spec skill; Docket invokes none of them.
 
 Later sessions keep the roadmap current when they read it or its handoff pointer.
-This is document-carried behavior, not background automation. A review session
+This is document-carried behavior, not background automation. A build workflow
+that follows the spec's roadmap link records its evidence there; a session
 without that context may leave stale status until the next reference reconciles
-it. Do not add project-wide agent rules or edit other skills to supply updates.
+it. Keep the update instructions in the roadmap rather than in project-wide
+agent rules.
 
 If explicitly asked to resume Docket, update the same roadmap from supplied
 evidence and unresolved choices. Permit next-slice discovery while earlier work
