@@ -38,9 +38,13 @@ tests the change would break, and ran the full browser suite two or three times.
 
 ## How han-implement-spec solves it
 
-**Mode follows the frontier.** With one ticket ready, the main session builds it
-directly on the integration branch: no worktree, no merger. Worktrees and
-parallel agents appear only when independent tickets can run together.
+**A fresh agent per ticket, worktrees only for parallel work.** Like Matt's
+version, every ticket gets its own implementer agent with a clean context, and
+the main session only orchestrates. A chain runs one agent at a time directly on
+the integration branch: no worktree, no merge. Independent tickets run in
+parallel worktrees, each removed once merged. Clean merges stay in the main
+session; only a conflict spawns a cheap merger agent. Additive edits to a shared
+file still count as independent.
 
 **Tiers, not model names.** Mechanical work goes to the cheapest model that uses
 tools reliably, High-complexity tickets and reviews to the strongest. The
