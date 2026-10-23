@@ -34,6 +34,12 @@ fallback for projects with neither.
 Doc edits are the only writes the interview makes. The closing recap lists each
 one, so the record and the agreement can be reviewed together.
 
+## Differences from Matt's
+
+- **Existing docs first.** It finds the project's own glossary and decision record before the first question and writes there, in that file's format and numbering. Matt's `grill-with-docs` writes `GLOSSARY.md` and `docs/adr/`. That layout is only the fallback here.
+- **Doc edits are the only writes**, and the closing recap lists each one for review.
+- **Interview comes from `/han-grill`**, so it has rounds with costed options, not Matt's one-question flow.
+
 ## When not to use it
 
 - **No terms or lasting decisions are at stake:** use `/han-grill`.

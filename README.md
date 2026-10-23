@@ -45,6 +45,16 @@ none requires Docket or the other adaptations.
 | [han-to-tickets](skills/han-to-tickets/README.md) | Publish approved vertical tickets to the configured tracker with scope, complexity, blast radius and an implementer briefing in their bodies | user-invoked |
 | [han-implement-spec](skills/han-implement-spec/README.md) | Implement a spec's ticket graph on one integration branch, with agents, worktrees, strong models and full test runs only where the work needs them | user-invoked |
 
+How they differ from Matt's:
+
+- **han-grill**: numbered rounds of independent questions, costed options, grounded recommendations.
+- **han-grill-with-docs**: writes into the project's existing glossary and decision record, not a new `GLOSSARY.md` and `docs/adr/`.
+- **han-to-spec**: outcome stories with stable criterion IDs, an edge-case table and a source coverage index.
+- **han-to-tickets**: each ticket body is an implementer briefing, with scope, complexity and blast radius fields.
+- **han-implement-spec**: worktrees only for parallel tickets, model tiers, an impact sweep, fewer full test runs and a capped final review.
+
+Each skill's README has a "Differences from Matt's" section with the detail.
+
 ## Install
 
 Browse and install skills from this collection:

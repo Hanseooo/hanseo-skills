@@ -34,6 +34,14 @@ priorities or facts. Unknown intent gets an open question first.
 Answers reshape the next round. The recap preserves the choices, reasons and
 remaining uncertainty for a later handoff.
 
+## Differences from Matt's
+
+- **Rounds, not one question at a time.** Independent frontier questions go out together in a numbered round. Matt's `grill-me` asks one at a time.
+- **Costs are stated.** Each option has a benefit and a cost, and the recommendation names the goal or verified fact behind it. Without one, it says what would decide the choice.
+- **Unknown intent gets an open question** before any option is built on it.
+- **Approaches are compared** (from Superpowers brainstorming), and the recap keeps unresolved choices and what they block.
+- **Self-contained.** No wrapper skill is needed, and it stops at the agreement: no spec, tickets or commits.
+
 ## When not to use it
 
 - **You need one factual answer:** ask directly or inspect the source.

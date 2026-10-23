@@ -57,6 +57,24 @@ The full suite runs per ticket only for Shared or System-wide reach, otherwise
 once per batch. Long commands log to a file and wait on completion instead of
 polling.
 
+## Differences from Matt's
+
+| | Matt's `implement-spec` | `han-implement-spec` |
+|---|---|---|
+| Worktrees | Every ticket | Parallel tickets only, each removed right after its merge. A chain commits straight to the integration branch. |
+| Merging | A merger agent for every result | The main session merges cleanly. A cheap merger agent handles conflicts only. |
+| Overlap | Left to the merger | Tickets changing the same existing behavior run in sequence. Additive edits to a shared file stay parallel. |
+| Models | Not specified | Tiers (economy, standard, strong) picked from the ticket's Complexity field. |
+| Before coding | Straight to `/tdd` | Impact sweep for existing tests the ticket breaks. |
+| Test runs | Not specified | Targeted per ticket. Full suite once for Shared tickets and once at the batch gate. |
+| Waiting | Not specified | Log to a file and wait on completion. No polling. |
+| Reviews | One final `/code-review`, all findings fixed | Gate review on risky upstream tickets. Final review capped at two passes. |
+| Exploration | Optional exploration agent | Dropped. Ticket briefings carry the entry points. |
+| Report | Branch or PR | Adds mode per frontier, check results, open findings, changed test expectations and roadmap evidence. |
+| No subagents | Not handled | The main session builds each ticket in graph order. |
+
+Shared with Matt's: the integration branch, task-graph frontier, context pointers, one fresh agent per ticket, `/tdd`, and a final `/code-review`.
+
 ## When not to use it
 
 - **One ticket, or a brief with no ticket graph:** use `/stint` or `/implement`.

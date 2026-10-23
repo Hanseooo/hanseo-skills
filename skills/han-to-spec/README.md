@@ -42,6 +42,14 @@ Ticket sessions inherit the cases instead of guessing them.
 Design rationale, existing behavior and unresolved decisions stay visible.
 The spec distinguishes required verification from evidence that it passed.
 
+## Differences from Matt's
+
+- **Outcome stories**, not one story per control, with stable criterion IDs (AC) and shared rules (SH) so tickets can cite them.
+- **Edge-case table.** Each story and journey is swept for limits, interruption, failure, persistence and locked targets, and each case lands as an AC, an SH rule or an open decision.
+- **Source coverage index**, so omissions are reviewable.
+- **Rationale, existing behavior and open decisions stay visible**, and required verification is kept apart from evidence that it passed.
+- **Tracker-aware.** It uses the configured tracker or the usual spec folder, and works locally without one.
+
 ## When not to use it
 
 - **The design is still undecided:** discuss it directly or use `/han-grill`.

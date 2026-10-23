@@ -42,6 +42,14 @@ re-exploring, and finds conflicting tests before the full suite does. Upstream
 avoids file paths because they go stale; symbol names without line numbers
 stay valid through earlier tickets' edits.
 
+## Differences from Matt's
+
+- **Implementer briefing in every body.** Context links, three to eight entry points as file plus symbol, existing behavior and tests the ticket overturns on purpose, traps, and a targeted check command. Matt's version avoids file paths because they go stale. This one keeps symbol names and drops line numbers.
+- **Scope, complexity and blast radius** are separate body fields with reasons, not tracker labels. `/han-implement-spec` reads Complexity to pick a model tier.
+- **Source coverage map** and explicit blockers make handoffs reviewable.
+- **Breakdown is reviewed before publishing.**
+- **Kept from Matt's:** vertical slices and the compatible-migration exception for wide refactors.
+
 ## When not to use it
 
 - **Product behavior is undecided:** discuss it or use `/han-grill` first.
