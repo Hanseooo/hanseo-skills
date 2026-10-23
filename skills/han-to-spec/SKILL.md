@@ -67,8 +67,17 @@ feedback, relevant loading/empty/error/disabled states, recovery, undo and
 keyboard/focus behavior where agreed. Preserve state distinctions and
 exceptions. A generic "accessible" or "handles errors" cannot replace them.
 
-Review each journey for consequential UX gaps. An unresolved behavior becomes
-an open decision, rather than an invented default or additional feature.
+### Edge cases
+
+Sweep every story and journey for edge cases: empty, single and maximum
+inputs; invalid or refused input; interruption mid-action (cancel, Escape,
+mode switch, navigating away); failure and recovery, including data loss;
+ordering and concurrency; save, load, migration and export; locked, hidden or
+disabled targets; and interaction with existing features. Record each case that
+can occur in a table with three columns: the case, its expected behavior and
+its home (an AC, an SH rule or an open decision). A case without agreed
+behavior becomes an open decision, rather than an invented default or
+additional feature.
 
 ### Design decisions and rationale
 
@@ -96,7 +105,8 @@ implementation is authorized. Preserve source links and decision identifiers.
 ## Check coverage and stop
 
 Compare the draft against every source requirement, including UX details,
-failure paths and exclusions. Include a compact source-to-AC/SH/blocker index;
+failure paths and exclusions. Every edge-case row names a home that exists in
+the draft. Include a compact source-to-AC/SH/blocker index;
 every agreed requirement must have an explicit home here or in a verified,
 precisely referenced approved source. For each index entry, read the destination
 text and compare every source clause, including exceptions and failure behavior.

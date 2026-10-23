@@ -112,4 +112,6 @@ Every step below spends under these rules.
 
 10. **Report.** The integration branch, tickets done and remaining, the mode
     used per frontier, checks and their results, open findings, and every
-    existing test expectation changed with its cause.
+    existing test expectation changed with its cause. If the spec links a
+    roadmap, record the same evidence under that slice in the roadmap,
+    following the roadmap's own instructions for status.

@@ -5,6 +5,33 @@ the skill's modes, rules or template (see the operating contract's skill
 verification rules). Add a scenario whenever a real session exposes a new
 failure.
 
+## Roadmap rules, journeys and one spec per slice — 2026-10-23
+
+Source: Kleeve P1c (`.scratch/p1c/`), whose umbrella spec held cross-phase
+rules SH-01–SH-11 and journeys J1–J6 that the 2026-10-20 roadmap had no home
+for. Two transcript scenarios, one Haiku sample per arm (owner's token limit;
+single samples, so treat as indicative). Old skill snapshot vs edited skill.
+
+- **A — write a roadmap** with three slices, three every-slice rules and one
+  journey needing all slices.
+  - RED: rules became shared decisions D1–D3; the journey became the minimum
+    outcome and "D4 Journey J1 is the end-to-end keyboard acceptance path". No
+    slice named as completing it. No ticket list (already held).
+  - GREEN: `Roadmap rules and journeys` section with RS-01–RS-03; "J1 …
+    Completed by S3"; S1 marked current slice; no ticket list.
+- **B — later session grilling an oversized slice** (three usable outcomes,
+  about 20 tickets) with roadmap rules numbered SH-01–SH-03.
+  - RED: split S2 correctly (already held), but "Keep SH-01 to SH-03 and link
+    them from each new slice", and the spec handoff named no journeys or
+    closeout: "Behavior and acceptance checks stay in the spec, not the roadmap."
+  - GREEN: split first; renamed roadmap rules to RS with the mapping in
+    Changes; handoff cites RS IDs, the spec's own SH-01 onward, "The J journeys
+    it completes. Likely none for S2a-S2c … Say so explicitly", and a ticket
+    breakdown ending in a closeout.
+
+GREEN's B prompt added "The roadmap file is hypothetical; do not look for it",
+since the RED agent spent its tool calls searching for the file.
+
 ## Roadmap only, user-invoked specs and carried updates — 2026-10-20
 
 Current acceptance supersedes the historical slice-plan cycle below. Docket
