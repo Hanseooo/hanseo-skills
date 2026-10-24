@@ -40,6 +40,7 @@ remaining uncertainty for a later handoff.
 - **Costs are stated.** Each option has a benefit and a cost, and the recommendation names the goal or verified fact behind it. Without one, it says what would decide the choice.
 - **Unknown intent gets an open question** before any option is built on it.
 - **Approaches are compared** (from Superpowers brainstorming), and the recap keeps unresolved choices and what they block.
+- **Code structure is probed** where a choice is hard to reverse or two reasonable implementers would differ: module placement, seams, data ownership, reuse. Documented conventions are followed, not asked about. Matt's grilling leaves structure to whatever the conversation raises.
 - **Self-contained.** No wrapper skill is needed, and it stops at the agreement: no spec, tickets or commits.
 
 ## When not to use it
