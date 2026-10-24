@@ -29,6 +29,8 @@ One skill sits upstream of all three: **product-discovery** decides whether a pr
 | [charter](skills/charter/README.md) | Produce a project's decision layer (architecture.md, ADRs, CLAUDE.md) | user-invoked |
 | [docket](skills/docket/README.md) | Create an evolving feature roadmap for user-invoked slice specs | user-invoked |
 | [stint](skills/stint/README.md) | Build one sitting's worth of tickets per run, with review's fixed point pinned up front and a hard stop after two review passes | user-invoked |
+| [groundwork](skills/groundwork/README.md) | Set up a software project's agent docs (project brief, project roadmap, AGENTS.md) or fill an existing repo's gaps, with architecture and design planned as their own sessions | user-invoked |
+| [project-init](skills/project-init/README.md) | Write or audit a repo's AGENTS.md from repo evidence: exact commands, tooling lock, testing contract and invariants, with a CLAUDE.md import | user-invoked |
 | [product-discovery](skills/product-discovery/README.md) | Decide what independent product to make, or whether to keep going with one, ending in a build / validate / narrow / kill call sized to the stakes | model-invoked |
 
 ### Adapted skills
@@ -47,9 +49,9 @@ none requires Docket or the other adaptations.
 
 How they differ from Matt's:
 
-- **han-grill**: numbered rounds of independent questions, costed options, grounded recommendations.
+- **han-grill**: numbered rounds of independent questions, costed options, grounded recommendations, and probes of consequential code structure.
 - **han-grill-with-docs**: writes into the project's existing glossary and decision record, not a new `GLOSSARY.md` and `docs/adr/`.
-- **han-to-spec**: outcome stories with stable criterion IDs, an edge-case table and a source coverage index.
+- **han-to-spec**: outcome stories with stable criterion IDs, an edge-case table, a source coverage index, and conventions by pointer rather than restated.
 - **han-to-tickets**: each ticket body is an implementer briefing, with scope, complexity and blast radius fields.
 - **han-implement-spec**: worktrees only for parallel tickets, model tiers, an impact sweep, fewer full test runs and a capped final review.
 

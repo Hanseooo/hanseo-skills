@@ -88,6 +88,14 @@ recorded, say so; label inferred rationale. Name modules and contracts rather
 than speculative implementation paths. A decision-rich prototype snippet may
 be retained with its provenance. This section records design, not build steps.
 
+For code structure, point to the project's documented conventions and
+architecture docs rather than restating them. Record only feature-specific
+structure and deliberate exceptions, each with its reason. Where structure was
+not discussed, name the existing pattern the feature follows as verified
+existing behavior. A structural choice without an agreed answer that is hard
+to reverse, or that two reasonable implementers would make differently,
+becomes an open decision.
+
 ### Verification
 
 Name confirmed seams, observable checks, existing test precedents and required

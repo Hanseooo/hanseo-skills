@@ -48,6 +48,7 @@ The spec distinguishes required verification from evidence that it passed.
 - **Edge-case table.** Each story and journey is swept for limits, interruption, failure, persistence and locked targets, and each case lands as an AC, an SH rule or an open decision.
 - **Source coverage index**, so omissions are reviewable.
 - **Rationale, existing behavior and open decisions stay visible**, and required verification is kept apart from evidence that it passed.
+- **Conventions by pointer.** The spec points to the project's standards and architecture docs and records only feature-specific structure and exceptions. Undiscussed structure names the existing pattern to follow; a consequential structural gap becomes an open decision instead of a guess.
 - **Tracker-aware.** It uses the configured tracker or the usual spec folder, and works locally without one.
 
 ## When not to use it

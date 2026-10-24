@@ -36,4 +36,12 @@
 - **han-implement-spec** — an independent, user-invoked adaptation of implement-spec that builds a ticket graph on one integration branch, choosing sequential or parallel mode per frontier
 - **model tier** — economy, standard or strong: a role-based model choice that skills name instead of specific models; the harness maps it to whatever models it offers
 - **impact sweep** — the search, before writing code, for existing tests that assert behavior a ticket changes on purpose
+- **groundwork** — the user-invoked skill that sets up a software project's agent docs, or fills an existing repo's gaps, and plans its M0 sessions
+- **owner** — the one doc that answers a given question about a project; every other doc links to it rather than restating the fact
+- **project brief** — groundwork's destination doc: who the project serves, what done looks like, scope and project rules; replaces a PRD without assuming a product
+- **project roadmap** — the project-level route toward the brief, made of milestones and holding the only status line; distinct from docket's feature **roadmap**, and kept at `planning/roadmap.md` by default
+- **milestone** — a usable project outcome with an `M` identifier, exit criteria, dependencies and a link to its docket or single spec; the destination a docket starts from
+- **project rule** — a rule binding several milestones, stated once in the project brief with a stable `P-` identifier that specs cite
+- **M0** — the first milestone, "Project foundations": the deep doc sessions groundwork plans, each run fresh, kept as roadmap history once complete
+- **project-init** — the user-invoked skill that writes or audits `AGENTS.md`'s commands, tooling lock, testing contract and invariants from repo evidence; groundwork's M0 repo contract session
 - **implementer briefing** — the han-to-tickets body sections that spare a fresh implementer exploration: Context, Read first, Behavior this changes, Guidance and targeted checks

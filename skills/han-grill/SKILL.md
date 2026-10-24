@@ -28,6 +28,12 @@ requires no companion skill and produces an agreement in the conversation.
    journey, relevant failure/recovery states, keyboard/focus, data and system
    boundaries. Challenge contradictions with earlier constraints. Explore
    consequential branches without introducing speculative product scope.
+5. Probe code structure where a choice is consequential: hard to reverse, or
+   two reasonable implementers would build it differently. Typical cases are
+   extending an existing module versus adding one, seam placement, data
+   ownership and reuse of existing code. Follow the project's documented
+   conventions and existing patterns rather than asking about them. Use
+   `codebase-design` vocabulary when that skill is installed.
 
 ## Make choices understandable
 
