@@ -1,7 +1,6 @@
 ---
 name: han-grill
 description: Stress-test an idea through a decision-tree interview with explicit tradeoffs and grounded recommendations.
-disable-model-invocation: true
 ---
 
 # han-grill
