@@ -43,5 +43,5 @@
 - **milestone** — a usable project outcome with an `M` identifier, exit criteria, dependencies and a link to its docket or single spec; the destination a docket starts from
 - **project rule** — a rule binding several milestones, stated once in the project brief with a stable `P-` identifier that specs cite
 - **M0** — the first milestone, "Project foundations": the deep doc sessions groundwork plans, each run fresh, kept as roadmap history once complete
-- **project-init** — the user-invoked skill that writes or audits `AGENTS.md`'s commands, tooling lock, testing contract and invariants from repo evidence; groundwork's M0 repo contract session
+- **project-init** — the user-invoked skill that writes or audits `AGENTS.md`'s commands, run steps, testing contract, invariants and scope from repo evidence and a short interview; groundwork's M0 repo contract session
 - **implementer briefing** — the han-to-tickets body sections that spare a fresh implementer exploration: Context, Read first, Behavior this changes, Guidance and targeted checks
