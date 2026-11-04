@@ -31,9 +31,11 @@ directory, check for agent instruction files: `AGENTS.override.md`, `AGENTS.md`,
 Sections other owners write survive every patch and replace, word for word: a
 delimited block (`<!-- charter:begin -->` … `<!-- charter:end -->`), a section
 another skill or tool wrote (such as `## Agent skills`), Documentation Map rows
-pointing at docs that exist, and Keep docs current rows. A broken pointer inside
-one goes in the report. A placeholder line such as "Commands arrive with M0's
-repo contract session" is yours to replace.
+pointing at docs that exist, Keep docs current rows, and `## When docs and code
+disagree`. A broken pointer inside one goes in the report. Yours to change: a
+placeholder line such as "Commands arrive with the repo contract session", a
+Commands section inside a delimited block, which moves out to `## Commands (Use
+Exactly)`, and the `Check:` field of a `G-` line inside one.
 
 ## Phase 1: Reconnaissance
 
@@ -152,7 +154,7 @@ Last reviewed: <only per Phase 5>
   reported as unverified
 
 ## Project Invariants
-- <Fragile rules: coordinate systems, ID ordering, required boundary conversions>
+- G-01: <Fragile rule: coordinate systems, ID ordering, required boundary conversions>. Check: <command or test | none yet | advisory>
 - In migration: <old pattern> → <new pattern>. New code uses the new one.
 
 ## Known Gaps
@@ -240,7 +242,7 @@ checks did not run.
    decides whether an agent ever opens the doc.
 5. **One copy of each fact.** `AGENTS.md` holds the project facts. Companion
    files hold a pointer. A nested `AGENTS.md` holds only its difference. A doc
-   that owns scope gets a link.
+   that owns scope gets a link. A `G-` rule is stated once; elsewhere cite its ID.
 6. **Every line earns its load.** The file loads every session. Cut a line that
    restates what the agent would do anyway or that one lookup answers, including
    an architecture overview the layout shows. Keep what looking cannot find: the
@@ -248,7 +250,13 @@ checks did not run.
 7. **Current state only.** Git holds the history; the project's roadmap holds
    status. A line recording that something was built, probed or amended belongs
    in a commit or the roadmap.
-8. **Report at the end:** files changed, lines cut by the removal test, unresolved
+8. **Rules name their check.** Each invariant you write has a `G-` ID, numbered
+   from the highest in the file, and a `Check:`. For every `G-` line, charter's
+   included, search tests, types, lint config and CI for what fails when the rule
+   breaks. Found → its command or test. A tool could check it but nothing does →
+   `none yet`, and the report suggests the smallest check using tools already
+   installed. A judgment no tool can make → `advisory`.
+9. **Report at the end:** files changed, lines cut by the removal test, unresolved
    gaps, unanswered questions, repo problems to fix, whether the checks ran, and
    each command with its source. Over 200 lines, or near Codex's 32 KiB combined
    limit → say so and name what could move behind a pointer.
@@ -264,4 +272,6 @@ checks did not run.
 - `Last reviewed` is present only if every check reached the code, or as it stood
   before this run.
 - Other owners' sections and rows are intact.
+- Every `G-` line has a `Check:` that a search of the repo supports.
+- One Commands section exists, outside any delimited block.
 - No existing instruction file changed without approval.

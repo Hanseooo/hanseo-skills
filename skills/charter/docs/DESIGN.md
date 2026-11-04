@@ -84,7 +84,8 @@ All routes end in the same artifact types — one truth, no parallel structures.
 5. **Propose 2–3 architecture shapes** with tradeoffs and a recommendation; discuss until
    approved (brainstorming-style, one question at a time).
 6. **Write artifacts** from templates.
-7. **Self-review gate.** Every guardrail traces to an ADR; every ADR has an escape hatch;
+7. **Self-review gate.** Every guardrail traces to an ADR or a rule the user stated and has
+   a `G-` ID and a `Check:` field; every ADR has an escape hatch;
    no abstraction at a point nobody said would change; no contradiction with existing docs;
    no placeholders.
 8. **Handoff.** Point at the downstream workflow: feature work → brainstorming → feature
@@ -128,7 +129,11 @@ as AGENTS.md.
   charter the whole or one package.
 - **Route C standalone.** Works with no existing charter: produce the one ADR, nudge once
   ("a full charter would give this a home — /charter when ready"), don't block.
-- **AGENTS.md mirror.** Offer, don't assume; keep contract wording tool-agnostic either way.
+- **AGENTS.md already there.** With no `CLAUDE.md`, or one that only imports it, the charter
+  section goes in `AGENTS.md` and no `CLAUDE.md` is written: one beside it stops `AGENTS.md`
+  loading in Claude Code.
+- **AGENTS.md mirror.** With no `AGENTS.md`, offer, don't assume; keep contract wording
+  tool-agnostic either way.
 
 ## heuristics.md content outline
 

@@ -1,7 +1,7 @@
 # Project brief
 
-The destination every other doc and session starts from. Every session reads it
-first, so it stays short enough to read in a minute. It changes rarely: a scope
+The destination every other doc and session starts from. Scope and planning work
+reads it first, so it stays short enough to read in a minute. It changes rarely: a scope
 change is the user's decision.
 
 Default path: `docs/brief.md`. Title it by kind ("Product brief", "Library
@@ -16,9 +16,10 @@ Always:
   developers calling it; for client work, the client and their users.
 - **Done looks like**: observable outcomes of the first complete version.
 - **In scope / Out of scope**: out of scope is as specific as in scope.
-- **Project rules**: rules that bind several milestones, each with a stable
-  `P-01` ID that specs cite. A rule only one slice needs belongs in that
-  slice's spec.
+- **Project rules**: product and scope promises that bind several milestones,
+  each with a stable `P-01` ID that specs cite. A technical rule belongs in
+  `AGENTS.md` as a `G-` line. A rule only one slice
+  needs belongs in that slice's spec.
 - **Open questions**: what is unresolved, and what each blocks.
 
 Include when the project has one:

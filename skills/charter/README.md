@@ -31,7 +31,8 @@ fixes:
 
 1. `architecture.md` — system shape, module boundaries, seams, folder map
 2. ADRs — locked decisions, each with a named escape hatch
-3. A per-project `CLAUDE.md` (or `AGENTS.md`) operating contract referencing both
+3. A per-project operating contract referencing both, with each guardrail naming
+   its check. It goes in an existing `AGENTS.md`, and otherwise in `CLAUDE.md`
 
 No code, no runtime, no vendor lock-in — just `SKILL.md` plus reference
 markdown files that any agent capable of reading files and following

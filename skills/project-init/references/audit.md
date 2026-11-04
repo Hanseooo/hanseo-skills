@@ -17,9 +17,11 @@ owner's section holds it.
 | Material only some tasks need, sitting inline | A `Read when` pointer can replace it |
 | A `CLAUDE.md`, `.claude/CLAUDE.md` or `CLAUDE.local.md` without `@AGENTS.md` | `AGENTS.md` does not load in Claude Code |
 | Over 200 lines, or near Codex's 32 KiB combined limit | The file size |
+| A Commands section inside a delimited block | The block. Move it out. |
+| A `G-` line with a stale or missing `Check:` | Tests, types, lint config and CI |
 
-An invariant a test, linter or type could enforce goes in the report as a
-suggestion. The prose stays until a check exists.
+An invariant nothing checks yet stays in the file as `Check: none yet`, and the
+report suggests the smallest check using tools already installed.
 
 Keep what the repo already does: its section names, doc paths and numbering. A
 patch changes findings only.

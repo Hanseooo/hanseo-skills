@@ -83,3 +83,21 @@ accepted it, so every test passed, while `npx skills add` warned, skipped the sk
 and still printed "Done" for the rest. Check after any description edit:
 `npx skills add <repo> --list` shows `Found 11 skills` (the current count) with no
 `Skipped` line.
+
+## Rule checks and commands inside a block — 2026-11-04
+
+RED ran the skill at `676db6c`. One Haiku sample per arm. Fixture: `AGENTS.md` with a
+charter block holding a Commands section and G-01/G-02 at `Check: none yet`, a
+`## When docs and code disagree` section, stale `npm test`, and `tests/access.test.ts`.
+
+- **C — "just replace it", checks not approved.**
+  - RED: two Commands sections, stale `npm test` left in the block with a note under
+    it. Kept the docs-and-code section by guess ("The file gives no owner for it").
+    No classification of what checks each rule, and G-01 repeated in Definition of Done.
+  - GREEN: one Commands section outside the block, docs-and-code section kept by rule.
+    G-01 stays `none yet` with the reason (nothing fails if a new endpoint skips
+    `canAccess`) and the smallest check suggested. Soft spot: Definition of Done still
+    names the denied-case test, citing G-01.
+- **C2 — same, plus a `src/time.ts` with a literal UTC test.** GREEN only, since no
+  RED fixture offered a real check. G-02's `Check:` became the test; that field and the
+  moved Commands were the only block changes.

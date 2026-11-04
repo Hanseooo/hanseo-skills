@@ -6,7 +6,17 @@ Template notes (do not copy into output):
 - If a CLAUDE.md already exists: add/update ONLY a clearly delimited charter section
   (between the markers below); leave everything else untouched.
 - Wording must stay tool-agnostic (say "agent", not the name of any product).
-- Offer to mirror the file as AGENTS.md; same content, both maintained together.
+- An AGENTS.md with no CLAUDE.md, or with a CLAUDE.md that only imports it: this block,
+  markers included, goes in AGENTS.md and no CLAUDE.md is written.
+- No AGENTS.md: offer to mirror the file as AGENTS.md; same content, both maintained
+  together.
+- Guardrail IDs are stable. Number from the highest G- ID already in the file. A G- rule
+  already in the file stays where it is; cite its ID rather than restating it.
+- Trace: (ADR-NNN), or (user rule) for a rule the user stated with no tradeoff to record.
+- A Documentation Map's `Always read` line stays as it is. A new doc gets a `Read when` line.
+- Check: a command or test that fails when the rule breaks, `none yet` when a tool could
+  check it but nothing does, or `advisory` for a judgment no tool can make. No code yet
+  means `none yet`.
 -->
 <!-- charter:begin -->
 # <Project> — Operating Contract
@@ -24,6 +34,6 @@ If a task seems to require violating an ADR, stop and surface the conflict.
 Do not guess, do not work around it.
 
 ## Guardrails
-- <guardrail — traces to ADR-NNN>
-- <guardrail — traces to ADR-NNN>
+- G-01: <guardrail>. Check: <command or test | none yet | advisory>. (<trace>)
+- G-02: <guardrail>. Check: <command or test | none yet | advisory>. (<trace>)
 <!-- charter:end -->
