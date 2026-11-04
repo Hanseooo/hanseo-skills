@@ -2,9 +2,8 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Write or audit a repository's `AGENTS.md` from what the repo itself shows: the
-exact commands, the package manager, the testing contract and the invariants an
-agent would otherwise break.
+Write or audit a repository's `AGENTS.md`: the exact commands, how to run the
+app, the testing contract, and the unwritten rules an agent would otherwise break.
 
 ## Where this sits
 
@@ -23,28 +22,36 @@ Agent instruction files go wrong in predictable ways. They list commands
 nobody ran, so an agent types `pnpm build` to typecheck and waits through a
 full build. They cache the stack list from `package.json`, which goes stale on
 the next upgrade. They end in a build log of what was done last month. And they
-never say when to update themselves, so the next session trusts a file that
-stopped being true weeks ago.
+carry a review date that says nothing about whether anything was reviewed.
 
-There is also a quieter failure on Claude Code. Tested without this version,
-an agent wrote a good `AGENTS.md` and no `CLAUDE.md`, "since the user did not
-ask". Claude Code reads `CLAUDE.md`, so the new file never loaded.
+A generator that only reads the repo also misses what matters most. It can't see
+what agents keep getting wrong or what's off limits for now. [One
+study](https://arxiv.org/abs/2602.11988) found developer-written files beat
+LLM-generated ones on task success, and that repository overviews didn't help.
 
 ## How project-init solves it
 
-**Evidence or nothing.** Every command matches a script, target or CI step. One
-it cannot trace goes in the final report, not into the file with a question
-mark beside it. The package manager comes from the lockfile.
+**Evidence or a person.** Every line traces to a file or to your own words. A
+command it can't trace goes in the final report, not into the file with a
+question mark beside it. The package manager comes from the lockfile.
+
+**A short interview.** After reading the repo, it asks only what would change a
+line in the file: what agents get wrong, what's out of scope, and any choice the
+evidence can't settle. Questions are skippable, and with no way to ask, they go
+in the report.
 
 **Every line earns its load.** The file loads every session, so each line must
 stop some mistake. Material only some tasks need sits behind a `Read when`
-pointer to the doc that holds it. General behavior rules stay in your global
-config, except in repos worked by several agent tools.
+pointer. General behavior rules stay in your global config. For a team repo, it
+adds a block of them when you say so or confirm it.
 
-**It loads, and it stays current.** A one-line `CLAUDE.md` imports `AGENTS.md`.
-A "Keep docs current" table says which section to update when a script, a
-toolchain pin or a known gap changes, and it shares that table with the other
-skills that write `AGENTS.md`.
+**An honest date.** `Last reviewed` appears only after lint, typecheck, unit
+tests and build have run with your approval. Failures become Known Gaps.
+
+**It works with what's there.** An existing file gets an audit and a diff, and
+you choose patch, replace or stop. `/charter`'s block and other tools' sections
+survive either way. It also warns when a `CLAUDE.md` or `CLAUDE.local.md` is
+stopping `AGENTS.md` from loading in Claude Code.
 
 ## When not to use it
 
@@ -86,14 +93,12 @@ Update later with `git pull` (or re-run `npx skills add`).
 ```
 
 ```
-/project-init fill in the commands and testing contract
+/project-init this repo is for our team of five
 ```
 
-It reads the manifests, lockfiles, scripts, CI and docs, and checks for other
-agent tools' instruction files and duplicate worktrees. An existing file is
-never overwritten: you get a diff and choose patch, replace or stop. The final
-report lists each command with its source, the lines it cut, and the gaps it
-left unfilled rather than guess.
+It reads the manifests, lockfiles, scripts, CI and docs, interviews you, then
+writes the file. The final report lists each command with its source, the lines
+it cut, whether the checks ran, and any repo problems it found.
 
 ## FAQ
 
@@ -101,13 +106,20 @@ left unfilled rather than guess.
 
 `/init` writes a `CLAUDE.md` summarising the codebase, stack overview
 included. project-init writes `AGENTS.md` for every tool, leaves out what one
-lookup answers, and refuses commands it cannot trace. Want a quick tour of an
-unfamiliar codebase? `/init` is the better choice.
+lookup answers, asks about what the repo can't show, and refuses commands it
+cannot trace. Want a quick tour of an unfamiliar codebase? `/init` is the better
+choice.
+
+### Do I still need a `CLAUDE.md`?
+
+Not on current Claude Code, which reads `AGENTS.md` on its own from v2.1.277 when
+no `CLAUDE.md` or `CLAUDE.local.md` is present. If one is present, add an
+`@AGENTS.md` line to it.
 
 ## What it deliberately is not
 
 - A codebase summary or onboarding guide.
-- A place for global behavior rules.
+- A place for global behavior rules, outside a team repo.
 - A changelog: history stays in git, status in the roadmap.
 
 ## License

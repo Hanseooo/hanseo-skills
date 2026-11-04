@@ -56,10 +56,9 @@ kickoff prompt, so each topic gets full attention, and M0 completes like any
 other milestone instead of leaving a setup file behind.
 
 **Docs stay tied to the code.** Commands come from `/project-init`, which records
-only what the scripts and CI show. Versions and file lists stay in config. A doc that contradicts
+only what the scripts and CI show or you tell it. Versions and file lists stay in config. A doc that contradicts
 the code is reported with both sides cited. A short event table in `AGENTS.md`
-says which doc to update when a slice finishes, a decision is made or a command
-changes.
+says which doc to update when a slice finishes or a decision is made.
 
 **The roadmap feeds docket.** Each milestone holds an outcome, exit criteria,
 dependencies, project rules and exclusions, which is exactly the destination

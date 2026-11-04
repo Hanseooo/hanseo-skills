@@ -30,7 +30,7 @@ One skill sits upstream of all three: **product-discovery** decides whether a pr
 | [docket](skills/docket/README.md) | Create an evolving feature roadmap for user-invoked slice specs | user-invoked |
 | [stint](skills/stint/README.md) | Build one sitting's worth of tickets per run, with review's fixed point pinned up front and a hard stop after two review passes | user-invoked |
 | [groundwork](skills/groundwork/README.md) | Set up a software project's agent docs (project brief, project roadmap, AGENTS.md) or fill an existing repo's gaps, with architecture and design planned as their own sessions | user-invoked |
-| [project-init](skills/project-init/README.md) | Write or audit a repo's AGENTS.md from repo evidence: exact commands, tooling lock, testing contract and invariants, with a CLAUDE.md import | user-invoked |
+| [project-init](skills/project-init/README.md) | Write or audit a repo's AGENTS.md from repo evidence and a short interview: exact commands, run steps, testing contract, invariants and scope | user-invoked |
 | [product-discovery](skills/product-discovery/README.md) | Decide what independent product to make, or whether to keep going with one, ending in a build / validate / narrow / kill call sized to the stakes | model-invoked |
 
 ### Adapted skills

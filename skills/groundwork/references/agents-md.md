@@ -8,9 +8,11 @@ global rules, never a copy of those rules.
 
 ## Which file
 
-- Neither exists → write `AGENTS.md`, plus a `CLAUDE.md` containing only
-  `@AGENTS.md`. Claude Code reads `CLAUDE.md`, not `AGENTS.md`.
-- One exists → edit that one; the repo already chose.
+- Neither exists → write `AGENTS.md`. Claude Code reads it on its own while no
+  `CLAUDE.md` or `CLAUDE.local.md` sits in the working directory or above.
+- One exists → edit that one; the repo already chose. A `CLAUDE.md` or
+  `CLAUDE.local.md` beside an `AGENTS.md` needs an `@AGENTS.md` line for it to
+  load: say so in the report.
 - Both exist and disagree → report what each holds; the user decides which owns
   what.
 - Monorepo packages with their own commands → nested files are
@@ -48,6 +50,5 @@ global rules, never a copy of those rules.
 | Scope changes | The brief, after the user agrees |
 ```
 
-Drop rows for docs the project does not have. The table is shared:
-`/project-init` adds rows for its sections, and an existing table keeps its
-rows.
+Drop rows for docs the project does not have. An existing table keeps its rows,
+and `/project-init` leaves them as they are.
