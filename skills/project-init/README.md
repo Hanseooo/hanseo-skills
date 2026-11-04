@@ -28,6 +28,8 @@ A generator that only reads the repo also misses what matters most. It can't see
 what agents keep getting wrong or what's off limits for now. [One
 study](https://arxiv.org/abs/2602.11988) found developer-written files beat
 LLM-generated ones on task success, and that repository overviews didn't help.
+Neither kind significantly beat having no file, and both cost more, so each line
+has to earn its place.
 
 ## How project-init solves it
 
