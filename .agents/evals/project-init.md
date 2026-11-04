@@ -75,3 +75,11 @@ in the opening message, since subagents have no question tool.
 
 Not fixed: agents still add questions beyond the open-item table (critical paths,
 merge gating in B2). Harmless, skippable, and each would change a line.
+
+## Skills CLI skipped the skill — 2026-11-04
+
+The description's unquoted `Usage: /project-init` is invalid YAML. Claude Code
+accepted it, so every test passed, while `npx skills add` warned, skipped the skill
+and still printed "Done" for the rest. Check after any description edit:
+`npx skills add <repo> --list` shows `Found 11 skills` (the current count) with no
+`Skipped` line.

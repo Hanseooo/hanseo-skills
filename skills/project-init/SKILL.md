@@ -1,6 +1,6 @@
 ---
 name: project-init
-description: Write or audit a repository's AGENTS.md from repo evidence and a short interview - commands, run steps, testing contract, invariants and scope. Usage: /project-init [project context]
+description: "Write or audit a repository's AGENTS.md from repo evidence and a short interview - commands, run steps, testing contract, invariants and scope. Usage: /project-init [project context]"
 disable-model-invocation: true
 ---
 
