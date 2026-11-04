@@ -41,7 +41,9 @@
 - **project brief** — groundwork's destination doc: who the project serves, what done looks like, scope and project rules; replaces a PRD without assuming a product
 - **project roadmap** — the project-level route toward the brief, made of milestones and holding the only status line; distinct from docket's feature **roadmap**, and kept at `planning/roadmap.md` by default
 - **milestone** — a usable project outcome with an `M` identifier, exit criteria, dependencies and a link to its docket or single spec; the destination a docket starts from
-- **project rule** — a rule binding several milestones, stated once in the project brief with a stable `P-` identifier that specs cite
-- **M0** — the first milestone, "Project foundations": the deep doc sessions groundwork plans, each run fresh, kept as roadmap history once complete
-- **project-init** — the user-invoked skill that writes or audits `AGENTS.md`'s commands, run steps, testing contract, invariants and scope from repo evidence and a short interview; groundwork's M0 repo contract session
+- **project rule** — a product or scope promise binding several milestones, stated once in the project brief with a stable `P-` identifier that specs cite
+- **guardrail** — a technical rule every task must obey: one `AGENTS.md` line with a stable `G-` identifier and a `Check:` naming the command or test that fails when it breaks, `none yet` or `advisory`; it cites an ADR when one explains it. project-init's invariants use the same line
+- **repo contract** — the `/project-init` session; first in M0 when code exists, otherwise on the first build milestone, after the first slice leaves a working check loop
+- **M0** — the first milestone, "Project foundations": the deep doc sessions groundwork plans, each run fresh, kept as roadmap history once complete; no entry waits on a build milestone
+- **project-init** — the user-invoked skill that writes or audits `AGENTS.md`'s commands, run steps, testing contract, invariants and scope from repo evidence and a short interview; groundwork's repo contract session
 - **implementer briefing** — the han-to-tickets body sections that spare a fresh implementer exploration: Context, Read first, Behavior this changes, Guidance and targeted checks

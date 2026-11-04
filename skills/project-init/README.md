@@ -11,7 +11,7 @@ Run it on any repo with code. It owns the "how do I work here" sections of
 `AGENTS.md` and leaves the rest to their owners:
 
 - the brief, roadmap and doc routing → `/groundwork`, which schedules
-  project-init as its M0 repo contract session
+  project-init as its repo contract session
 - architecture constraints and ADRs → `/charter`'s delimited block
 
 It needs no other skill.

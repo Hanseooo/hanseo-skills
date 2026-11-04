@@ -21,7 +21,8 @@ Sessions:
 Status: Not started | In discussion | In progress | Complete
 Exit criteria: <observable checks>
 Depends on: M0
-Project rules: P-01, P-03
+Project rules: P-01, G-03
+Repo contract: <first build milestone, when intake found no code> First slice leaves a working check loop; `/project-init` runs before the second slice. Done: <link>
 Out of scope: <exclusions>
 Breakdown: <link to its docket, or its single spec>
 Evidence: <link once complete>
@@ -42,8 +43,8 @@ Evidence: <link once complete>
 - New milestones start as outlines, the first included. Revise them as
   evidence arrives and record why under Changes; ask before changing the
   brief's scope.
-- IDs: `M` for milestones and `P` for project rules (in the brief). Decisions
-  are ADRs. Dockets keep their own D, RS and J IDs inside their files.
+- IDs: `M` for milestones, `P` for project rules (in the brief) and `G` for
+  technical rules (in `AGENTS.md`). Decisions are ADRs. Dockets keep their own D, RS and J IDs inside their files.
 - Each level holds status for its own children only: the roadmap tracks
   milestones, dockets track slices, the tracker tracks tickets. `Current:`
   moves when the next milestone starts.
@@ -56,8 +57,8 @@ session needs:
 - what to read first (the brief, this roadmap, relevant existing docs)
 - what to settle, as topics, never pre-made answers
 - which doc it writes, and where
-- what to update afterwards: this M0 entry, and the `AGENTS.md` routing row for
-  the new doc
+- what to update afterwards: this M0 entry, and a `Read when` line in `AGENTS.md`
+  for the new doc
 
-M0 is complete when every session is done or the user drops it; the roadmap
-keeps it as history.
+M0 is complete when every session is done or the user drops it; no M0 entry
+waits on a build milestone. The roadmap keeps it as history.

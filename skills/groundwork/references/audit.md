@@ -30,8 +30,9 @@ scope is Competing, whatever it says.
   Propose replacing them with a pointer to the file that holds them.
 - **Identical or near-identical files.** Propose one owner. The other becomes a
   pointer, or the user removes it.
-- **Repeated rules.** The same rule in `AGENTS.md`, `CLAUDE.md` and a spec. It
-  stays in its owner; the rest link.
+- **Repeated rules.** The same rule in `AGENTS.md`, `CLAUDE.md`, the brief and a
+  spec. A technical rule stays in `AGENTS.md`, a product or scope promise in the
+  brief; the rest cite its ID.
 
 ## Repo conventions
 

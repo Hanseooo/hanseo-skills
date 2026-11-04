@@ -53,16 +53,25 @@ no question left to answer, so it never gets written.
 and `AGENTS.md`. Architecture, design and any doc consolidation become entries
 in milestone M0 of the roadmap. Each one runs in a fresh session with a
 kickoff prompt, so each topic gets full attention, and M0 completes like any
-other milestone instead of leaving a setup file behind.
+other milestone instead of leaving a setup file behind. A project with no code
+runs `/project-init` during its first build milestone, once the first slice
+leaves a working check loop, so M0 never waits on code.
 
 **Docs stay tied to the code.** Commands come from `/project-init`, which records
 only what the scripts and CI show or you tell it. Versions and file lists stay in config. A doc that contradicts
 the code is reported with both sides cited. A short event table in `AGENTS.md`
-says which doc to update when a slice finishes or a decision is made.
+says which doc to update when a slice finishes or a decision is made. Another
+section tells later sessions what to do when docs and code disagree, because
+agents tend to follow a stale file over the code.
+
+**Rules point at checks.** Docs are advice an agent can ignore. A technical rule
+is one `G-` line in `AGENTS.md` naming the command that fails when it breaks, or
+saying `none yet` or `advisory`. Product promises stay in the brief. Only a decision
+that is hard to reverse, surprising and a real tradeoff becomes an ADR.
 
 **The roadmap feeds docket.** Each milestone holds an outcome, exit criteria,
 dependencies, project rules and exclusions, which is exactly the destination
-`/docket` starts from. The IDs never collide: `M` and `P` at the project
+`/docket` starts from. The IDs never collide: `M`, `P` and `G` at the project
 level, docket's own D, RS and J inside its files.
 
 ## When not to use it
@@ -132,7 +141,11 @@ the project needs and why. In an existing repo it first audits each doc as
 present, stale, competing, unrouted or missing. You see every draft in one
 message before anything is written. It ends by naming M0's first session and
 the commands to start it. Run `/groundwork` again later and it resumes M0
-instead of starting over.
+instead of starting over, or re-runs the audit once M0 is complete.
+
+On a new project the usual order is `/groundwork`, `/charter` in a fresh session,
+the first build slice, then `/project-init`. groundwork schedules charter and you
+can decline it.
 
 ## FAQ
 
@@ -154,7 +167,7 @@ don't conflict, and you can run both.
 The brief does the PRD's job without assuming the project is a product. A master
 spec would claim scope that already belongs to the brief, the roadmap and the
 slice specs, which is the duplication behind the stale docs above. Its
-cross-cutting rules become `P-` rules in the brief.
+cross-cutting rules become `P-` rules in the brief or `G-` lines in `AGENTS.md`.
 
 ## What it deliberately is not
 

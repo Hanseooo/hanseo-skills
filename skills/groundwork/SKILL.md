@@ -20,7 +20,9 @@ in a fresh session, rather than written shallow now.
   [references/design.md](references/design.md).
 - A project roadmap with an M0 milestone already exists → **resume**: reconcile
   M0 against what is on disk, mark finished sessions with links, name the next
-  one. Update that roadmap; one roadmap per project.
+  one. Update that roadmap; one roadmap per project. M0 complete → run the audit
+  and report its findings. M0 stays closed as history; accepted findings go under
+  the current milestone.
 
 ## Owners
 
@@ -28,10 +30,11 @@ Every fact has exactly one **owner** doc. Anywhere else, link to the owner.
 
 | Question | Owner | Write it when |
 |---|---|---|
-| Who is this for, what does done look like, what is out? | Project brief | Always |
+| Who is this for, what does done look like, what is out, what do we promise? | Project brief | Always |
 | In what order, and how far along? | Project roadmap | Always |
 | Which doc answers what, and what do I update when? | `AGENTS.md`: Documentation Map and Keep docs current | Always |
-| How do I install, run and test, and what must not break? | `AGENTS.md`: commands, tooling, testing contract and invariants, via `/project-init` | Code exists |
+| How do I install, run and test? | `AGENTS.md`: commands, tooling and testing contract, via `/project-init` | Code exists |
+| What technical rule must every task obey? | `AGENTS.md`: `G-` lines naming their check, from intake, `/charter` or `/project-init` | A rule is stated |
 | How does one milestone split into slices? | `/docket` | The milestone needs several specs |
 | Exactly how does one slice behave? | `/han-to-spec` or the user's spec skill | Per slice |
 | How is the system built, and why? | `architecture.md` and ADRs, via `/charter` | Two or more modules, or an external service |
@@ -90,16 +93,17 @@ M0, "Project foundations", is the first milestone in the project roadmap. Each
 entry is one fresh session with a kickoff prompt (shape in
 [references/roadmap.md](references/roadmap.md)):
 
-- **Architecture** → `/charter`. Where `CLAUDE.md` only imports `AGENTS.md`, the
-  kickoff tells charter to write its contract section into `AGENTS.md`.
+- **Architecture** → `/charter`. The kickoff names the entry file that holds its
+  contract block: `AGENTS.md`, unless the repo chose `CLAUDE.md`.
 - **Design** → `/groundwork design`, then the user's grilling skill
   (`/han-grill`) on the agenda it lists, then "write it", all in one session.
 - **Brief**, when intake could not name a destination → the grilling skill,
   then `/groundwork` again to write the brief.
 - **Consolidation**, when the audit finds docs competing for one owner row.
 - **Repo contract** → `/project-init`: commands, tooling, testing contract
-  and invariants. First in M0 when code exists; otherwise once the stack exists
-  and the check loop can run.
+  and invariants. Code exists → first in M0. No code yet → it goes on the first
+  build milestone instead: the first slice leaves a working check loop, and
+  `/project-init` runs before the second slice.
 
 Name each session's companion skill by command. User-invoked skills fire only
 when the user types them. A companion that is not installed → the entry reads
