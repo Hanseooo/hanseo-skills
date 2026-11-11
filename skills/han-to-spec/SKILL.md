@@ -126,3 +126,12 @@ visible.
 Publish or save the spec, report its actual issue link or local path, readiness
 and remaining blockers, then stop. Further discovery, implementation-ticket
 breakdown and implementation are separate work.
+
+A Ready spec's report ends with one suggested next step and what decided it:
+
+- Any of these holds → `/han-to-tickets`, then `/han-implement-spec`: stories
+  that can be built in parallel; a risky shared piece other stories wait on; a
+  wide refactor; someone other than the user picks the work up.
+- None holds → `/stint <spec path>`, which builds from the spec directly.
+
+The user runs that step. A Draft spec's next step is its blockers.

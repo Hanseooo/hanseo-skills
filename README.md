@@ -49,7 +49,7 @@ none requires Docket or the other adaptations.
 
 How they differ from Matt's:
 
-- **han-grill**: numbered rounds of independent questions, costed options, grounded recommendations, and probes of consequential code structure.
+- **han-grill**: numbered rounds of independent questions, an approach comparison first when none is chosen, costed options, grounded recommendations, and probes of consequential code structure.
 - **han-grill-with-docs**: writes into the project's existing glossary and decision record, not a new `GLOSSARY.md` and `docs/adr/`.
 - **han-to-spec**: outcome stories with stable criterion IDs, an edge-case table, a source coverage index, and conventions by pointer rather than restated.
 - **han-to-tickets**: each ticket body is an implementer briefing, with scope, complexity and blast radius fields.

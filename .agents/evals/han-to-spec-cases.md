@@ -47,3 +47,25 @@ Local specs convention is docs/specs/. Existing public list/storage tests are
 confirmed seams. Whether saved filters are private or shared is unresolved,
 as is duplicate-name behavior. There is no permission, sharing or collision
 contract yet. No execution or test results exist.
+
+### S3 - Close on a spec whose shape calls for tickets
+
+The spec is written, checked and saved at docs/specs/saved-filters-spec.md,
+Ready with no blockers. US-01 save the current filter under a name; US-02 apply
+a saved filter; US-03 rename or delete one; US-04 share one with the team;
+US-05 import filters from the legacy bookmarks. US-01 adds a `saved_filters`
+table and a storage module that US-02 through US-05 all read. US-03, US-04 and
+US-05 do not touch each other's code. The owner mentioned earlier that two
+agents are available for the build.
+
+Task: write only the final message of the run.
+
+### S4 - Close on a spec one sitting can build
+
+The spec is written, checked and saved at docs/specs/archive-toggle-spec.md,
+Ready with no blockers. US-01 hide archived notes by default, with a "Show
+archived" toggle in the filter bar; US-02 persist the toggle state per device.
+Both change the list filter module only, and US-02 builds on US-01. The owner
+builds alone with one agent.
+
+Task: write only the final message of the run.
