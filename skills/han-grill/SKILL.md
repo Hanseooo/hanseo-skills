@@ -1,6 +1,6 @@
 ---
 name: han-grill
-description: Stress-test an idea through a decision-tree interview with explicit tradeoffs and grounded recommendations.
+description: Stress-test a plan, decision or idea through an interview with explicit tradeoffs and grounded recommendations. Use when the user wants their thinking challenged before committing, asks what they have missed, or says "grill".
 ---
 
 # han-grill
@@ -19,6 +19,11 @@ requires no companion skill and produces an agreement in the conversation.
    questions in one numbered round, then wait. Honor a requested question pace.
    Sharing or implementation choices dependent on an unknown audience/job wait
    for that answer; unknown intent calls for an open question.
+   With the goal known and no approach chosen, the approach is the
+   prerequisite: the first round compares two or three whole approaches,
+   including one the user is unlikely to have considered, and choices that
+   differ by approach wait for that answer. A brief that names its approach
+   goes straight to its decisions.
 3. Investigate discoverable facts yourself. Use independent fact-finding
    subagents when available and permitted; otherwise inspect directly. A
    running investigation blocks its dependent questions, not the rest of the
@@ -85,5 +90,8 @@ if the user pauses or ends early. Reopen settled choices for material new
 evidence or changed requirements, explaining the conflict first.
 
 Stop at the interview boundary. Writing a spec, creating tickets, implementing,
-committing and publishing are separate requests. The recap can be input to
-`/han-to-spec` or any other workflow; none is automatically invoked.
+committing and publishing are separate requests. End the recap with one
+suggested next step, by who builds it: this session → build from the recap,
+no spec needed; another session or agent → `/han-to-spec` first, so the
+agreement survives the handoff. Unknown → name both. The user starts it;
+nothing is invoked automatically.

@@ -39,14 +39,15 @@ remaining uncertainty for a later handoff.
 - **Rounds, not one question at a time.** Independent frontier questions go out together in a numbered round. Matt's `grill-me` asks one at a time.
 - **Costs are stated.** Each option has a benefit and a cost, and the recommendation names the goal or verified fact behind it. Without one, it says what would decide the choice.
 - **Unknown intent gets an open question** before any option is built on it.
-- **Approaches are compared** (from Superpowers brainstorming), and the recap keeps unresolved choices and what they block.
+- **The approach comes first.** With the goal known and no approach chosen, the first round compares two or three whole approaches, one of them unlikely to be on your list (from Superpowers brainstorming). Choices that depend on the approach wait for that answer. A brief that names its approach skips this.
+- **The recap names a next step.** It keeps unresolved choices and what they block, then suggests one step: build from the recap when this session builds it, `/han-to-spec` first when another session or agent does.
 - **Code structure is probed** where a choice is hard to reverse or two reasonable implementers would differ: module placement, seams, data ownership, reuse. Documented conventions are followed, not asked about. Matt's grilling leaves structure to whatever the conversation raises.
 - **Self-contained.** No wrapper skill is needed, and it stops at the agreement: no spec, tickets or commits.
 
 ## When not to use it
 
 - **You need one factual answer:** ask directly or inspect the source.
-- **Decisions are settled:** use `/han-to-spec` or your existing brief.
+- **Decisions are settled:** build from them, or use `/han-to-spec` when another session builds.
 - **You want the upstream wrapper and interview unchanged:** use `/grill-me`.
 
 ## Install

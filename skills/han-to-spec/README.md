@@ -10,7 +10,7 @@ or the project's usual spec folder when no tracker is configured.
 ## Where this sits
 
 Use after a design discussion, including `/han-grill`, and before
-`/han-to-tickets` or your usual implementation workflow. Each skill works
+`/han-to-tickets`, `/stint` or your usual implementation workflow. Each skill works
 independently. It uses existing tracker configuration when present and works
 locally without it. No Docket or companion skill is required.
 
@@ -41,6 +41,13 @@ Ticket sessions inherit the cases instead of guessing them.
 
 Design rationale, existing behavior and unresolved decisions stay visible.
 The spec distinguishes required verification from evidence that it passed.
+
+A Ready spec's report ends with one suggested next step and what decided it.
+`/han-to-tickets`, then `/han-implement-spec`, when stories can be built in
+parallel, a risky shared piece blocks other stories, the change is a wide
+refactor, or someone else picks the work up. Otherwise `/stint <spec path>`,
+which builds from the spec without tickets. You run the step; the skill invokes
+nothing.
 
 ## Differences from Matt's
 
