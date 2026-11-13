@@ -46,4 +46,10 @@
 - **repo contract** — the `/project-init` session; first in M0 when code exists, otherwise on the first build milestone, after the first slice leaves a working check loop
 - **M0** — the first milestone, "Project foundations": the deep doc sessions groundwork plans, each run fresh, kept as roadmap history once complete; no entry waits on a build milestone
 - **project-init** — the user-invoked skill that writes or audits `AGENTS.md`'s commands, run steps, testing contract, invariants and scope from repo evidence and a short interview; groundwork's repo contract session
+- **hack-init** — the user-invoked skill that writes a hackathon repo's `AGENTS.md` for a team building one demo in parallel before a deadline
+- **demo journey** — the steps a judge sees; hack-init makes it the spec's acceptance journey and the scope every ticket serves
+- **walking skeleton** — hack-init's ticket 01: the app deployed, the demo screens reachable on mock data, the contract files written and the demo smoke running in CI; every other ticket waits on it
+- **contract files** — the files several lanes share (types, schema, mock data, root layout, manifest and lockfile, env names); edited outside their owner's lane only after telling the team
+- **lane** — the one folder a hackathon ticket owns
+- **code freeze** — the time, three hours before a hackathon ends by default, when one person rehearses the demo by hand on the deployed app; after it, only fixes for what the rehearsal breaks merge
 - **implementer briefing** — the han-to-tickets body sections that spare a fresh implementer exploration: Context, Read first, Behavior this changes, Guidance and targeted checks
