@@ -7,7 +7,8 @@
 - **operating contract** — the `CLAUDE.md` / `AGENTS.md` files that define how agents must behave when working on this repo
 - **docket** — a feature's evolving roadmap, carrying instructions for later sessions to maintain it; also the user-invoked skill that writes or resumes it
 - **destination** — the feature's agreed minimum outcome and success criteria; provisional slices can change the route, while optional extensions remain separate
-- **roadmap** — the feature overview: outcome-based slices, dependencies, shared decisions, roadmap rules and journeys, uncertainty, status, a current-slice pointer and links to user-invoked slice specs and completion evidence
+- **roadmap** — the feature overview, an index rather than a store: outcome-based slices, dependencies, shared decisions, roadmap rules and journeys, uncertainty, one status cell per slice, a current-slice pointer and links to user-invoked slice specs and completion evidence
+- **retired ID** — a slice ID absorbed, merged or dropped, kept as one roadmap line naming where it went and the decision that moved it; never reused
 - **roadmap rule** — a testable requirement binding several slices, stated once in the roadmap with a stable RS identifier; slice specs cite it and number their own shared behavior SH
 - **journey** — an end-to-end acceptance flow with a stable J identifier; a roadmap journey crossing slices names the slice that completes it, whose spec runs it at closeout
 - **slice plan** — a legacy Docket artifact containing detailed behavior, work and checks; retained as an existing source, with no new slice plans created by Docket

@@ -12,7 +12,7 @@ Use after `/han-to-tickets` or any tracker of spec plus tickets with blocking
 edges. It uses `/tdd` and `/code-review` when installed and falls back to a
 short built-in version of each. It hands off a branch, or a PR when your
 tracker closes work that way. When the spec links a `/docket` roadmap, the
-report's evidence is also recorded under that slice.
+slice's status there is updated with a link to the report.
 
 Adapted from Matt Pocock's
 [`implement-spec`](https://github.com/mattpocock/skills/blob/main/skills/engineering/implement-spec/SKILL.md),
@@ -77,7 +77,7 @@ polling.
 | Waiting | Not specified | Log to a file and wait on completion. No polling. |
 | Reviews | One final `/code-review`, all findings fixed | One review by default, on the riskiest gate. "Full review" gates every risky upstream ticket and adds a final review capped at two passes. |
 | Exploration | Optional exploration agent | Dropped. Ticket briefings carry the entry points. |
-| Report | Branch or PR | Adds mode per frontier, check results, open findings, changed test expectations and roadmap evidence. |
+| Report | Branch or PR | Adds mode per frontier, check results, open findings, changed test expectations and a roadmap status link. |
 | No subagents | Not handled | The main session builds each ticket in graph order. |
 
 Shared with Matt's: the integration branch, task-graph frontier, context pointers, one fresh agent per ticket, `/tdd`, and a final `/code-review`.

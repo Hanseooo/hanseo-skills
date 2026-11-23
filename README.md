@@ -15,7 +15,7 @@ But splitting introduces its own failure: **session 4 contradicts session 1.** Y
 **What hanseo-skills does:**
 
 - **charter** captures architectural decisions *before* the first brainstorming session, so later sessions inherit them instead of re-deriving them.
-- **docket** explores a feature and creates one evolving roadmap. Reference it during slice discussions, then invoke your spec skill separately. Carried instructions let later sessions update decisions, slices and completion evidence without invoking Docket again.
+- **docket** explores a feature and creates one evolving roadmap. Reference it during slice discussions, then invoke your spec skill separately. The roadmap is an index: one status cell per slice, with evidence linked from the tickets or PR. Carried instructions let later sessions keep it current without invoking Docket again.
 - **stint** builds once the designing is done, in sittings sized by how much codebase a run has actually read rather than by ticket count. It pins the point review measures against before writing any code, and stops reviewing after two passes instead of looping toward a "clean" that judgement-call findings never reach.
 
 Together, they make multi-session agent work sustainable: decisions are written down once, inherited durably, contradictions surface early, and the build runs stay small enough to review.

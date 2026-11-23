@@ -774,3 +774,57 @@ The control already handled progressive slices and unfinished-build refusal.
 The observed improvements are the durable file structure, exact phase status,
 preservation of decisions, and the boundary between docket and implementation.
 These runs do not establish runtime behavior or a pass for unexecuted scenarios.
+
+### Index-not-store revision, 2026-11-23
+
+Source: a retro on a real M1 roadmap (226 lines) that had gone stale: an
+`Updated` stamp weeks old, a Next step describing a spec state long past,
+settled questions still open, S1 status written in four places, two absorbed
+slices each keeping a row and a section, and test counts in Changes. The rules
+that produced these were docket's own: per-slice status, blockers and evidence
+(old Write-the-roadmap list), "Name the next slice to discuss", "Record those
+references and accepted findings", and han-implement-spec's "record the same
+evidence under that slice in the roadmap".
+
+Fixture: a synthetic 118-line report-exports roadmap with the same faults
+(kept outside the repo during the run). Haiku subagents, one file copy each,
+two samples per case, scored from the edited files, not the self-reports.
+
+- A: finished slice, han-implement-spec hand-back with PR, CI and accepted review.
+- B: S4 absorbed into S3 during grilling.
+- C: grill S5 with facts showing S3 tickets done and its spec approved.
+- D: `/docket resume` on the old roadmap with the full skill (round 3 only).
+- E: case A on a roadmap already in index shape (round 3 only).
+
+| Check | RED | GREEN 1 | GREEN 2 | GREEN 3 |
+|---|---|---|---|---|
+| Absorbed slice → one Retired IDs line (B) | 0/2 | 2/2 | 2/2 | — |
+| Next step removed or folded (A, B, C) | 0/6 | 0/6 | 5/6 | A 2/2 |
+| Pre-existing S2 leftovers collapsed in passing | 0/6 | 0/6 | 2/6 | A 0/2 |
+| No evidence entry added to Changes (A) | 0/2 | 0/2 | 0/2 | 2/2 |
+| Settled question deleted, not "Resolved:" | 0/4 | 3/4 | 4/4 | 4/4 |
+| `/docket resume` reaches index shape (D) | — | — | — | 2/2 |
+| Index-shaped roadmap stays index-shaped (E) | — | — | — | 2/2 |
+
+GREEN 1 added the index rule, Retired IDs, one status cell and the narrowed
+pre-work check. GREEN 2 added the carried Shape line listing the sections.
+GREEN 3 put the Changes scope into the carried block (it had been only in the
+skill body). GREEN runs of A added "the closeout confirms every acceptance
+check passed", so Complete-vs-incomplete is not comparable with RED; A is
+scored on placement only.
+
+Rationalizations to defeat, verbatim:
+
+- B (RED): "kept for ID history, following the S2/D4 pattern."
+- A (GREEN 1): status copied "as S1 does" — existing layout beats new rules.
+- B, C (GREEN 2): leftovers left "because they are outside this change";
+  "S2 is not on S5's path, so I left it for a separate fix."
+- A (RED): refused Complete because the roadmap's own copy of S3's acceptance
+  listed checks the run did not report — the copy competed with the spec.
+
+Residual: an agent doing a narrow update on an old-shape roadmap fixes what
+it touches and flags, but does not migrate, unrelated leftovers (A 0/2 in
+round 3). `/docket resume` migrates the whole file (D 2/2), though D1 packed
+CI counts into the status cell as text when no link existed. E2 created a D
+entry for a benchmark answer; the rule now says the answer lives where it
+was settled (D entry, spec or ticket). Not rerun after that wording change.

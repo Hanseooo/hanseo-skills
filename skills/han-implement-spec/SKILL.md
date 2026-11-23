@@ -130,5 +130,5 @@ Every step below spends under these rules.
     used per frontier, checks and their results, the reviews run and the
     tickets no review read, open findings, and every
     existing test expectation changed with its cause. If the spec links a
-    roadmap, record the same evidence under that slice in the roadmap,
-    following the roadmap's own instructions for status.
+    roadmap, update that slice's status following the roadmap's own
+    instructions, linking this report's branch or PR rather than copying it.
