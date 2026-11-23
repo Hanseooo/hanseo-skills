@@ -26,10 +26,9 @@ Superpowers 7.0.0 and ce-brainstorm on `main`.
 
 In baseline trials with no skill, agents asked good questions and played back
 well, but all three proposed a solution mid-conversation and closed by telling
-the user to build it, skipping the choices still open. None noticed that two of
-the user's own facts collided: asking for notification permission later meant
-no reminders during the very days the success metric counted. None marked an
-assumption.
+the user to build it, skipping the choices still open. None combined the user's own facts into
+a consequence they hadn't stated (people who leave at the permission screen
+never get the reminders that bring users back), and none marked an assumption.
 
 ## How han-brainstorm solves it
 
