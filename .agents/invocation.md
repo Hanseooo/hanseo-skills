@@ -20,6 +20,12 @@ Use this classification for:
 
 Could an agent meaningfully choose to use this skill without a human naming it? If yes → model-invoked. If it only makes sense when a human explicitly initiates it → user-invoked.
 
-## Reference convention
+## Keep the two harness flags in step
 
-Skills reference each other by slash command name in prose, not by file path. Example: "run `/charter` before building" not "see `skills/charter/SKILL.md`".
+Claude Code reads `disable-model-invocation: true` in `SKILL.md`; Codex reads `policy.allow_implicit_invocation: false` in `agents/openai.yaml`. A user-invoked skill sets both. A model-invoked skill sets neither and ships no `openai.yaml` policy. A leftover `false` policy hides it from the Codex model, and then no other skill can reach it there.
+
+## Composition
+
+A skill may load a model-invoked skill; it can never reach a user-invoked one, since both harnesses hide those from the model. Name a user-invoked next step for the user to run instead: "run `/han-to-spec`".
+
+Skills reference each other by slash command name in prose, not by file path, because each skill installs separately and a relative path may not resolve. Example: "run `/charter` before building" not "see `skills/charter/SKILL.md`". A bare slash name is enough for the agent to load a model-invoked skill (`.agents/evals/review-triage.md`, C1).
