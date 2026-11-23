@@ -26,7 +26,7 @@ One skill sits upstream of all three: **product-discovery** decides whether a pr
 
 | Name | Description | Type |
 |------|-------------|------|
-| [charter](skills/charter/README.md) | Produce a project's decision layer (architecture.md, ADRs, an operating contract in AGENTS.md or CLAUDE.md) | user-invoked |
+| [charter](skills/charter/README.md) | Produce a project's decision layer (architecture.md, ADRs, an operating contract in AGENTS.md or CLAUDE.md) | model-invoked |
 | [docket](skills/docket/README.md) | Create an evolving feature roadmap for user-invoked slice specs | user-invoked |
 | [stint](skills/stint/README.md) | Build one sitting's worth of tickets per run, with review's fixed point pinned up front and a hard stop after two review passes | user-invoked |
 | [groundwork](skills/groundwork/README.md) | Set up a software project's agent docs (project brief, project roadmap, AGENTS.md) or fill an existing repo's gaps, with architecture and design planned as their own sessions | user-invoked |
@@ -36,11 +36,12 @@ One skill sits upstream of all three: **product-discovery** decides whether a pr
 ### Adapted skills
 
 Independent adaptations of Matt Pocock's workflows, with selected design
-practices from Superpowers brainstorming. Install any of them separately;
-none requires Docket or the other adaptations.
+practices from Superpowers brainstorming and Every's ce-brainstorm. Install any
+of them separately; none requires Docket or the other adaptations.
 
 | Name | Description | Type |
 |------|-------------|------|
+| [han-brainstorm](skills/han-brainstorm/README.md) | Turn a vague itch into a confirmed brief of actor, outcome, success and boundaries, ready for `/han-grill` | user-invoked |
 | [han-grill](skills/han-grill/README.md) | Stress-test decisions with meaningful options, explicit tradeoffs and grounded recommendations | model-invoked |
 | [han-to-spec](skills/han-to-spec/README.md) | Write a spec to the configured tracker or usual spec folder, with outcome stories, detailed UX criteria, an edge-case table and source coverage | user-invoked |
 | [han-grill-with-docs](skills/han-grill-with-docs/README.md) | Run han-grill while recording settled terms and decisions in the project's existing glossary and decision record | user-invoked |
@@ -49,7 +50,8 @@ none requires Docket or the other adaptations.
 
 How they differ from Matt's:
 
-- **han-grill**: numbered rounds of independent questions, an approach comparison first when none is chosen, costed options, grounded recommendations, and probes of consequential code structure.
+- **han-brainstorm**: no Matt counterpart. Distilled from Superpowers brainstorming and ce-brainstorm: what and why only, a checkable end with an integration check, and a close routed to `/han-grill`.
+- **han-grill**: an approach comparison first when none is chosen, costed options, grounded recommendations, and probes of consequential code structure.
 - **han-grill-with-docs**: writes into the project's existing glossary and decision record, not a new `GLOSSARY.md` and `docs/adr/`.
 - **han-to-spec**: outcome stories with stable criterion IDs, an edge-case table, a source coverage index, and conventions by pointer rather than restated.
 - **han-to-tickets**: each ticket body is an implementer briefing, with scope, complexity and blast radius fields.

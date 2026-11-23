@@ -26,6 +26,9 @@
 - **exact-competition search** — the search for products serving the same user, trigger and workflow, run before any wedge is called open
 - **decision record** — the six-line close of a product-discovery call on a bet of weeks or more: decision, confidence, strongest evidence, dominant risk, next action with its cap, and what would change it
 - **unread context** — codebase a run has not opened; the limit on how many tickets one stint may absorb, in place of a ticket count
+- **han-brainstorm** — an independent, user-invoked skill that turns a vague itch into a confirmed **brief**, settling what and why and leaving how to han-grill
+- **brief** — han-brainstorm's result: actor, outcome, success, boundaries, assumptions, the integration finding and parked ideas, confirmed by the user and kept in the conversation as han-grill's intake
+- **integration check** — combining two things the user said to name the consequence neither states; han-brainstorm's last probe before the brief
 - **han-grill** — an independent, model-invoked adaptation of grilling that compares meaningful options, their tradeoffs and evidence for recommendations
 - **han-to-spec** — an independent, user-invoked adaptation of to-spec that writes to the configured issue tracker or usual spec folder, with outcome stories, traceable acceptance criteria and shared UX rules
 - **han-to-tickets** — an independent, user-invoked adaptation of to-tickets that preserves tracker publication and adds scope, complexity and blast radius to ticket bodies

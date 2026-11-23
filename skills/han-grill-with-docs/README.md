@@ -38,7 +38,7 @@ one, so the record and the agreement can be reviewed together.
 
 - **Existing docs first.** It finds the project's own glossary and decision record before the first question and writes there, in that file's format and numbering. Matt's `grill-with-docs` writes `GLOSSARY.md` and `docs/adr/`. That layout is only the fallback here.
 - **Doc edits are the only writes**, and the closing recap lists each one for review.
-- **Interview comes from `/han-grill`**, so it has rounds with costed options, not Matt's one-question flow.
+- **Interview comes from `/han-grill`**, so each option carries a benefit, a cost and a grounded recommendation.
 
 ## When not to use it
 
