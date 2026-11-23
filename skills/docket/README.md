@@ -31,9 +31,13 @@ roadmap after implementation and review.
 
 ## How docket solves it
 
-**Keep the roadmap small.** It holds outcomes, dependencies, shared decisions,
-uncertainty and evidence. Each linked spec owns its detailed behavior and
-acceptance checks. New slices start as outlines, including the first.
+**An index, not a store.** The roadmap holds what no other artifact owns
+(outcomes, dependencies, shared decisions, uncertainty) and links the rest.
+A slice's status is one table cell; ticket state stays in the tracker; test
+and review evidence stays in the tickets or PR, linked from that cell. Each
+linked spec owns its detailed behavior and acceptance checks, so an outline's
+acceptance summary goes once the spec exists. Absorbed slices shrink to one
+line under Retired IDs. With fewer copies, fewer lines go stale.
 
 **One slice, one spec.** A slice too big for one spec becomes several slices
 on the roadmap before any spec is written, so each slice has one clear point
@@ -114,11 +118,12 @@ names the next discussion and stops.
    slice's spec to your configured tracker. The roadmap records the returned
    issue link; the spec cites roadmap rules, lists the journeys it completes
    and carries a pointer back for maintenance.
-3. Request implementation and review against the spec. The session updates the
-   roadmap from acceptance and review evidence when it has the handoff context;
+3. Request implementation and review against the spec. The session sets the
+   slice's status cell and links its evidence when it has the handoff context;
    `/han-implement-spec` does this whenever the spec links a roadmap.
-4. Reference the same roadmap when discussing the next slice. Reconcile stale
-   status first, then discover that slice against what is now known.
+4. Reference the same roadmap when discussing the next slice. The session checks
+   that slice's row and its dependencies against their specs and tickets first,
+   then discovers the slice against what is now known.
 
 Docket creates one roadmap, with no separate slice-plan files. You invoke the
 spec skill yourself. You do not need another Docket invocation between slices.
@@ -128,8 +133,8 @@ spec skill yourself. You do not need another Docket invocation between slices.
 ### Does the roadmap update itself?
 
 Updates happen in the active session reading the roadmap or its handoff pointer.
-There is no background hook. `/han-implement-spec` records its evidence in the
-roadmap when the spec links one. If a build or review happened without that
+There is no background hook. `/han-implement-spec` sets the slice's status cell
+and links its report when the spec links a roadmap. If a build or review happened without that
 context, the next session that references the roadmap catches it up.
 
 ### What if a slice is too big for one spec?
@@ -158,9 +163,11 @@ extensions stay separate until you choose to expand scope.
 
 ### What happens to existing dockets, slice plans and specs?
 
-Keep their paths, identifiers, rationale and history. The roadmap can index
-existing approved detail without copying it. An explicit Docket resumption can
-replace obsolete carried instructions in place; it creates no new slice plans.
+Keep their paths, identifiers, rationale and history. An explicit Docket
+resumption replaces obsolete carried instructions in place and brings the
+content to the index shape: one status cell per slice, absorbed slices under
+Retired IDs, evidence linked rather than copied, dated status and next-step
+prose removed. It creates no new slice plans.
 
 ### How is this different from wayfinder?
 
@@ -174,6 +181,7 @@ They cover different stages of the same effort.
 | Ends | When the way is clear, before any build | When the last slice is accepted |
 | Pace | One ticket per session (research excepted) | Any number of questions per discussion |
 | Needs | Grilling, domain-modeling, research and prototype skills, plus tracker setup | Nothing |
+| Status | Queried from the tracker | One cell per slice; ticket state stays in the tracker |
 
 Use wayfinder first when you cannot yet say what the feature should be without
 many sessions of research or prototypes. Its decisions or spec then become

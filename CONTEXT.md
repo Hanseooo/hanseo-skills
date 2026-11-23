@@ -7,7 +7,8 @@
 - **operating contract** — the `CLAUDE.md` / `AGENTS.md` files that define how agents must behave when working on this repo
 - **docket** — a feature's evolving roadmap, carrying instructions for later sessions to maintain it; also the user-invoked skill that writes or resumes it
 - **destination** — the feature's agreed minimum outcome and success criteria; provisional slices can change the route, while optional extensions remain separate
-- **roadmap** — the feature overview: outcome-based slices, dependencies, shared decisions, roadmap rules and journeys, uncertainty, status, a current-slice pointer and links to user-invoked slice specs and completion evidence
+- **roadmap** — the feature overview, an index rather than a store: outcome-based slices, dependencies, shared decisions, roadmap rules and journeys, uncertainty, one status cell per slice, a current-slice pointer and links to user-invoked slice specs and completion evidence
+- **retired ID** — a slice ID absorbed, merged or dropped, kept as one roadmap line naming where it went and the decision that moved it; never reused
 - **roadmap rule** — a testable requirement binding several slices, stated once in the roadmap with a stable RS identifier; slice specs cite it and number their own shared behavior SH
 - **journey** — an end-to-end acceptance flow with a stable J identifier; a roadmap journey crossing slices names the slice that completes it, whose spec runs it at closeout
 - **slice plan** — a legacy Docket artifact containing detailed behavior, work and checks; retained as an existing source, with no new slice plans created by Docket
@@ -35,6 +36,8 @@
 - **han-grill-with-docs** — an independent, user-invoked wrapper that runs han-grill and domain-modeling, writing settled terms and decisions to the project's existing glossary and decision record
 - **han-implement-spec** — an independent, user-invoked adaptation of implement-spec that builds a ticket graph on one integration branch, choosing sequential or parallel mode per frontier
 - **model tier** — economy, standard or strong: a role-based model choice that skills name instead of specific models; the harness maps it to whatever models it offers
+- **review budget** — how many `/code-review` runs a build run may spend; `/han-implement-spec` defaults to one, spent on the riskiest gate, because the user reviews the finished branch
+- **riskiest gate** — the review of the risky upstream ticket ranked first by blast radius, then complexity, then dependents, held before its dependents start
 - **impact sweep** — the search, before writing code, for existing tests that assert behavior a ticket changes on purpose
 - **groundwork** — the user-invoked skill that sets up a software project's agent docs, or fills an existing repo's gaps, and plans its M0 sessions
 - **owner** — the one doc that answers a given question about a project; every other doc links to it rather than restating the fact

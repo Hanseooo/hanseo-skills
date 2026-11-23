@@ -12,7 +12,7 @@ Use after `/han-to-tickets` or any tracker of spec plus tickets with blocking
 edges. It uses `/tdd` and `/code-review` when installed and falls back to a
 short built-in version of each. It hands off a branch, or a PR when your
 tracker closes work that way. When the spec links a `/docket` roadmap, the
-report's evidence is also recorded under that slice.
+slice's status there is updated with a link to the report.
 
 Adapted from Matt Pocock's
 [`implement-spec`](https://github.com/mattpocock/skills/blob/main/skills/engineering/implement-spec/SKILL.md),
@@ -47,9 +47,16 @@ session; only a conflict spawns a cheap merger agent. Additive edits to a shared
 file still count as independent.
 
 **Tiers, not model names.** Mechanical work goes to the cheapest model that uses
-tools reliably, High-complexity tickets and reviews to the strongest. The
-ticket's Complexity field picks the tier, so the rule works in any harness with
-model choice and degrades to the current model without it.
+tools reliably. Low and Medium tickets with Local reach go to the mid-capability
+model even when the session runs on the strongest. High-complexity tickets,
+Shared or System-wide tickets, and reviews go to the strongest. The ticket's
+Complexity and Blast radius fields pick the tier, so the rule works in any
+harness with model choice and degrades to the current model without it.
+
+**One review by default.** The skill assumes you review the finished branch, so
+it spends a single `/code-review` on the riskiest gate: the upstream ticket whose
+defect would spread furthest, reviewed before its dependents build on it. Say
+"full review" for every gate plus two final passes, or give a number.
 
 **Find conflicts before the expensive run.** Each ticket starts with an impact
 sweep for tests asserting behavior it changes, then runs those targeted checks.
@@ -64,13 +71,13 @@ polling.
 | Worktrees | Every ticket | Parallel tickets only, each removed right after its merge. A chain commits straight to the integration branch. |
 | Merging | A merger agent for every result | The main session merges cleanly. A cheap merger agent handles conflicts only. |
 | Overlap | Left to the merger | Tickets changing the same existing behavior run in sequence. Additive edits to a shared file stay parallel. |
-| Models | Not specified | Tiers (economy, standard, strong) picked from the ticket's Complexity field. |
+| Models | Not specified | Tiers (economy, standard, strong) picked from the ticket's Complexity and Blast radius fields. Standard is the mid-capability model, not the session's. |
 | Before coding | Straight to `/tdd` | Impact sweep for existing tests the ticket breaks. |
 | Test runs | Not specified | Targeted per ticket. Full suite once for Shared tickets and once at the batch gate. |
 | Waiting | Not specified | Log to a file and wait on completion. No polling. |
-| Reviews | One final `/code-review`, all findings fixed | Gate review on risky upstream tickets. Final review capped at two passes. |
+| Reviews | One final `/code-review`, all findings fixed | One review by default, on the riskiest gate. "Full review" gates every risky upstream ticket and adds a final review capped at two passes. |
 | Exploration | Optional exploration agent | Dropped. Ticket briefings carry the entry points. |
-| Report | Branch or PR | Adds mode per frontier, check results, open findings, changed test expectations and roadmap evidence. |
+| Report | Branch or PR | Adds mode per frontier, check results, open findings, changed test expectations and a roadmap status link. |
 | No subagents | Not handled | The main session builds each ticket in graph order. |
 
 Shared with Matt's: the integration branch, task-graph frontier, context pointers, one fresh agent per ticket, `/tdd`, and a final `/code-review`.
@@ -117,13 +124,15 @@ Without them the skill follows its built-in fallbacks.
 ```text
 /han-implement-spec .scratch/menus/spec.md
 /han-implement-spec https://github.com/example/editor/issues/40
+/han-implement-spec .scratch/menus/spec.md full review
+/han-implement-spec .scratch/menus/spec.md no reviews
 ```
 
 In Codex, invoke `$han-implement-spec`. The agent states the mode for each
-frontier, builds and checks each ticket, reviews risky upstream tickets before
-their dependents start, runs one batch gate and at most two final review passes,
-then reports the branch, check results, open findings and every existing test
-expectation it changed.
+frontier and its review plan, builds and checks each ticket, reviews the
+riskiest upstream ticket before its dependents start, runs one batch gate, then
+reports the branch, check results, the reviews run and the tickets none read,
+open findings and every existing test expectation it changed.
 
 ## FAQ
 

@@ -15,7 +15,7 @@ But splitting introduces its own failure: **session 4 contradicts session 1.** Y
 **What hanseo-skills does:**
 
 - **charter** captures architectural decisions *before* the first brainstorming session, so later sessions inherit them instead of re-deriving them.
-- **docket** explores a feature and creates one evolving roadmap. Reference it during slice discussions, then invoke your spec skill separately. Carried instructions let later sessions update decisions, slices and completion evidence without invoking Docket again.
+- **docket** explores a feature and creates one evolving roadmap. Reference it during slice discussions, then invoke your spec skill separately. The roadmap is an index: one status cell per slice, with evidence linked from the tickets or PR. Carried instructions let later sessions keep it current without invoking Docket again.
 - **stint** builds once the designing is done, in sittings sized by how much codebase a run has actually read rather than by ticket count. It pins the point review measures against before writing any code, and stops reviewing after two passes instead of looping toward a "clean" that judgement-call findings never reach.
 
 Together, they make multi-session agent work sustainable: decisions are written down once, inherited durably, contradictions surface early, and the build runs stay small enough to review.
@@ -54,7 +54,7 @@ How they differ from Matt's:
 - **han-grill-with-docs**: writes into the project's existing glossary and decision record, not a new `GLOSSARY.md` and `docs/adr/`.
 - **han-to-spec**: outcome stories with stable criterion IDs, an edge-case table, a source coverage index, and conventions by pointer rather than restated.
 - **han-to-tickets**: each ticket body is an implementer briefing, with scope, complexity and blast radius fields.
-- **han-implement-spec**: worktrees only for parallel tickets, model tiers, an impact sweep, fewer full test runs and a capped final review.
+- **han-implement-spec**: worktrees only for parallel tickets, model tiers, an impact sweep, fewer full test runs and one review by default, since you review the branch yourself.
 
 Each skill's README has a "Differences from Matt's" section with the detail.
 

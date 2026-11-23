@@ -63,3 +63,26 @@ changes. The briefing sections were modelled on Kleeve's ticket 07, whose
 Read first, Agent notes and Unblocks sections carried the implementer through
 a High-complexity change. Line-number pointers in that ticket are replaced by
 file plus symbol.
+
+## Review budget and standard tier (2026-11-23)
+
+The owner reviews every finished branch and was typing the same override on each
+run: Sonnet implementers, Opus for complex or critical tickets, at most one
+review. Agreed: one review by default on the riskiest gate, "full review" or a
+number to change it, standard tier on the mid-capability model, strong tier for
+Shared or System-wide blast radius too.
+
+Case R1, Haiku samples. Session on `large`; subagents on `small`, `medium`,
+`large`. Tickets 21 (High, Local, blocks 22 and 23), 22 (Low, Local), 23 (Medium,
+Shared, blocks 24), 24 (Low, Local). Plan only.
+
+RED, previous skill, plain invocation, two samples: both ran every ticket on
+`large` ("standard: the session's default model") and planned 4 reviews (gates
+on 21 and 23 plus two final passes). Sample reason: "No model override was
+given, so the tier table applies."
+
+GREEN, plain invocation, two samples: 22 and 24 on `medium`, 21 and 23 on
+`large`, one review on 23 (Shared outranks High/Local), no final review, full
+suite twice. "No code reviews at all", one sample: 0 reviews, batch gate kept.
+"Full review", one sample: 3 reviews, reading "adds the final review" as one
+pass. Revised to "both final review passes"; rerun: 4 reviews.

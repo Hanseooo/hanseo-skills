@@ -27,13 +27,19 @@ Every step below spends under these rules.
   | Work | Tier |
   |---|---|
   | Merge, rebase, run a check, fetch, look up a fact, close tickets | **economy**: the cheapest model offered that runs tools reliably |
-  | Low or Medium complexity ticket | **standard**: the session's default model |
-  | High complexity ticket, any review | **strong**: the most capable model offered |
+  | Low or Medium complexity ticket with Local blast radius | **standard**: the mid-capability model offered, whatever the session runs on |
+  | High complexity or Shared/System-wide blast radius ticket, any review | **strong**: the most capable model offered |
 
-  The ticket's Complexity field picks its tier. Without one, judge from the
-  ticket and state the tier chosen. An explicit model choice from the user
+  The ticket's Complexity and Blast radius fields pick its tier. Without them,
+  judge from the ticket and state the tier chosen. With only two models
+  offered, standard is the cheaper one. An explicit model choice from the user
   overrides this table. A harness that offers no model choice runs everything
   on the current model.
+- **Review budget.** The user reviews the finished branch, so the run spends
+  one review by default, on the **riskiest gate** (step 5). A budget the user
+  states replaces it: a number of reviews, or **full review**, which gates every
+  risky upstream ticket and adds both final review passes (step 7). Checks and the
+  batch gate run under every budget.
 - **Quiet waits.** Send a long command's output to a log file and wait on its
   completion signal: a background-task notification, or a blocking wait with a
   timeout longer than the expected run. A status message carries new evidence;
@@ -50,7 +56,8 @@ Every step below spends under these rules.
 1. **Read the graph.** The spec, then each ticket's blockers, Complexity, Blast
    radius and Behavior this changes. No tracker configured → ask, or point to
    `/setup-matt-pocock-skills` if installed. A ticket blocked by an unresolved
-   decision stays off the frontier; report it.
+   decision stays off the frontier; report it. State the review plan in one
+   line: the budget, and which tickets or passes it buys (step 5).
 
 2. **Create the integration branch** and record its base SHA: the final review
    measures against it. If the tracker closes work through PRs, or the user asks
@@ -90,22 +97,28 @@ Every step below spends under these rules.
    6. Commits, naming the ticket, then reports in a few lines: commit, checks
       and results, changed expectations, open questions.
 
-5. **Gate risky upstream tickets.** A ticket that blocks others and is rated
-   High complexity or Shared/System-wide blast radius gets one review before
-   its dependents start: `/code-review` from the commit before it, strong tier.
-   Fix its findings in the same implementer. Every other ticket waits for the
-   final review.
+5. **Gate risky upstream tickets.** A **risky upstream ticket** blocks others
+   and is rated High complexity or Shared/System-wide blast radius. Rank them:
+   widest blast radius, then highest complexity, then most dependents. The
+   budget buys gates in that order: the default buys the **riskiest gate**
+   alone, a number buys that many with any remainder going to final review
+   passes, and full review buys every gate and both final passes. A gated
+   ticket gets one review before its dependents start: `/code-review` from the
+   commit before it, strong tier. Fix its findings in the same implementer. No risky upstream
+   ticket → no gate, and the budget goes unspent.
 
 6. **Advance the frontier.** After each ticket lands, recompute the frontier
    and pick its mode again (step 3).
 
-7. **Final review, two passes at most.** With every ticket in, `/code-review`
-   the integration branch against the base SHA from step 2. Fix the findings in
-   one implementer with targeted checks, commit, then review once more: that
-   pass reads the fixes. Findings still open after it are reported, not fixed.
-   A finding you believe wrong gets a stated reason. Without `/code-review`: a
-   fresh strong-tier agent compares the diff with the spec's criteria and the
-   repo's documented standards.
+7. **Final review, when the budget buys it; two passes at most.** When the
+   budget buys no final pass (step 5), go to step 8. With every ticket in,
+   `/code-review` the integration branch against the base SHA from step 2. Fix
+   the findings in one implementer with targeted checks, commit, then, when the
+   budget buys a second pass, review once more: that pass reads the fixes.
+   Findings still open after the last pass are reported, not fixed. A finding
+   you believe wrong gets a stated reason. Without `/code-review`: a fresh
+   strong-tier agent compares the diff with the spec's criteria and the repo's
+   documented standards.
 
 8. **Batch gate.** Run the full suite once on the final integration tip. A red
    result gets a fix and a rerun; the review passes are not repeated.
@@ -114,7 +127,8 @@ Every step below spends under these rules.
    the tracker closes work. Remove any worktree this run left behind.
 
 10. **Report.** The integration branch, tickets done and remaining, the mode
-    used per frontier, checks and their results, open findings, and every
+    used per frontier, checks and their results, the reviews run and the
+    tickets no review read, open findings, and every
     existing test expectation changed with its cause. If the spec links a
-    roadmap, record the same evidence under that slice in the roadmap,
-    following the roadmap's own instructions for status.
+    roadmap, update that slice's status following the roadmap's own
+    instructions, linking this report's branch or PR rather than copying it.
